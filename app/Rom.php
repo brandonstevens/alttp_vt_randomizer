@@ -1967,8 +1967,6 @@ class Rom {
 				$this->setCaneOfByrnaInvulnerability(true);
 				$this->setPowderedSpriteFairyPrize(0xE3);
 				$this->setBottleFills([0xA0, 0x80]);
-				$this->setShopBlueShieldCost(50);
-				$this->setShopRedShieldCost(500);
 				$this->setCatchableFairies(true);
 				$this->setCatchableBees(true);
 				$this->setStunItems(0x03);
@@ -1982,8 +1980,6 @@ class Rom {
 				$this->setCaneOfByrnaInvulnerability(false);
 				$this->setPowderedSpriteFairyPrize(0xD8); // 1 heart
 				$this->setBottleFills([0x38, 0x40]); // 7 hearts, 1/2 magic refills
-				$this->setShopBlueShieldCost(100);
-				$this->setShopRedShieldCost(999);
 				$this->setCatchableFairies(false);
 				$this->setCatchableBees(true);
 				$this->setStunItems(0x02);
@@ -1997,8 +1993,6 @@ class Rom {
 				$this->setCaneOfByrnaInvulnerability(false);
 				$this->setPowderedSpriteFairyPrize(0xD8); // 1 heart
 				$this->setBottleFills([0x08, 0x20]); // 1 heart, 1/4 magic refills
-				$this->setShopBlueShieldCost(9990);
-				$this->setShopRedShieldCost(9990);
 				$this->setCatchableFairies(false);
 				$this->setCatchableBees(true);
 				$this->setStunItems(0x00);
@@ -2012,8 +2006,6 @@ class Rom {
 				$this->setCaneOfByrnaInvulnerability(false);
 				$this->setPowderedSpriteFairyPrize(0x79); // Bees
 				$this->setBottleFills([0x00, 0x00]); // 0 hearts, 0 magic refills
-				$this->setShopBlueShieldCost(10000);
-				$this->setShopRedShieldCost(10000);
 				$this->setCatchableFairies(false);
 				$this->setCatchableBees(true);
 				$this->setStunItems(0x00);
@@ -2025,82 +2017,6 @@ class Rom {
 			default:
 				throw new \Exception("Trying to set hard mode that doesn't exist");
 		}
-
-		return $this;
-	}
-
-	/**
-	 * Set the cost of Blue Shields in shops (shop sprite: 0x08).
-	 *
-	 * @param int $cost
-	 *
-	 * @return $this
-	 */
-	public function setShopBlueShieldCost(int $cost = 50) : self {
-		$cost_digits = str_split($cost);
-		if ($cost > 999) {
-			$this->write(0xF73D2, pack('C*', 0xFC, 0xFF)); // reposition gfx
-			$this->write(0xF73DA, pack('C*', 0x04, 0x00)); // reposition gfx
-			$this->write(0xF73E2, pack('C*', 0x0C, 0x00)); // reposition gfx
-			$this->write(0xF73D6, pack('C*', 0x3C)); // -
-			$this->write(0xF73DE, pack('C*', 0x3C)); // -
-			$this->write(0xF73E6, pack('C*', 0x3C)); // -
-		} else if ($cost > 99) {
-			$this->write(0xF73D2, pack('C*', 0xFC, 0xFF)); // reposition gfx
-			$this->write(0xF73DA, pack('C*', 0x04, 0x00)); // reposition gfx
-			$this->write(0xF73E2, pack('C*', 0x0C, 0x00)); // reposition gfx
-			$this->write(0xF73D6, pack('C*', static::$digit_gfx[$cost_digits[0]]));
-			$this->write(0xF73DE, pack('C*', static::$digit_gfx[$cost_digits[1]]));
-			$this->write(0xF73E6, pack('C*', static::$digit_gfx[$cost_digits[2]]));
-		} else {
-			$this->write(0xF73D2, pack('C*', 0x00, 0x00)); // reposition gfx
-			$this->write(0xF73DA, pack('C*', 0x00, 0x00)); // reposition gfx
-			$this->write(0xF73E2, pack('C*', 0x08, 0x00)); // reposition gfx
-			$this->write(0xF73D6, pack('C*', static::$digit_gfx[$cost_digits[0]]));
-			$this->write(0xF73DE, pack('C*', static::$digit_gfx[$cost_digits[0]]));
-			$this->write(0xF73E6, pack('C*', static::$digit_gfx[$cost_digits[1]]));
-		}
-
-		$this->write(0xF7201, pack('C*', $cost >> 8));
-		$this->write(0xF71FF, pack('C*', $cost & 0xFF));
-
-		return $this;
-	}
-
-	/**
-	 * Set the cost of Red Shields in shops (shop sprite: ??).
-	 *
-	 * @param int $cost
-	 *
-	 * @return $this
-	 */
-	public function setShopRedShieldCost(int $cost = 500) : self {
-		$cost_digits = str_split($cost);
-		if ($cost > 999) {
-			$this->write(0xF73FA, pack('C*', 0xFC, 0xFF)); // reposition gfx
-			$this->write(0xF7402, pack('C*', 0x04, 0x00)); // reposition gfx
-			$this->write(0xF740A, pack('C*', 0x0C, 0x00)); // reposition gfx
-			$this->write(0xF73FE, pack('C*', 0x3C)); // -
-			$this->write(0xF7406, pack('C*', 0x3C)); // -
-			$this->write(0xF740E, pack('C*', 0x3C)); // -
-		} else if ($cost > 99) {
-			$this->write(0xF73FA, pack('C*', 0xFC, 0xFF)); // reposition gfx
-			$this->write(0xF7402, pack('C*', 0x04, 0x00)); // reposition gfx
-			$this->write(0xF740A, pack('C*', 0x0C, 0x00)); // reposition gfx
-			$this->write(0xF73FE, pack('C*', static::$digit_gfx[$cost_digits[0]]));
-			$this->write(0xF7406, pack('C*', static::$digit_gfx[$cost_digits[1]]));
-			$this->write(0xF740E, pack('C*', static::$digit_gfx[$cost_digits[2]]));
-		} else {
-			$this->write(0xF73FA, pack('C*', 0x00, 0x00)); // reposition gfx
-			$this->write(0xF7402, pack('C*', 0x00, 0x00)); // reposition gfx
-			$this->write(0xF740A, pack('C*', 0x08, 0x00)); // reposition gfx
-			$this->write(0xF73FE, pack('C*', static::$digit_gfx[$cost_digits[0]]));
-			$this->write(0xF7406, pack('C*', static::$digit_gfx[$cost_digits[0]]));
-			$this->write(0xF740E, pack('C*', static::$digit_gfx[$cost_digits[1]]));
-		}
-
-		$this->write(0xF7241, pack('C*', $cost >> 8));
-		$this->write(0xF723F, pack('C*', $cost & 0xFF));
 
 		return $this;
 	}
@@ -2119,6 +2035,7 @@ class Rom {
 				$shop_id = 0xFF;
 			}
 			$shop->writeExtraData($this);
+			// @TODO: make this clever and reuse when inv is the exact same. (except take any's)
 			$shop_data = array_merge($shop_data, [$shop_id], $shop->getBytes($sram_offset));
 			$sram_offset += ($shop instanceof Shop\TakeAny) ? 1 : count($shop->getInventory());
 

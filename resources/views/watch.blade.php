@@ -1,15 +1,16 @@
-@extends('layouts.default', ['title' => 'Start Watching - '])
+@extends('layouts.default', ['title' => __('navigation.start_watching') . ' - '])
 
 @section('content')
-<h1>Join the Adventure!</h1>
+<h1>{{ __('watch.header') }}</h1>
 <div class="card card-body bg-light">
 	<div class="card border-info mt-4">
 		<div class="card-header bg-info">
-			<h3 class="card-title text-white">Twitch</h3>
+			<h3 class="card-title text-white">{{ __('watch.cards.twitch.header') }}</h3>
 		</div>
 		<div class="card-body">
-			<p>With so much going on, there's always a race to watch! Follow these networks and never
-				miss a match!</p>
+			@foreach (__('watch.cards.twitch.content') as $block)
+				<p>{!! $block !!}</p>
+			@endforeach
 			<div class="btn-wrapper">
 				<div class="btn-cal"><a
 					class="btn btn-lg btn-xl btn-cal1"
@@ -47,7 +48,7 @@
 				href="https://www.twitch.tv/communities/lttprandomizer/"
 				rel="noopener noreferrer"
 				role="button"
-				target="_blank">ALttP:R Twitch Community</a></div>
+				target="_blank">{{ __('watch.cards.twitch.button') }}</a></div>
 		</div>
 	</div>
 
@@ -55,37 +56,26 @@
 
 	<div class="card border-info mt-4">
 		<div class="card-header bg-info">
-			<h3 class="card-title text-white">Tournaments</h3>
+			<h3 class="card-title text-white">{{ __('watch.cards.tournament.header') }}</h3>
 		</div>
 		<div class="card-body">
-			<h4>Upcoming Tournaments</h4>
-			<p>Join us for the 2018 Spring Invitational starting this March! Join our <a href="https://discord.gg/alttprandomizer" target="_blank" rel="noopener noreferrer">Discord</a> community to stay up to date!</p>
-			<h4>2017 Fall Invitational</h4>
-			<p>The <span style="font-weight:bold;">2017 Fall Invitational</span> has wrapped up!</p>
-			<p><a href="https://www.youtube.com/playlist?list=PLdoWICJMgPKWZKYiZD1uLn529-fdHHqUK" target="_blank" rel="noopener noreferrer">Watch all the matches here!</a></p>
-			<div class="center"><iframe
-				allow="encrypted-media"
-				allowfullscreen
-				frameborder="0"
-				gesture="media"
-				height="315"
-				src="https://www.youtube.com/embed/iAmfUsMJONw?rel=0"
-				width="560"></iframe></div>
+			@foreach (__('watch.cards.tournament.sections') as $section)
+			<h4>{{ $section['header'] }}</h4>
+				@foreach ($section['content'] as $block)
+					<p>{!! $block !!}</p>
+				@endforeach
+			@endforeach
 		</div>
 	</div>
 
 	<div class="card border-info mt-4">
 		<div class="card-header bg-info">
-			<h3 class="card-title text-white">Youtube</h3>
+			<h3 class="card-title text-white">{{ __('watch.cards.youtube.header') }}</h3>
 		</div>
 		<div class="card-body">
-			<div class="center"><a
-				class="btn btn-secondary btn-lg btn-xl"
-				href="https://www.youtube.com/channel/UCBMMk0WJAeldNv4fI9juovA"
-				rel="noopener noreferrer"
-				role="button"
-				target="_blank">ALttP:R Youtube Channel</a></div><br/>
-			<p>Subscribe to our Youtube channel for updates, tournament highlights, and more!</p>
+			@foreach (__('watch.cards.youtube.content') as $block)
+				<p>{!! $block !!}</p>
+			@endforeach
 		</div>
 	</div>
 </div>

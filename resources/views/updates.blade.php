@@ -5,6 +5,7 @@
 <div class="card card-body bg-light mb-3">
 	<ul>
 		<li>Front end rewrite into Vue framework... you have no idea how much went into this.</li>
+		<li>Site translations! De rien!</li>
 	</ul>
 </div>
 

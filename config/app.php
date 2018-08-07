@@ -66,6 +66,8 @@ return [
 
 	'timezone' => 'UTC',
 
+	'locales' => ['fr', 'en'],
+
 	/*
 	|--------------------------------------------------------------------------
 	| Application Locale Configuration

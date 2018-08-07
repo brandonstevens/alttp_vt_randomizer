@@ -9,7 +9,7 @@
 			<span class="message">{{ this.error }}</span>
 		</div>
 		<div v-show="$store.state.loading" class="center">
-			<img src="/i/loading.gif" alt="Loading..." />
+			<div class="loading"/>
 			<h1>Loading...</h1>
 		</div>
 		<tabs v-show="!$store.state.loading" class="think" nav-type="tabs" :sticky="true">
