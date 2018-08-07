@@ -23,8 +23,8 @@
 				<li class="nav-item dropdown">
 					<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{!! __('navigation.language') !!} <span class="caret"></span></a>
 					<div class="dropdown-menu">
-						<a class="dropdown-item" href="{{ preg_replace('/^\/?'.app()->getLocale().'\//', '/en/', request()->path()) }}"><span class="flag-icon flag-icon-us"></span> English</a>
-						<a class="dropdown-item" href="{{ preg_replace('/^\/?'.app()->getLocale().'\//', '/fr/', request()->path()) }}"><span class="flag-icon flag-icon-fr"></span> Français</a>
+						<a class="dropdown-item" href="{{ preg_replace('/^\/?'.app()->getLocale().'/', '/en', request()->path()) }}"><span class="flag-icon flag-icon-us"></span> English</a>
+						<a class="dropdown-item" href="{{ preg_replace('/^\/?'.app()->getLocale().'/', '/fr', request()->path()) }}"><span class="flag-icon flag-icon-fr"></span> Français</a>
 					</div>
 				</li>
 				<li class="nav-item dropdown">
