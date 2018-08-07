@@ -1069,11 +1069,11 @@ class Text {
 			'uncle_dying_sewer',
 			'telepathic_intro',
 			'desert_thief_sitting',
-            		'desert_thief_following',
-            		'desert_thief_question',
-            		'desert_thief_question_yes',
-            		'desert_thief_after_item_get',
-            		'desert_thief_reassure'
+			'desert_thief_following',
+			'desert_thief_question',
+			'desert_thief_question_yes',
+			'desert_thief_after_item_get',
+			'desert_thief_reassure'
 		];
 
 		foreach ($messages_to_zero as $msg) {
