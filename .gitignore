@@ -5,6 +5,7 @@
 /public/mix-*.json
 /public/storage
 /public/i/svg
+/public/images/vendor
 /storage/*.key
 /vendor
 /docs
