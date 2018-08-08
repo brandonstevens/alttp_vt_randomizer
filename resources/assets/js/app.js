@@ -22,6 +22,10 @@ import VueTimeago from 'vue-timeago';
 //import Vuex from 'vuex';
 //Vue.use(Vuex);
 
+window.VueInternationalization = require('vue-i18n').default;
+window.Locale = require('./vue-i18n-locales.generated').default;
+Vue.use(VueInternationalization);
+
 Vue.use(VTooltip);
 Vue.use(ToggleButton);
 Vue.use(VueTimeago);

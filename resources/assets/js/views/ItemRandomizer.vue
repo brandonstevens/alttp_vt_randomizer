@@ -11,13 +11,13 @@
 		<vt-rom-loader v-if="!romLoaded" @update="updateRom" @error="onError"></vt-rom-loader>
 		<div v-if="romLoaded" class="card border-success mb-3">
 			<div class="card-header bg-success card-heading-btn">
-				<h3 class="card-title text-white float-left">Item Randomizer (v{{ version }})</h3>
+				<h3 class="card-title text-white float-left">{{ $t('randomizer.title') }} (v{{ version }})</h3>
 				<div class="btn-toolbar float-right">
-					<a class="btn btn-light border-secondary" role="button" href="/entrance/randomizer">
-						Switch to Entrance Randomizer <img class="icon" src="/i/svg/share.svg" alt="Switch to Entrance Randomizer">
+					<a class="btn btn-light border-secondary" role="button" :href="'/' + $i18n.locale + '/entrance/randomizer'">
+						{{ $t('randomizer.switch.entrance') }} <img class="icon" src="/i/svg/share.svg" alt="Switch to Entrance Randomizer">
 					</a>
 					<button class="btn btn-light border-secondary" data-toggle="collapse" href="#rom-settings">
-						ROM Options <img class="icon pulse" src="/i/svg/cog.svg" alt="ROM Options">
+						{{ $t('randomizer.rom.options') }} <img class="icon pulse" src="/i/svg/cog.svg" alt="ROM Options">
 					</button>
 				</div>
 			</div>
@@ -26,32 +26,32 @@
 				<div class="row">
 					<div class="col-md mb-3">
 						<vt-select v-model="choice.state" id="mode-state" :options="settings.mode.states" storage-key="vt.mode.state"
-							:rom="rom" :selected="choice.state">State</vt-select>
+							:rom="rom" :selected="choice.state">{{ $t('randomizer.mode.title') }}</vt-select>
 					</div>
 					<div class="col-md mb-3">
 						<vt-select v-model="choice.logic" id="logic" :options="settings.logics" storage-key="vt.logic"
-							:rom="rom" :selected="choice.logic">Logic</vt-select>
-						<div v-if="choice.logic.value != 'NoMajorGlitches'" class="logic-warning text-danger text-right">This Logic requires knowledge of Major Glitches<sup>**</sup></div>
+							:rom="rom" :selected="choice.logic">{{ $t('randomizer.logic.title') }}</vt-select>
+						<div v-if="choice.logic.value != 'NoMajorGlitches'" class="logic-warning text-danger text-right" v-html="$t('randomizer.logic.glitch_warning')" />
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md mb-3">
 						<vt-select v-model="choice.weapons" id="weapons" :options="settings.weapons" storage-key="vt.weapons"
-							:rom="rom" :selected="choice.weapons">Swords</vt-select>
+							:rom="rom" :selected="choice.weapons">{{ $t('randomizer.weapons.title') }}</vt-select>
 					</div>
 					<div class="col-md mb-3">
 						<vt-select v-model="choice.goal" id="goal" :options="settings.goals" storage-key="vt.goal"
-							:rom="rom" :selected="choice.goal">Goal</vt-select>
+							:rom="rom" :selected="choice.goal">{{ $t('randomizer.goal.title') }}</vt-select>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md mb-3">
 						<vt-select v-model="choice.difficulty" id="difficulty" :options="settings.difficulties" storage-key="vt.difficulty"
-							:rom="rom" :selected="choice.difficulty">Difficulty</vt-select>
+							:rom="rom" :selected="choice.difficulty">{{ $t('randomizer.difficulty.title') }}</vt-select>
 					</div>
 					<div class="col-md mb-3">
 						<vt-select v-model="choice.variation" id="variation" :options="settings.variations" storage-key="vt.variation"
-							:rom="rom" :selected="choice.variation">Variation</vt-select>
+							:rom="rom" :selected="choice.variation">{{ $t('randomizer.variation.title') }}</vt-select>
 					</div>
 				</div>
 				<div v-if="!enemizerEnabled"  class="row">
@@ -60,7 +60,7 @@
 					<div class="col-md mb-3">
 						<div class="btn-group btn-flex" role="group">
 							<button class="btn btn-light border-secondary" @click="enemizerEnabled=true">
-								Enable Enemizer <img class="icon" src="/i/svg/flash.svg" alt="Enemizer">
+								{{ $t('enemizer.enable') }} <img class="icon" src="/i/svg/flash.svg" alt="Enemizer">
 							</button>
 						</div>
 					</div>
@@ -76,17 +76,17 @@
 					<div class="col-md">
 						<div class="btn-group btn-flex" role="group">
 							<button class="btn btn-primary w-50" name="generate-tournament-rom" @click="applyTournamentSeed">
-								Generate Race ROM (no spoilers)
+								{{ $t('randomizer.generate.race') }}
 							</button>
 							<button class="btn btn-info w-50" name="generate-tournament-rom" @click="applyTournamentSpoilerSeed">
-								Spoiler Race ROM
+								{{ $t('randomizer.generate.spoiler_race') }}
 							</button>
 						</div>
 					</div>
 					<div class="col-md">
 						<div class="btn-group btn-flex" role="group">
 							<button name="generate" class="btn btn-success text-center" @click="applySpoilerSeed">
-								Generate ROM
+								{{ $t('randomizer.generate.casual') }}
 							</button>
 						</div>
 					</div>
@@ -164,12 +164,12 @@ export default {
 	},
 	created () {
 		axios.get(`/randomizer/settings`).then(response => {
-			this.settings.mode.states = Object.keys(response.data.modes).map(function(key) { return {value: key, name: response.data.modes[key]}});
-			this.settings.logics = Object.keys(response.data.logics).map(function(key) { return {value: key, name: response.data.logics[key]}});
-			this.settings.weapons = Object.keys(response.data.weapons).map(function(key) { return {value: key, name: response.data.weapons[key]}});
-			this.settings.goals = Object.keys(response.data.goals).map(function(key) { return {value: key, name: response.data.goals[key]}});
-			this.settings.difficulties = Object.keys(response.data.difficulties).map(function(key) { return {value: key, name: response.data.difficulties[key]}});
-			this.settings.variations = Object.keys(response.data.variations).map(function(key) { return {value: key, name: response.data.variations[key]}});
+			this.settings.mode.states = Object.keys(response.data.modes).map(key => { return {value: key, name: this.$i18n.t('randomizer.mode.options.' + key)}});
+			this.settings.logics = Object.keys(response.data.logics).map(key => { return {value: key, name: this.$i18n.t('randomizer.logic.options.' + key)}});
+			this.settings.weapons = Object.keys(response.data.weapons).map(key => { return {value: key, name: this.$i18n.t('randomizer.weapons.options.' + key)}});
+			this.settings.goals = Object.keys(response.data.goals).map(key => { return {value: key, name: this.$i18n.t('randomizer.goal.options.' + key)}});
+			this.settings.difficulties = Object.keys(response.data.difficulties).map(key => { return {value: key, name: this.$i18n.t('randomizer.difficulty.options.' + key)}});
+			this.settings.variations = Object.keys(response.data.variations).map(key => { return {value: key, name: this.$i18n.t('randomizer.variation.options.' + key)}});
 		});
 		localforage.getItem('en.enabled').then(function(value) {
 			if (value == null) return;

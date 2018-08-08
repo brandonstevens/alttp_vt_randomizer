@@ -1,35 +1,70 @@
 <?php
 return [
-	'difficulty' => 'Difficulty',
-	'easy' => 'Easy',
-	'normal' => 'Normal',
-	'hard' => 'Hard',
-	'expert' => 'Expert',
-	'insane' => 'Insane',
-	'goal' => 'Goal',
-	'ganon' => 'Defeat Ganon',
-	'dungeons' => 'All Dungeons',
-	'pedestal' => 'Master Sword Pedestal',
-	'triforce-hunt' => 'Triforce Pieces',
-	'logic' => 'Logic',
-	'NoMajorGlitches' => 'No Glitches',
-	'OverworldGlitches' => 'Overworld Glitches',
-	'MajorGlitches' => 'Major Glitches',
-	'None' => 'None (I know what I’m doing)',
-	'mode' => 'Mode',
-	'standard' => 'Standard',
-	'open' => 'Open',
-	'weapons' => 'Swords',
-	'randomized' => 'Randomized',
-	'uncle' => 'Uncle Assured',
-	'swordless' => 'Swordless',
-	'variation' => 'Variation',
-	'none' => 'None',
-	'timed-race' => 'Timed Race',
-	'timed-ohko' => 'Timed OHKO',
-	'ohko' => 'OHKO',
-	'key-sanity' => 'Key-sanity',
-	'retro' => 'Retro',
-
-	'generate' => 'Generate ROM',
+	'title' => 'Item Randomizer',
+	'switch' => [
+		'entrance' => 'Switch to Entrance Randomizer',
+	],
+	'rom' => [
+		'options' => 'ROM Options',
+	],
+	'difficulty' => [
+		'title' => 'Difficulty',
+		'options' => [
+			'easy' => 'Easy',
+			'normal' => 'Normal',
+			'hard' => 'Hard',
+			'expert' => 'Expert',
+			'insane' => 'Insane',
+		],
+	],
+	'goal' => [
+		'title' => 'Goal',
+		'options' => [
+			'ganon' => 'Defeat Ganon',
+			'dungeons' => 'All Dungeons',
+			'pedestal' => 'Master Sword Pedestal',
+			'triforce-hunt' => 'Triforce Pieces',
+		],
+	],
+	'logic' => [
+		'title' => 'Logic',
+		'options' => [
+			'NoMajorGlitches' => 'No Glitches',
+			'OverworldGlitches' => 'Overworld Glitches',
+			'MajorGlitches' => 'Major Glitches',
+			'None' => 'None (I know what I’m doing)',
+		],
+		'glitch_warning' => 'This Logic requires knowledge of Major Glitches<sup>**</sup>',
+	],
+	'mode' => [
+		'title' => 'State',
+		'options' => [
+			'standard' => 'Standard',
+			'open' => 'Open',
+		],
+	],
+	'weapons' => [
+		'title' => 'Swords',
+		'options' => [
+			'randomized' => 'Randomized',
+			'uncle' => 'Uncle Assured',
+			'swordless' => 'Swordless',
+		],
+	],
+	'variation' => [
+		'title' => 'Variation',
+		'options' => [
+			'none' => 'None',
+			'timed-race' => 'Timed Race',
+			'timed-ohko' => 'Timed OHKO',
+			'ohko' => 'OHKO',
+			'key-sanity' => 'Key-sanity',
+			'retro' => 'Retro',
+		],
+	],
+	'generate' => [
+		'race' => 'Generate Race ROM (no spoilers)',
+		'spoiler_race' => 'Spoiler Race ROM',
+		'casual' => 'Generate ROM',
+	],
 ];

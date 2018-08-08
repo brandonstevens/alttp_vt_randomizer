@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}">
 <head>
 	<title>{{ $title or '' }}ALttP VT Randomizer</title>
 	<meta name="keywords" content="ALttP, Randomizer, patcher">
