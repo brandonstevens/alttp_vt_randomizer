@@ -15,7 +15,10 @@
 @import 'vue-multiselect';
 @import 'v-tooltip';
 @import 'loading';
-@import '~flag-icon-css/sass/flag-icon';
+@import '~flag-icon-css/sass/variables';
+@import "~flag-icon-css/sass/flag-icon-base";
+@include flag-icon(us);
+@include flag-icon(fr);
 
 body {
 	background-color: #EEEEEE;
