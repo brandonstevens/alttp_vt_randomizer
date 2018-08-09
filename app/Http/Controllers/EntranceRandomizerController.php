@@ -39,9 +39,6 @@ class EntranceRandomizerController extends Controller {
 		if ($request->filled('heart_speed')) {
 			$rom->setHeartBeepSpeed($request->input('heart_speed'));
 		}
-		if ($request->filled('sram_trace')) {
-			$rom->setSRAMTrace($request->input('sram_trace') == 'true');
-		}
 		if ($request->filled('menu_speed')) {
 			$rom->setMenuSpeed($request->input('menu_speed', 'normal'));
 		}

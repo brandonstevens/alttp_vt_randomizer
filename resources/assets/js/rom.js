@@ -179,13 +179,6 @@ var ROM = (function(blob, loaded_callback) {
 		}.bind(this));
 	}.bind(this);
 
-	this.setSramTrace = function(enable) {
-		return new Promise(function(resolve, reject) {
-			this.write(0x180030, enable ? 0x01 : 0x00);
-			resolve(this);
-		}.bind(this));
-	}.bind(this);
-
 	this.setQuickswap = function(enable) {
 		return new Promise(function(resolve, reject) {
 			this.write(0x18004B, enable ? 0x01 : 0x00);

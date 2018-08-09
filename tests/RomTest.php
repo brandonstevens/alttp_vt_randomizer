@@ -176,18 +176,6 @@ class RomTest extends TestCase {
 		$this->assertEquals([[0xF0, 0x21],[0xD0, 0x18]], [$this->rom->read(0x65B88, 2), $this->rom->read(0x65B91, 2)]);
 	}
 
-	public function testSetSRAMTraceOn() {
-		$this->rom->setSRAMTrace(true);
-
-		$this->assertEquals(0x01, $this->rom->read(0x180030));
-	}
-
-	public function testSetSRAMTraceOff() {
-		$this->rom->setSRAMTrace(false);
-
-		$this->assertEquals(0x00, $this->rom->read(0x180030));
-	}
-
 	public function testSetSingleRNGTable() {
 		$items = new ItemCollection([
 			Item::get('ProgressiveSword'),

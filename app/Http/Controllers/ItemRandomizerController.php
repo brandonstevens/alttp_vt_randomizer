@@ -111,9 +111,6 @@ class ItemRandomizerController extends Controller {
 		if ($request->filled('heart_speed')) {
 			$rom->setHeartBeepSpeed($request->input('heart_speed'));
 		}
-		if ($request->filled('sram_trace')) {
-			$rom->setSRAMTrace($request->input('sram_trace') == 'true');
-		}
 
 		if ($request->filled('tournament') && $request->input('tournament') == 'true') {
 			config([

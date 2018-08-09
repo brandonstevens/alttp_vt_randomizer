@@ -427,7 +427,6 @@
 			<li>Link’s Uncle no longer gives you the Fighter’s Shield (also removed from his sprite) and it is part of the item pool</li>
 			<li>There is a 5% chance Link’s Uncle will tell you which part of the world contains the Pegasus Boots</li>
 			<li>Master Sword icon has been removed from the map</li>
-			<li>No-SRAM trace is enforced when the tournament flag is set</li>
 			<li>Chest game 2nd chest is no longer guaranteed 100 rupees</li>
 			<li>Crystal dungeons always play DW dungeon music; pendant dungeons always play LW dungeon music</li>
 			<li>The fake flippers safety fix has been removed from all versions</li>
@@ -504,7 +503,6 @@
 		<li>Ganon will not warp more than twice between hits during his third phase</li>
 		<li>Logic improvements (rewritten algorithms to improve item distribution, removal of Hammer/Mitts restrictions)</li>
 		<li>NPCs which contain a downgrade of an item you already own will now (harmlessly) give you their items</li>
-		<li>Enabled automatic updating of the SRAM into the UI (for Zarby89’s HUD)</li>
 		<li>Crystal dialogue, Master Sword dialogue, all item text and some Agahnim dialogue removed</li>
 		<li>Credits updated to reflect what King Zora sold you</li>
 		<li>Bug fixes (bottles not showing in inventory if gotten early, HUD not updating for Silver Arrows)</li>
@@ -533,7 +531,6 @@
 		<li>Five 100 rupee prizes were added to the prize pool (replaced three red rupees and the two duplicate Lamps)</li>
 		<li>Swamp’s first room correctly empties when leaving the LW and DW overworld screens (error with v1.2)</li>
 		<li>Link instantly dies and all faeries are removed if damage is taken during fake flippers after transitioning screens</li>
-		<li>Added functionality to save current item state to SRAM every 4.267 seconds, in support of Zarby89’s HUD tool</li>
 	</ul>
 </div>
 

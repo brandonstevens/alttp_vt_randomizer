@@ -24,7 +24,6 @@ class Randomize extends Command {
 		. ' {--logic=NoMajorGlitches : set logic}'
 		. ' {--heartbeep=half : set heart beep speed}'
 		. ' {--skip-md5 : do not validate md5 of base rom}'
-		. ' {--trace : enable SRAM trace}'
 		. ' {--tournament : enable tournament mode}'
 		. ' {--seed= : set seed number}'
 		. ' {--bulk=1 : generate multiple roms}'
@@ -83,8 +82,6 @@ class Randomize extends Command {
 			$rom->setDebugMode($this->option('debug'));
 
 			$rom->setHeartBeepSpeed($this->option('heartbeep'));
-
-			$rom->setSRAMTrace($this->option('trace'));
 
 			// break out for unrandomized/vanilla base game
 			if ($this->option('vanilla')) {

@@ -24,18 +24,12 @@
 				</div>
 				<div class="row">
 					<div class="col">
-						<vt-toggle id="sram-trace" :selected="defaults.sramTrace" no-race="true" storage-key="rom.sram-trace"
-							:rom="rom" rom-function="setSramTrace">SRAM Trace</vt-toggle>
+						<vt-toggle id="music-on" :selected="defaults.music" storage-key="rom.music-on"
+							:rom="rom" rom-function="setMusicVolume">Background Music (set to "No" for MSU-1 support)</vt-toggle>
 					</div>
 					<div class="col">
 						<vt-toggle id="quickswap" :selected="defaults.quickswap" storage-key="rom.quickswap" :no-race="true"
 							:rom="rom" rom-function="setQuickswap">Item Quickswap</vt-toggle>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col">
-						<vt-toggle id="music-on" :selected="defaults.music" storage-key="rom.music-on"
-							:rom="rom" rom-function="setMusicVolume">Background Music (set to "No" for MSU-1 support)</vt-toggle>
 					</div>
 				</div>
 			</div>
@@ -76,7 +70,6 @@ export default {
 				heartSpeeds: {value: 'half', name: 'Half Speed'},
 				menuSpeeds: {value: 'normal', name: 'Normal'},
 				heartColors: {value: 'red', name: 'Red'},
-				sramTrace: false,
 				quickswap: false,
 				music: true,
 			}

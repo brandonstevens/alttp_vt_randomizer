@@ -1581,19 +1581,6 @@ class Rom {
 	}
 
 	/**
-	 * Enable/Disable the SRAM Trace function
-	 *
-	 * @param bool $enable switch on or off
-	 *
-	 * @return $this
-	 */
-	public function setSRAMTrace($enable = true) : self {
-		$this->write(0x180030, pack('C*', $enable ? 0x01 : 0x00));
-
-		return $this;
-	}
-
-	/**
 	 * Set Menu Speed
 	 *
 	 * @param string $menu_speed speed at which the menu enters the screen
