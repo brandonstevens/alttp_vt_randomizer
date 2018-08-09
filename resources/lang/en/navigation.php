@@ -5,6 +5,7 @@ return [
 	'start_watching' => 'Start Watching',
 	'generate' => 'Generate Game',
 	'randomizer' => 'Generate Randomized Game',
+	'entrance' => 'Entrance Randomizer',
 	'daily' => 'Daily Challenge',
 	'customizer' => 'Create Custom Game',
 
@@ -12,5 +13,8 @@ return [
 
 	'help' => 'Help',
 	'resources' => 'Resources',
+	'options' => 'Game Options',
+	'contribute' => 'Contribute',
 	'discord' => 'Join us on Discord',
+	'report_issue' => 'Report Issue',
 ];

@@ -7,9 +7,9 @@
 
 <script>
 const i18n = new VueInternationalization({
-    locale: document.documentElement.lang,
-    fallbackLocale: 'en',
-    messages: Locale,
+	locale: document.documentElement.lang,
+	fallbackLocale: 'en',
+	messages: Locale,
 });
 new Vue({
 	el: '#root',

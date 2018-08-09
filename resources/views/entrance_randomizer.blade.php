@@ -1,4 +1,4 @@
-@extends('layouts.default', ['title' => 'Entrance Randomizer - '])
+@extends('layouts.default', ['title' => __('navigation.entrance') . ' - '])
 
 @section('content')
 <div id="root">
@@ -6,8 +6,14 @@
 </div>
 
 <script>
+const i18n = new VueInternationalization({
+	locale: document.documentElement.lang,
+	fallbackLocale: 'en',
+	messages: Locale,
+});
 new Vue({
 	el: '#root',
+	i18n,
 });
 </script>
 @overwrite

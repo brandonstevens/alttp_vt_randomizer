@@ -5,6 +5,7 @@ return [
 	'start_watching' => 'Commencer à Regarder',
 	'generate' => 'Générer un Jeu',
 	'randomizer' => 'Générer un Jeu Aléatoire',
+	'entrance' => 'Randomizer d’entrée',
 	'daily' => 'Défi Quotidien',
 	'customizer' => 'Créer un Jeu Personnalisé',
 
@@ -12,5 +13,8 @@ return [
 
 	'help' => 'Aidez-moi',
 	'resources' => 'Ressources',
+	'options' => 'Options de Jeu',
+	'contribute' => 'Contribuer',
 	'discord' => 'Rejoignez-nous sur Discord',
+	'report_issue' => 'Signaler un Problème',
 ];
