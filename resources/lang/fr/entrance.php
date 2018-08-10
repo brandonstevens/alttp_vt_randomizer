@@ -1,8 +1,8 @@
 <?php
 return [
-	'title' => 'Randomizer d’article',
+	'title' => 'Randomizer d’entrée',
 	'switch' => [
-		'entrance' => 'Passer au Randomizer d’entrée',
+		'item' => 'Passer au Randomizer d’article',
 	],
 	'rom' => [
 		'options' => 'Options de ROM',
@@ -21,6 +21,7 @@ return [
 		'title' => 'Objectif',
 		'options' => [
 			'ganon' => 'Défaite Ganon',
+			'crystals' => 'Cristaux',
 			'dungeons' => 'Tous les Donjons',
 			'pedestal' => 'Piédestal d’Épée Maître',
 			'triforce-hunt' => 'Triforce Pièces',
@@ -30,25 +31,23 @@ return [
 		'title' => 'Logique',
 		'options' => [
 			'NoMajorGlitches' => 'Sans Glitches',
-			'OverworldGlitches' => 'Glitches Monde Extérieur',
-			'MajorGlitches' => 'Glitches Majeurs',
-			'None' => 'Aucun (je sais ce que je fais)',
 		],
-		'glitch_warning' => 'Cette logique nécessite la connaissance des glitches majeurs<sup>**</sup>',
 	],
 	'mode' => [
 		'title' => 'Réglage',
 		'options' => [
-			'standard' => 'Norme',
+			'swordless' => 'Sans Épée',
 			'open' => 'Ouvert',
 		],
 	],
-			'weapons' => [
-		'title' => 'Épées',
+	'shuffle' => [
+		'title' => 'Mélanger',
 		'options' => [
-			'randomized' => 'Randomisé',
-			'uncle' => 'Oncle Assuré',
-			'swordless' => 'Sans Épée',
+			'simple' => 'Simple',
+			'restricted' => 'Limité',
+			'full' => 'Plein',
+			'crossed' => 'Franchi',
+			'insanity' => 'Folie',
 		],
 	],
 	'variation' => [
@@ -58,6 +57,7 @@ return [
 			'timed-race' => 'Course Chronométrée',
 			'timed-ohko' => 'OHKO Chronométré',
 			'ohko' => 'OHKO',
+			'triforce-hunt' => 'Chasse à la pièce Triforce',
 			'key-sanity' => 'Clé-insensé',
 			'retro' => 'Classique',
 		],

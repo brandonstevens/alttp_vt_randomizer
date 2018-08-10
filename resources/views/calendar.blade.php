@@ -1,7 +1,7 @@
-@extends('layouts.default', ['title' => 'Calendar - '])
+@extends('layouts.default', ['title' => __('navigation.calendar') . ' - '])
 
 @section('content')
-<h1>Events Calendar</h1>
+<h1>{{ __('navigation.calendar') }}</h1>
 <div class="card card-body bg-light">
 	<div class="card border-info mt-4">
 		<div class="card-body">

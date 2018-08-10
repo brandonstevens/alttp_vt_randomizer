@@ -70,8 +70,11 @@ class EntranceRandomizerController extends Controller {
 		if ($request->filled('tournament') && $request->input('tournament') == 'true') {
 			$rom->setSeedString(str_pad(sprintf("ER TOURNEY %s", $hash), 21, ' '));
 			$patch = $rom->getWriteLog();
-			$spoiler = array_except(array_only($spoiler, ['meta']), ['meta.seed']);
-			$seed = $hash;
+			if ($request->input('spoilers', false)) {
+				$spoiler = array_except($spoiler, ['playthrough']);
+			} else {
+				$spoiler = array_except(array_only($spoiler, ['meta']), ['meta.seed']);
+			}
 		}
 
 		if ($save) {

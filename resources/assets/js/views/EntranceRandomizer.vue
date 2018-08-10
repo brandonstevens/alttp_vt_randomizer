@@ -11,13 +11,13 @@
 		<vt-rom-loader v-if="!romLoaded" @update="updateRom" @error="onError"></vt-rom-loader>
 		<div v-if="romLoaded" class="card border-success mb-3">
 			<div class="card-header bg-success card-heading-btn">
-				<h3 class="card-title text-white float-left">Entrance Randomizer (v{{ version }})</h3>
+				<h3 class="card-title text-white float-left">{{ $t('entrance.title') }} (v{{ version }})</h3>
 				<div class="btn-toolbar float-right">
-					<a class="btn btn-light border-secondary" role="button" href="/randomizer">
-						Switch to Item Randomizer <img class="icon" src="/i/svg/share.svg" alt="Switch to Item Randomizer">
+					<a class="btn btn-light border-secondary" role="button"  :href="'/' + $i18n.locale + '/randomizer'">
+						{{ $t('entrance.switch.item') }} <img class="icon" src="/i/svg/share.svg" alt="Switch to Item Randomizer">
 					</a>
 					<button class="btn btn-light border-secondary" data-toggle="collapse" href="#rom-settings">
-						ROM Options <img class="icon pulse" src="/i/svg/cog.svg" alt="ROM Options">
+						{{ $t('entrance.rom.options') }} <img class="icon pulse" src="/i/svg/cog.svg" alt="ROM Options">
 					</button>
 				</div>
 			</div>
@@ -26,42 +26,41 @@
 				<div class="row">
 					<div class="col-md mb-3">
 						<vt-select v-model="choice.state" id="mode-state" :options="settings.mode.states"storage-key="er.mode.state"
-							:rom="rom" :selected="choice.state">State</vt-select>
+							:rom="rom" :selected="choice.state">{{ $t('entrance.mode.title') }}</vt-select>
 					</div>
 					<div class="col-md mb-3">
 						<vt-select v-model="choice.logic" id="logic" :options="settings.logics" storage-key="er.logic"
-							:rom="rom" :selected="choice.logic">Logic</vt-select>
+							:rom="rom" :selected="choice.logic">{{ $t('entrance.logic.title') }}</vt-select>
 						<div v-if="false" class="logic-warning text-danger text-right">This Logic requires knowledge of Major Glitches<sup>**</sup></div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md mb-3">
-						<vt-select v-model="choice.shuffle" id="weapons" :options="settings.shuffles" storage-key="er.shuffle"
-							:rom="rom" :selected="choice.shuffle">Shuffle</vt-select>
+						<vt-select v-model="choice.shuffle" id="shuffle" :options="settings.shuffles" storage-key="er.shuffle"
+							:rom="rom" :selected="choice.shuffle">{{ $t('entrance.shuffle.title') }}</vt-select>
 					</div>
 					<div class="col-md mb-3">
 						<vt-select v-model="choice.goal" id="goal" :options="settings.goals" storage-key="er.goal"
-							:rom="rom" :selected="choice.goal">Goal</vt-select>
+							:rom="rom" :selected="choice.goal">{{ $t('entrance.goal.title') }}</vt-select>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md mb-3">
 						<vt-select v-model="choice.difficulty" id="difficulty" :options="settings.difficulties" storage-key="er.difficulty"
-							:rom="rom" :selected="choice.difficulty">Difficulty</vt-select>
+							:rom="rom" :selected="choice.difficulty">{{ $t('entrance.difficulty.title') }}</vt-select>
 					</div>
 					<div class="col-md mb-3">
 						<vt-select v-model="choice.variation" id="variation" :options="settings.variations" storage-key="er.variation"
-							:rom="rom" :selected="choice.variation">Variation</vt-select>
+							:rom="rom" :selected="choice.variation">{{ $t('entrance.variation.title') }}</vt-select>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md mb-3">
-						<vt-text v-model="choice.seed" id="seed" placeholder="Random" maxlength="9" storage-key="er.seed">Seed</vt-text>
 					</div>
 					<div class="col-md mb-3">
 						<div class="btn-group btn-flex" role="group">
 							<button v-if="!enemizerEnabled" class="btn btn-light border-secondary" @click="enemizerEnabled=true">
-								Enable Enemizer <img class="icon" src="/i/svg/flash.svg" alt="Enemizer">
+								{{ $t('enemizer.enable') }} <img class="icon" src="/i/svg/flash.svg" alt="Enemizer">
 							</button>
 						</div>
 					</div>
@@ -76,12 +75,17 @@
 				<div class="row">
 					<div class="col-md">
 						<div class="btn-group btn-flex" role="group">
-							<button class="btn btn-info" name="generate-tournament-rom" @click="applyTournamentSeed">Generate Race ROM (no spoilers)</button>
+							<button class="btn btn-primary w-50" name="generate-tournament-rom" @click="applyTournamentSeed">
+								{{ $t('entrance.generate.race') }}
+							</button>
+							<button class="btn btn-info w-50" name="generate-tournament-rom" @click="applyTournamentSpoilerSeed">
+								{{ $t('entrance.generate.spoiler_race') }}
+							</button>
 						</div>
 					</div>
 					<div class="col-md">
 						<div class="btn-group btn-flex" role="group">
-							<button name="generate" class="btn btn-success" @click="applySpoilerSeed">Generate ROM</button>
+							<button name="generate" class="btn btn-success" @click="applySpoilerSeed">{{ $t('entrance.generate.casual') }}</button>
 						</div>
 					</div>
 				</div>
@@ -135,14 +139,14 @@ export default {
 			gameLoaded: false,
 			show_spoiler: false,
 			choice: {
-				state: {value: 'open', name: 'Open'},
-				difficulty: {value: 'normal', name: 'Normal'},
-				goal: {value: 'ganon', name: 'Defeat Ganon'},
-				shuffle: {value: 'full', name: 'Full'},
-				logic: {value: 'NoMajorGlitches', name: 'No Glitches'},
-				variation: {value: 'none', name: 'None'},
-				seed: null,
+				state: {value: 'open', name: this.$i18n.t('entrance.mode.options.standard')},
+				difficulty: {value: 'normal', name: this.$i18n.t('entrance.difficulty.options.normal')},
+				goal: {value: 'ganon', name: this.$i18n.t('entrance.goal.options.ganon')},
+				shuffle: {value: 'full', name: this.$i18n.t('entrance.shuffle.options.full')},
+				logic: {value: 'NoMajorGlitches', name: this.$i18n.t('entrance.logic.options.NoMajorGlitches')},
+				variation: {value: 'none', name: this.$i18n.t('entrance.variation.options.none')},
 				tournament: false,
+				spoilers: false,
 			},
 			settings: {
 				mode: {
@@ -158,12 +162,12 @@ export default {
 	},
 	created () {
 		axios.get(`/entrance/randomizer/settings`).then(response => {
-			this.settings.mode.states = Object.keys(response.data.modes).map(function(key) { return {value: key, name: response.data.modes[key]}});
-			this.settings.logics = Object.keys(response.data.logics).map(function(key) { return {value: key, name: response.data.logics[key]}});
-			this.settings.shuffles = Object.keys(response.data.shuffles).map(function(key) { return {value: key, name: response.data.shuffles[key]}});
-			this.settings.goals = Object.keys(response.data.goals).map(function(key) { return {value: key, name: response.data.goals[key]}});
-			this.settings.difficulties = Object.keys(response.data.difficulties).map(function(key) { return {value: key, name: response.data.difficulties[key]}});
-			this.settings.variations = Object.keys(response.data.variations).map(function(key) { return {value: key, name: response.data.variations[key]}});
+			this.settings.mode.states = Object.keys(response.data.modes).map(key => { return {value: key, name: this.$i18n.t('entrance.mode.options.' + key)}});
+			this.settings.logics = Object.keys(response.data.logics).map(key => { return {value: key, name: this.$i18n.t('entrance.logic.options.' + key)}});
+			this.settings.shuffles = Object.keys(response.data.shuffles).map(key => { return {value: key, name: this.$i18n.t('entrance.shuffle.options.' + key)}});
+			this.settings.goals = Object.keys(response.data.goals).map(key => { return {value: key, name: this.$i18n.t('entrance.goal.options.' + key)}});
+			this.settings.difficulties = Object.keys(response.data.difficulties).map(key => { return {value: key, name: this.$i18n.t('entrance.difficulty.options.' + key)}});
+			this.settings.variations = Object.keys(response.data.variations).map(key => { return {value: key, name: this.$i18n.t('entrance.variation.options.' + key)}});
 		});
 		localforage.getItem('en.enabled').then(function(value) {
 			if (value == null) return;
@@ -180,10 +184,17 @@ export default {
 	methods: {
 		applySpoilerSeed() {
 			this.choice.tournament = false;
+			this.choice.spoilers = false;
 			this.applySeed();
 		},
 		applyTournamentSeed() {
 			this.choice.tournament = true;
+			this.choice.spoilers = false;
+			this.applySeed();
+		},
+		applyTournamentSpoilerSeed() {
+			this.choice.tournament = true;
+			this.choice.spoilers = true;
 			this.applySeed();
 		},
 		applySeed(e, second_attempt) {
@@ -202,7 +213,7 @@ export default {
 			}
 			return new Promise(function(resolve, reject) {
 				this.gameLoaded = false;
-				axios.post(`/entrance/seed` + (this.choice.seed ? '/' + this.choice.seed : ''), {
+				axios.post(`/entrance/seed`, {
 					logic: this.choice.logic.value,
 					difficulty: this.choice.difficulty.value,
 					variation: this.choice.variation.value,
@@ -210,6 +221,7 @@ export default {
 					goal: this.choice.goal.value,
 					shuffle: this.choice.shuffle.value,
 					tournament: this.choice.tournament,
+					spoilers: this.choice.spoilers,
 					enemizer: this.enemizerEnabled ? this.enemizerSettings : false,
 				}).then(response => {
 					this.rom.parsePatch(response.data).then(function() {

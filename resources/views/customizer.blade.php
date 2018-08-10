@@ -6,8 +6,14 @@
 </div>
 
 <script>
+const i18n = new VueInternationalization({
+	locale: document.documentElement.lang,
+	fallbackLocale: 'en',
+	messages: Locale,
+});
 new Vue({
 	el: '#root',
+	i18n,
 	store: cStore,
 	created() {
 		this.$store.dispatch('getSettings');

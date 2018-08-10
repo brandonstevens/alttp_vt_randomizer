@@ -10,8 +10,16 @@
 <script>
 var current_rom_hash = '{{ $md5 }}';
 var vt_base_patch = {!! $patch !!};
+
+const i18n = new VueInternationalization({
+	locale: document.documentElement.lang,
+	fallbackLocale: 'en',
+	messages: Locale,
+});
 new Vue({
 	el: '#root',
+	i18n,
+	store: cStore,
 });
 </script>
 @overwrite

@@ -9,11 +9,16 @@ return [
 	'daily' => 'Daily Challenge',
 	'customizer' => 'Create Custom Game',
 
+	'calendar' => 'Events Calendar',
+
 	'language' => '<span class="flag-icon flag-icon-us"></span> Language',
 
 	'help' => 'Help',
 	'resources' => 'Resources',
 	'options' => 'Game Options',
+	'races' => 'Organized Play',
+	'updates' => 'Updates',
+	'game_entrance' => 'Entrance Randomizer',
 	'contribute' => 'Contribute',
 	'discord' => 'Join us on Discord',
 	'report_issue' => 'Report Issue',

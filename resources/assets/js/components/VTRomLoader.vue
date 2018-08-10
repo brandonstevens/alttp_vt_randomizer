@@ -2,22 +2,15 @@
 	<div>
 		<div v-if="!loading" id="rom-select" class="card border-info">
 			<div class="card-header bg-info">
-				<h4 class="card-title">Getting Started</h4>
+				<h4 class="card-title">{{ $t('rom.loader.title') }}</h4>
 			</div>
 			<div class="card-body">
 				<p>
 					<label class="btn btn-outline-primary btn-file">
-						Select ROM File <input type="file" accept=".sfc,.smc" @change="loadBlob">
+						{{ $t('rom.loader.file_select') }} <input type="file" accept=".sfc,.smc" @change="loadBlob">
 					</label>
 				</p>
-				<ol>
-					<li>Select your rom file and load it into the browser
-						(Please use a <strong>Zelda no Densetsu: Kamigami no Triforce v1.0</strong> ROM with
-						an .smc or .sfc extension)</li>
-					<li>Select the <a href="/options">options</a> for how you would like your game randomized</li>
-					<li>Click Generate</li>
-					<li>Then Save your rom and get to playing</li>
-				</ol>
+				<p v-html="$t('rom.loader.content')" />
 			</div>
 		</div>
 	</div>

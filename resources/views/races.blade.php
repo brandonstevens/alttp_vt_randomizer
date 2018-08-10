@@ -17,9 +17,7 @@
 			<h4>Weekly Open Mode Race, Sundays at 5pm US Eastern Time</h4>
 			<p>Join us Sundays for another popular weekly community race.</p>
 			<h4>Pickup Races</h4>
-			<p>Scheduled races not fitting in with your schedule? Looking to race with some more uncommon
-				options? Join a pickup race! You'll find willing players at all hours of the day. Join
-				the #race-planning channel in our
+			<p>Scheduled races not fitting in with your schedule? Looking to race with some more uncommon options? Join a pickup race! You'll find willing players at all hours of the day. Join the #race-planning channel in our
 				<a href="https://discord.gg/alttprandomizer" target="_blank" rel="noopener noreferrer">Discord</a>!
 			</p>
 		</div>
@@ -32,8 +30,7 @@
 			<h3 class="card-title text-white">Watch</h3>
 		</div>
 		<div class="card-body">
-			<p>With so much going on, there's always a race to watch! Follow these networks and never
-				miss a match!</p>
+			<p>With so much going on, there's always a race to watch! Follow these networks and never miss a match!</p>
 			<div class="btn-wrapper">
 				<div class="btn-cal"><a
 					class="btn btn-lg btn-xl btn-cal1"

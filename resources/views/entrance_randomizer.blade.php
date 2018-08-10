@@ -14,6 +14,7 @@ const i18n = new VueInternationalization({
 new Vue({
 	el: '#root',
 	i18n,
+	store: cStore,
 });
 </script>
 @overwrite

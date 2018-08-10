@@ -5,11 +5,11 @@
 <div class="btn-wrapper">
 <div class="btn-cta"><a
 	class="btn btn-primary btn-lg"
-	href="/start"
+	href="/{{ app()->getLocale() }}/start"
 	role="button">{{ __('navigation.start_playing') }}</a></div>
 <div class="btn-cta"><a
 	class="btn btn-outline-secondary btn-lg"
-	href="/watch"
+	href="/{{ app()->getLocale() }}/watch"
 	role="button"
 	style="margin-left:20px;">{{ __('navigation.start_watching') }}</a></div>
 </div>
