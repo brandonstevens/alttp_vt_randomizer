@@ -15,6 +15,9 @@ use Storage;
 
 class ItemRandomizerController extends Controller {
 	public function generateSeed(Request $request, $seed_id = null) {
+		if ($request->has('lang')) {
+			app()->setLocale($request->input('lang'));
+		}
 		try {
 			$payload = $this->prepSeed($request, $seed_id, true);
 			$save_data = json_encode(array_except($payload, ['current_rom_hash']));

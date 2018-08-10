@@ -67,4 +67,9 @@ return [
 		'spoiler_race' => 'Spoiler Race ROM',
 		'casual' => 'Generate ROM',
 	],
+	'details' => [
+		'title' => 'Game Details',
+		'save_spoiler' => 'Save Spoiler',
+		'save_rom' => 'Save Rom',
+	],
 ];

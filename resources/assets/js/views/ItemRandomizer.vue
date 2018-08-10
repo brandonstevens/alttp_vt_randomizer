@@ -5,7 +5,7 @@
 				<img class="icon" src="/i/svg/x.svg" alt="clear" @click="error = false">
 			</button>
 			<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-			<span class="sr-only">Error:</span>
+			<span class="sr-only">{{ $t('error.title') }}:</span>
 			<span class="message">{{ this.error }}</span>
 		</div>
 		<vt-rom-loader v-if="!romLoaded" @update="updateRom" @error="onError"></vt-rom-loader>
@@ -97,7 +97,7 @@
 		<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5161309967767506" data-ad-slot="9849787408" data-ad-format="auto"></ins>
 
 		<div id="seed-details" class="card border-info mt-3" v-if="gameLoaded && romLoaded">
-			<div class="card-header text-white bg-success" :class="{'bg-info': choice.tournament}"><h3 class="card-title">Game Details</h3></div>
+			<div class="card-header text-white bg-success" :class="{'bg-info': choice.tournament}"><h3 class="card-title">{{ $t('randomizer.details.title') }}</h3></div>
 			<div class="card-body">
 				<div class="row">
 					<div class="col-md mb-3">
@@ -106,10 +106,10 @@
 					<div class="col-md mb-3">
 						<div class="row">
 							<div class="col-md mb-3">
-								<button class="btn btn-light border-secondary" @click="saveSpoiler">Save Spoiler</button>
+								<button class="btn btn-light border-secondary" @click="saveSpoiler">{{ $t('randomizer.details.save_spoiler') }}</button>
 							</div>
 							<div class="col-md mb-3">
-								<button class="btn btn-success" @click="saveRom">Save Rom</button>
+								<button class="btn btn-success" @click="saveRom">{{ $t('randomizer.details.save_rom') }}</button>
 							</div>
 						</div>
 					</div>
@@ -225,6 +225,7 @@ export default {
 					tournament: this.choice.tournament,
 					spoilers: this.choice.spoilers,
 					enemizer: this.enemizerEnabled ? this.enemizerSettings : false,
+					lang: document.documentElement.lang,
 				}).then(response => {
 					this.rom.parsePatch(response.data).then(function() {
 						if (response.data.patch.current_rom_hash && response.data.patch.current_rom_hash != this.current_rom_hash) {
@@ -238,11 +239,10 @@ export default {
 					if (error.response) {
 						switch (error.response.status) {
 							case 429:
-								this.error = 'While we apprecate your want to generate a lot of games, Other people would like'
-									+ ' to as well. Please come back later if you would like to generate more.';
+								this.error =  this.$i18n.t('error.429');
 								break;
 							default:
-								this.error = 'Failed Creating Seed :(';
+								this.error = this.$i18n.t('error.failed_generation');
 						}
 					}
 				});

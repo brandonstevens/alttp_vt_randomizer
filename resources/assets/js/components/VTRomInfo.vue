@@ -1,21 +1,20 @@
 <template>
 	<div>
-		<div v-if="rom.logic">Logic: {{ rom.logic }}</div>
-		<div v-if="rom.build">ROM build: {{ rom.build }}</div>
+		<div v-if="rom.logic">{{ $t('rom.info.logic') }}: {{ rom.logic }}</div>
+		<div v-if="rom.build">{{ $t('rom.info.build') }}: {{ rom.build }}</div>
 		<div v-if="rom.difficulty">
-			Difficulty: {{ rom.difficulty }}
+			{{ $t('rom.info.difficulty') }}: {{ rom.difficulty }}
 				<span v-if="rom.difficulty_mode">({{ rom.difficulty_mode }})</span>
 		</div>
-		<div v-if="rom.variation">Variation: {{ rom.variation }}</div>
-		<div v-if="rom.shuffle">Shuffle: {{ rom.shuffle }}</div>
-		<div v-if="rom.mode">Mode: {{ rom.mode }}</div>
-		<div v-if="rom.shuffle">Shuffle: {{ rom.shuffle }}</div>
-		<div v-if="rom.weapons">Swords: {{ rom.weapons }}</div>
-		<div v-if="rom.goal">Goal: {{ rom.goal }}</div>
-		<div v-if="!noLink && rom.hash">Permalink: <a :href="permalink">{{ permalink }}</a></div>
-		<div v-if="rom.special">Special: {{ rom.special }}</div>
-		<div v-if="rom.notes">Notes: <span v-html="rom.notes"></span></div>
-		<div v-if="rom.generated">Created: <timeago :since="rom.generated" :auto-update="60"></timeago></div>
+		<div v-if="rom.variation">{{ $t('rom.info.variation') }}: {{ rom.variation }}</div>
+		<div v-if="rom.shuffle">{{ $t('rom.info.shuffle') }}: {{ rom.shuffle }}</div>
+		<div v-if="rom.mode">{{ $t('rom.info.mode') }}: {{ rom.mode }}</div>
+		<div v-if="rom.weapons">{{ $t('rom.info.weapons') }}: {{ rom.weapons }}</div>
+		<div v-if="rom.goal">{{ $t('rom.info.goal') }}: {{ rom.goal }}</div>
+		<div v-if="!noLink && rom.hash">{{ $t('rom.info.permalink') }}: <a :href="permalink">{{ permalink }}</a></div>
+		<div v-if="rom.special">{{ $t('rom.info.special') }}: {{ rom.special }}</div>
+		<div v-if="rom.notes">{{ $t('rom.info.notes') }}: <span v-html="rom.notes"></span></div>
+		<div v-if="rom.generated">{{ $t('rom.info.generated') }}: <timeago :since="rom.generated" :auto-update="60"></timeago></div>
 	</div>
 </template>
 

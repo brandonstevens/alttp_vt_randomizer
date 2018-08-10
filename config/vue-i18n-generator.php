@@ -24,9 +24,10 @@ return [
 	*/
 
 	'langFiles' => [
-		'randomizer',
 		'enemizer',
 		'entrance',
+		'error',
+		'randomizer',
 		'rom',
 	],
 

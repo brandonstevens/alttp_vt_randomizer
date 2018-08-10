@@ -67,4 +67,9 @@ return [
 		'spoiler_race' => 'Course de spoiler ROM',
 		'casual' => 'Générer une ROM',
 	],
+	'details' => [
+		'title' => 'Détails du jeu',
+		'save_spoiler' => 'Enregistrer le spoiler',
+		'save_rom' => 'Sauvegarder Rom',
+	],
 ];

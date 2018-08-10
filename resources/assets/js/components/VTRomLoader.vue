@@ -68,7 +68,7 @@ export default {
 			new ROM(blob, (rom) => {
 				this.patchRomFromJSON(rom).then((rom) => {
 					if (rom.checkMD5() != this.current_rom_hash) {
-						this.$emit('error', 'File not recognized');
+						this.$emit('error', this.$i18n.t('error.bad_file'));
 						this.loading = false;
 						return;
 					} else {

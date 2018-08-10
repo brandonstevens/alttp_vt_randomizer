@@ -1,40 +1,40 @@
 <template>
 	<div class="collapse mb-3" id="rom-settings">
 		<div class="card border-info">
-			<div class="card-header bg-info text-white">Additional ROM Options</div>
+			<div class="card-header bg-info text-white">{{ $t('rom.settings.title') }}</div>
 			<div class="card-body">
 				<div class="row mb-3">
 					<div class="col">
 						<vt-select id="heart-speed" :options="settings.heartSpeeds" storage-key="rom.heart-speed"
-							:rom="rom" :selected="defaults.heartSpeeds" rom-function="setHeartSpeed">Heart Speed</vt-select>
+							:rom="rom" :selected="defaults.heartSpeeds" rom-function="setHeartSpeed">{{ $t('rom.settings.heart_speed') }}</vt-select>
 					</div>
 					<div class="col">
-						<vt-sprite-select id="sprite-gfx" :rom="rom" storage-key="rom.sprite-gfx"></vt-sprite-select>
+						<vt-sprite-select id="sprite-gfx" :rom="rom" storage-key="rom.sprite-gfx" :title="$t('rom.settings.play_as')"></vt-sprite-select>
 					</div>
 				</div>
 				<div class="row mb-3">
 					<div class="col">
 						<vt-select id="menu-speed" no-race="true" :options="settings.menuSpeeds" storage-key="rom.menu-speed"
-							:rom="rom" :selected="defaults.menuSpeeds" rom-function="setMenuSpeed">Menu Speed</vt-select>
+							:rom="rom" :selected="defaults.menuSpeeds" rom-function="setMenuSpeed">{{ $t('rom.settings.menu_speed') }}</vt-select>
 					</div>
 					<div class="col">
 						<vt-select id="heart-color" :options="settings.heartColors" storage-key="rom.heart-color"
-							:rom="rom" :selected="defaults.heartColors" rom-function="setHeartColor">Heart Color</vt-select>
+							:rom="rom" :selected="defaults.heartColors" rom-function="setHeartColor">{{ $t('rom.settings.heart_color') }}</vt-select>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col">
 						<vt-toggle id="music-on" :selected="defaults.music" storage-key="rom.music-on"
-							:rom="rom" rom-function="setMusicVolume">Background Music (set to "No" for MSU-1 support)</vt-toggle>
+							:rom="rom" rom-function="setMusicVolume">{{ $t('rom.settings.music') }}</vt-toggle>
 					</div>
 					<div class="col">
 						<vt-toggle id="quickswap" :selected="defaults.quickswap" storage-key="rom.quickswap" :no-race="true"
-							:rom="rom" rom-function="setQuickswap">Item Quickswap</vt-toggle>
+							:rom="rom" rom-function="setQuickswap">{{ $t('rom.settings.quickswap') }}</vt-toggle>
 					</div>
 				</div>
 			</div>
 			<div class="card-footer">
-				<div><strong>*</strong> Does not work in Race Roms</div>
+				<div><strong>*</strong> {{ $t('rom.settings.race_warning') }}</div>
 			</div>
 		</div>
 	</div>
@@ -47,29 +47,29 @@ export default {
 		return {
 			settings: {
 				heartSpeeds: [
-					{value: 'off', name: 'Off'},
-					{value: 'double', name: 'Double Speed'},
-					{value: 'normal', name: 'Normal Speed'},
-					{value: 'half', name: 'Half Speed'},
-					{value: 'quarter', name: 'Quarter Speed'},
+					{value: 'off', name: this.$i18n.t('rom.settings.heart_speeds.off')},
+					{value: 'double', name: this.$i18n.t('rom.settings.heart_speeds.double')},
+					{value: 'normal', name: this.$i18n.t('rom.settings.heart_speeds.normal')},
+					{value: 'half', name: this.$i18n.t('rom.settings.heart_speeds.half')},
+					{value: 'quarter', name: this.$i18n.t('rom.settings.heart_speeds.quarter')},
 				],
 				menuSpeeds: [
-					{value: 'instant', name: 'Instant'},
-					{value: 'fast', name: 'Fast'},
-					{value: 'normal', name: 'Normal'},
-					{value: 'slow', name: 'Slow'},
+					{value: 'instant', name: this.$i18n.t('rom.settings.menu_speeds.instant')},
+					{value: 'fast', name: this.$i18n.t('rom.settings.menu_speeds.fast')},
+					{value: 'normal', name: this.$i18n.t('rom.settings.menu_speeds.normal')},
+					{value: 'slow', name: this.$i18n.t('rom.settings.menu_speeds.slow')},
 				],
 				heartColors: [
-					{value: 'blue', name: 'Blue'},
-					{value: 'green', name: 'Green'},
-					{value: 'red', name: 'Red'},
-					{value: 'yellow', name: 'Yellow'},
+					{value: 'blue', name: this.$i18n.t('rom.settings.heart_colors.blue')},
+					{value: 'green', name: this.$i18n.t('rom.settings.heart_colors.green')},
+					{value: 'red', name: this.$i18n.t('rom.settings.heart_colors.red')},
+					{value: 'yellow', name: this.$i18n.t('rom.settings.heart_colors.yellow')},
 				],
 			},
 			defaults: {
-				heartSpeeds: {value: 'half', name: 'Half Speed'},
-				menuSpeeds: {value: 'normal', name: 'Normal'},
-				heartColors: {value: 'red', name: 'Red'},
+				heartSpeeds: {value: 'half', name: this.$i18n.t('rom.settings.heart_speeds.half')},
+				menuSpeeds: {value: 'normal', name: this.$i18n.t('rom.settings.menu_speeds.normal')},
+				heartColors: {value: 'red', name: this.$i18n.t('rom.settings.heart_colors.red')},
 				quickswap: false,
 				music: true,
 			}
