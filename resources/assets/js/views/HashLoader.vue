@@ -5,17 +5,17 @@
 				<img class="icon" src="/i/svg/x.svg" alt="clear" @click="error = false">
 			</button>
 			<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-			<span class="sr-only">Error:</span>
+			<span class="sr-only">{{ $t('error.title') }}:</span>
 			<span class="message">{{ this.error }}</span>
 		</div>
 		<vt-rom-loader v-if="!romLoaded" @update="updateRom" @error="onError"></vt-rom-loader>
 
 		<div id="seed-details" class="card border-success" v-if="gameLoaded && romLoaded">
 			<div class="card-header bg-success card-heading-btn" :class="{'bg-info': rom.tournament}">
-				<h3 class="card-title text-white float-left">{{ rom.name || 'Game Details' }}</h3>
+				<h3 class="card-title text-white float-left">{{ rom.name || $t('randomizer.details.title') }}</h3>
 				<div class="btn-toolbar float-right">
 					<button class="btn btn-light border-secondary" data-toggle="collapse" href="#rom-settings">
-						ROM Options <img class="icon pulse" src="/i/svg/cog.svg" alt="ROM Options">
+						{{ $t('randomizer.rom.options') }} <img class="icon pulse" src="/i/svg/cog.svg" alt="ROM Options">
 					</button>
 				</div>
 			</div>
@@ -28,10 +28,10 @@
 					<div class="col-md mb-3">
 						<div class="row">
 							<div class="col-md mb-3">
-								<button class="btn btn-light border-secondary" @click="saveSpoiler">Save Spoiler</button>
+								<button class="btn btn-light border-secondary" @click="saveSpoiler">{{ $t('randomizer.details.save_spoiler') }}</button>
 							</div>
 							<div class="col-md mb-3">
-								<button class="btn btn-success" @click="saveRom">Save Rom</button>
+								<button class="btn btn-success" @click="saveRom">{{ $t('randomizer.details.save_rom') }}</button>
 							</div>
 						</div>
 					</div>
@@ -113,11 +113,10 @@ export default {
 							if (error.response) {
 								switch (error.response.status) {
 									case 429:
-										this.error = 'While we apprecate your want to generate a lot of games, Other people would like'
-											+ ' to as well. Please come back later if you would like to generate more.';
+										this.error =  this.$i18n.t('error.429');
 										break;
 									default:
-										this.error = 'Failed Creating Seed :(';
+										this.error = this.$i18n.t('error.failed_generation');
 								}
 							}
 						});

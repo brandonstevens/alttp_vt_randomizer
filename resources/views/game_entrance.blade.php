@@ -1,32 +1,29 @@
-@extends('layouts.default', ['title' => 'Entrance Options - '])
+@extends('layouts.default', ['title' => __('navigation.game_entrance') . ' - '])
 
 @section('content')
-<h1>What is the Entrance Randomizer?</h1>
+<h1>{{ __('entrance_options.header') }}</h1>
 <div class="card card-body bg-light">
-	<p>The Entrance Randomizer allows you to twist the world upside down and play the game. It should mostly follow
-		the standard VT rules for settings on everything, but it introduces a new option "Shuffle".</p>
+	<p>{{ __('entrance_options.subheader') }}</p>
 
 	<div class="card border-info mt-4">
 		<div class="card-header bg-info">
-			<h3 class="card-title text-white">Simple</h3>
+			<h3 class="card-title text-white">{{ __('entrance_options.cards.simple.header') }}</h3>
 		</div>
 		<div class="card-body">
-			<p>Shuffles dungeon entrances between each other and keeps all 4-entrance dungeons
-				confined to one location such that dungeons will one to one swap with each other.
-			</p>
-			<p>Other than on Light World Death Mountain, interiors are shuffled but still connect the
-				same points on the overworld. On Death Mountain, entrances are connected more freely.
-			</p>
+			@foreach (__('entrance_options.cards.simple.content') as $block)
+				<p>{!! $block !!}</p>
+			@endforeach
 		</div>
 	</div>
 
 	<div class="card border-warning mt-4">
 		<div class="card-header bg-warning">
-			<h3 class="card-title">Restricted</h3>
+			<h3 class="card-title">{{ __('entrance_options.cards.restricted.header') }}</h3>
 		</div>
 		<div class="card-body">
-			<p>Uses dungeon shuffling from Simple but freely connects remaining entrances. Caves and
-				dungeons with multiple entrances will be confined to one world.</p>
+			@foreach (__('entrance_options.cards.restricted.content') as $block)
+				<p>{!! $block !!}</p>
+			@endforeach
 		</div>
 	</div>
 
@@ -34,32 +31,34 @@
 
 	<div class="card border-warning mt-4">
 		<div class="card-header bg-warning">
-			<h3 class="card-title">Full</h3>
+			<h3 class="card-title">{{ __('entrance_options.cards.full.header') }}</h3>
 		</div>
 		<div class="card-body">
-			<p>Mixes cave and dungeon entrances freely. Caves and dungeons with multiple entrances
-				will be confined to one world.</p>
+			@foreach (__('entrance_options.cards.full.content') as $block)
+				<p>{!! $block !!}</p>
+			@endforeach
 		</div>
 	</div>
 
 	<div class="card border-danger mt-4">
 		<div class="card-header bg-danger">
-			<h3 class="card-title text-white">Crossed</h3>
+			<h3 class="card-title text-white">{{ __('entrance_options.cards.crossed.header') }}</h3>
 		</div>
 		<div class="card-body">
-			<p>Mixes cave and dungeon entrances freely, but now connector caves and dungeons can link
-				Light World and Dark World.</p>
+			@foreach (__('entrance_options.cards.crossed.content') as $block)
+				<p>{!! $block !!}</p>
+			@endforeach
 		</div>
 	</div>
 
 	<div class="card border-danger mt-4">
 		<div class="card-header bg-danger">
-			<h3 class="card-title text-white">Insanity</h3>
+			<h3 class="card-title text-white">{{ __('entrance_options.cards.insanity.header') }}</h3>
 		</div>
 		<div class="card-body">
-			<p>Decouples entrances and exits from each other and shuffles them freely. Caves that
-				were single entrance in vanilla still can only exit to the same location from which
-				they were entered.</p>
+			@foreach (__('entrance_options.cards.insanity.content') as $block)
+				<p>{!! $block !!}</p>
+			@endforeach
 		</div>
 	</div>
 </div>

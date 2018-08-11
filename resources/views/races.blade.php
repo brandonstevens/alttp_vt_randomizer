@@ -1,25 +1,19 @@
-@extends('layouts.default', ['title' => 'Racing - '])
+@extends('layouts.default', ['title' => __('navigation.races') . ' - '])
 
 @section('content')
-<h1>Organized Play</h1>
+<h1>{{ __('races.header') }}</h1>
 <div class="card card-body bg-light">
 	<div class="card border-info mt-4">
 		<div class="card-header bg-info">
-			<h3 class="card-title text-white">Races</h3>
+			<h3 class="card-title text-white">{{ __('races.cards.races.header') }}</h3>
 		</div>
 		<div class="card-body">
-			<p>Most races are done through
-				<a href="https://speedracing.tv/" target="_blank" rel="noopener noreferrer">SpeedRacing.tv</a> or
-				<a href="http://speedrunslive.com" target="_blank" rel="noopener noreferrer">SpeedRunsLive.com</a>.
-				Be sure to check them out for more info on how to get in on the action!</p>
-			<h4>Weekly Standard Mode Race, Saturdays at 3pm US Eastern Time</h4>
-			<p>The premier community event, the weekly race consistently reaches over 100 competitors!</p>
-			<h4>Weekly Open Mode Race, Sundays at 5pm US Eastern Time</h4>
-			<p>Join us Sundays for another popular weekly community race.</p>
-			<h4>Pickup Races</h4>
-			<p>Scheduled races not fitting in with your schedule? Looking to race with some more uncommon options? Join a pickup race! You'll find willing players at all hours of the day. Join the #race-planning channel in our
-				<a href="https://discord.gg/alttprandomizer" target="_blank" rel="noopener noreferrer">Discord</a>!
-			</p>
+			@foreach (__('races.cards.races.sections') as $section)
+			<h4>{{ $section['header'] }}</h4>
+				@foreach ($section['content'] as $block)
+					<p>{!! $block !!}</p>
+				@endforeach
+			@endforeach
 		</div>
 	</div>
 
@@ -27,10 +21,12 @@
 
 	<div class="card border-info mt-4">
 		<div class="card-header bg-info">
-			<h3 class="card-title text-white">Watch</h3>
+			<h3 class="card-title text-white">{{ __('races.cards.watch.header') }}</h3>
 		</div>
 		<div class="card-body">
-			<p>With so much going on, there's always a race to watch! Follow these networks and never miss a match!</p>
+			@foreach (__('races.cards.watch.content') as $block)
+				<p>{!! $block !!}</p>
+			@endforeach
 			<div class="btn-wrapper">
 				<div class="btn-cal"><a
 					class="btn btn-lg btn-xl btn-cal1"
@@ -74,27 +70,26 @@
 
 	<div class="card border-info mt-4">
 		<div class="card-header bg-info">
-			<h3 class="card-title text-white">Racing Networks</h3>
+			<h3 class="card-title text-white">{{ __('races.cards.network.header') }}</h3>
 		</div>
 		<div class="card-body">
-			<p>Racing is typically done on a racing network. These sites facilitate in organizing races, adding an official timer, and making it easier for both racers and viewers to find races.</p>
-			<p>Be sure to check out both <a href="http://speedrunslive.com" target="_blank" rel="noopener noreferrer">SpeedRunsLive.com</a> and <a href="http://speedracing.tv" target="_blank" rel="noopener noreferrer">SpeedRacing.tv</a> for more info!</p>
+			@foreach (__('races.cards.network.content') as $block)
+				<p>{!! $block !!}</p>
+			@endforeach
 		</div>
 	</div>
 
 	<div class="card border-info mt-4">
 		<div class="card-header bg-info">
-			<h3 class="card-title text-white">Tournaments</h3>
+			<h3 class="card-title text-white">{{ __('races.cards.tournament.header') }}</h3>
 		</div>
 		<div class="card-body">
-			<p>Join us for exciting tournament action with expert commentary alongside elite play!</p>
-			<h4>Twice-Yearly Invitational Tournament</h4>
-			<p>Witness the 100 best racers compete for the trophy! Think you have what it takes to go
-				toe-to-toe with the best? Join
-				<a href="https://discord.gg/alttprandomizer" target="_blank" rel="noopener noreferrer">Discord</a>
-				and keep an eye out for qualifying races!</p>
-			<p>The Spring Invitational runs from March to June.</p>
-			<p>The Fall Invitational runs from September to December.</p>
+			@foreach (__('races.cards.tournament.sections') as $section)
+			<h4>{{ $section['header'] }}</h4>
+				@foreach ($section['content'] as $block)
+					<p>{!! $block !!}</p>
+				@endforeach
+			@endforeach
 		</div>
 	</div>
 </div>
