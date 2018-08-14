@@ -260,7 +260,7 @@ class SettingsController extends Controller {
 			$sprites[] = [
 				'name' => $info['name'],
 				'author' => $info['author'],
-				'file' => 'http://spr.beegunslingers.com/' . $file,
+				'file' => 'https://08b3693090b88cc23068-781cc7889ba8761758717cf14b1800b4.ssl.cf2.rackcdn.com/' . $file,
 			];
 		}
 		return $sprites;

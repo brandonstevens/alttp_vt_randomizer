@@ -53,7 +53,7 @@
 		<li>Added quick swap functionality</li>
 		<li>If you use a headered rom, the site will try to strip that header out before use (thanks Myramong)</li>
 		<li>Added new player options<br />
-			<img src="http://spr.beegunslingers.com/sprites.29.lg.png"
+			<img src="https://08b3693090b88cc23068-781cc7889ba8761758717cf14b1800b4.ssl.cf2.rackcdn.com/sprites.29.lg.png"
 				alt="Link sprite options" style="width:50%" /></li>
 	</ul>
 	<div class="card border-info mt-4">
@@ -91,7 +91,7 @@
 			<li>Better error messages when generation fails</li>
 		</ul></li>
 		<li>Added new player options<br />
-			<img src="http://spr.beegunslingers.com/sprites.28.lg.png"
+			<img src="https://08b3693090b88cc23068-781cc7889ba8761758717cf14b1800b4.ssl.cf2.rackcdn.com/sprites.28.lg.png"
 				alt="Link sprite options" style="width:50%" /></li>
 	</ul>
 </div>
@@ -113,7 +113,7 @@
 		<li>Cleaned up the spoiler section of the site to assist in finding things</li>
 		<li>Complete overhaul of the custom section, see the new <a href="/customizer">customizer</a></li>
 		<li>Added many new player options<br />
-			<img src="http://spr.beegunslingers.com/sprites.27.lg.png"
+			<img src="https://08b3693090b88cc23068-781cc7889ba8761758717cf14b1800b4.ssl.cf2.rackcdn.com/sprites.27.lg.png"
 				alt="Link sprite options" style="width:50%" /></li>
 	</ul>
 	<div class="card border-info mt-4">
@@ -132,7 +132,7 @@
 		<li>Turtle Rock small key fix</li>
 		<li>Skull Woods small key fix</li>
 		<li>Added a few new player options<br />
-			<img src="http://spr.beegunslingers.com/sprites.4.lg.png"
+			<img src="https://08b3693090b88cc23068-781cc7889ba8761758717cf14b1800b4.ssl.cf2.rackcdn.com/sprites.4.lg.png"
 				alt="Link sprite options" style="width:50%" /></li>
 	</ul>
 </div>
@@ -160,7 +160,7 @@
 		<li>Entrance Randomizer integration (thanks LLCoolDave)</li>
 		<li>Two new chests have been added to Waterfall fairy</li>
 		<li>Added many new player options (and updated a few)<br />
-			<img src="http://spr.beegunslingers.com/sprites.3.lg.png"
+			<img src="https://08b3693090b88cc23068-781cc7889ba8761758717cf14b1800b4.ssl.cf2.rackcdn.com/sprites.3.lg.png"
 				alt="Link sprite options" style="width:50%" /></li>
 	</ul>
 	<div class="card border-info mt-4">
@@ -196,7 +196,7 @@
 		<li>Skull Woods spike trap room chest set back to Key all the time</li>
 		<li>New Fill algorithm that maximizes item randomization</li>
 		<li>Added many new player options<br />
-			<img src="http://spr.beegunslingers.com/sprites.2.lg.png"
+			<img src="https://08b3693090b88cc23068-781cc7889ba8761758717cf14b1800b4.ssl.cf2.rackcdn.com/sprites.2.lg.png"
 				alt="Link sprite options" style="width:50%" /></li>
 	</ul>
 	<div class="card border-info mt-4">
