@@ -1,4 +1,4 @@
-<?php namespace ALttP\Region\DeathMountain;
+<?php namespace ALttP\Region\LightWorld\DeathMountain;
 
 use ALttP\Item;
 use ALttP\Location;
