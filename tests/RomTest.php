@@ -210,12 +210,12 @@ class RomTest extends TestCase {
 	}
 
 	public function testSetRandomizerSeedTypeNormal() {
-		$this->rom->setRandomizerSeedType('NoMajorGlitches');
+		$this->rom->setRandomizerSeedType('NoGlitches');
 
 		$this->assertEquals(0x00, $this->rom->read(0x180210));
 	}
 
-	public function testSetRandomizerSeedTypeDefaultsToNMG() {
+	public function testSetRandomizerSeedTypeDefaultsToNoGlitches() {
 		$this->rom->setRandomizerSeedType('badType');
 
 		$this->assertEquals(0x00, $this->rom->read(0x180210));

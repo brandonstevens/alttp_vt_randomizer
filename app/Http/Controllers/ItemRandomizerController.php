@@ -49,7 +49,7 @@ class ItemRandomizerController extends Controller {
 		$difficulty = $request->input('difficulty', 'normal') ?: 'normal';
 		$variation = $request->input('variation', 'none') ?: 'none';
 		$goal = $request->input('goal', 'ganon') ?: 'ganon';
-		$logic = $request->input('logic', 'NoMajorGlitches') ?: 'NoMajorGlitches';
+		$logic = $request->input('logic', 'NoGlitches') ?: 'NoGlitches';
 		$game_mode = $request->input('mode', 'standard');
 		$weapons_mode = $request->input('weapons', 'randomized');
 		$enemizer = $request->input('enemizer', false);
@@ -130,7 +130,7 @@ class ItemRandomizerController extends Controller {
 				'alttp.mode.weapons' => 'uncle',
 			]);
 			$world = $rom->writeVanilla();
-			$rand = new Randomizer('vanilla', 'NoMajorGlitches', 'ganon', 'none');
+			$rand = new Randomizer('vanilla', 'NoGlitches', 'ganon', 'none');
 			$rand->setWorld($world);
 			$rom->setRestrictFairyPonds(false);
 			return [

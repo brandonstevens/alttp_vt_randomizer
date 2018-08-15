@@ -51,7 +51,7 @@ class West extends Region {
 	 *
 	 * @return $this
 	 */
-	public function initNoMajorGlitches() {
+	public function initNoGlitches() {
 		$this->locations["Spike Cave"]->setRequirements(function($locations, $items) {
 			return $items->has('MoonPearl') && $items->has('Hammer') && $items->canLiftRocks()
 				&& (($items->canExtendMagic() && $items->has('Cape'))

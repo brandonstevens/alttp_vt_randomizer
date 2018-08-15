@@ -31,7 +31,7 @@
 					<div class="col-md mb-3">
 						<vt-select v-model="choice.logic" id="logic" :options="settings.logics" storage-key="vt.logic"
 							:rom="rom" :selected="choice.logic">{{ $t('randomizer.logic.title') }}</vt-select>
-						<div v-if="choice.logic.value != 'NoMajorGlitches'" class="logic-warning text-danger text-right" v-html="$t('randomizer.logic.glitch_warning')" />
+						<div v-if="choice.logic.value != 'NoGlitches'" class="logic-warning text-danger text-right" v-html="$t('randomizer.logic.glitch_warning')" />
 					</div>
 				</div>
 				<div class="row">
@@ -145,7 +145,7 @@ export default {
 				difficulty: {value: 'normal', name: this.$i18n.t('randomizer.difficulty.options.normal')},
 				goal: {value: 'ganon', name: this.$i18n.t('randomizer.goal.options.ganon')},
 				weapons: {value: 'uncle', name: this.$i18n.t('randomizer.weapons.options.uncle')},
-				logic: {value: 'NoMajorGlitches', name: this.$i18n.t('randomizer.logic.options.NoMajorGlitches')},
+				logic: {value: 'NoGlitches', name: this.$i18n.t('randomizer.logic.options.NoGlitches')},
 				variation: {value: 'none', name: this.$i18n.t('randomizer.variation.options.none')},
 				tournament: false,
 				spoilers: false,

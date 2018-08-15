@@ -1,16 +1,16 @@
-<?php namespace NoMajorGlitches;
+<?php namespace NoGlitches;
 
 use ALttP\Item;
 use ALttP\World;
 use TestCase;
 
 /**
- * @group NMG
+ * @group NoGlitches
  */
 class LightWorldTest extends TestCase {
 	public function setUp() {
 		parent::setUp();
-		$this->world = new World('test_rules', 'NoMajorGlitches');
+		$this->world = new World('test_rules', 'NoGlitches');
 	}
 
 	public function tearDown() {

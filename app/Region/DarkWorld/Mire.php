@@ -53,7 +53,7 @@ class Mire extends Region {
 	 *
 	 * @return $this
 	 */
-	public function initNoMajorGlitches() {
+	public function initNoGlitches() {
 		// @TODO: do we want to allow super bunny item shopping
 		$this->shops["Dark Desert Fairy"]->setRequirements(function($locations, $items) {
 			return $items->has('MoonPearl');

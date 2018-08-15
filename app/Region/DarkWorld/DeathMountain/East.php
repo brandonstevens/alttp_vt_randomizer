@@ -65,7 +65,7 @@ class East extends Region {
 	 *
 	 * @return $this
 	 */
-	public function initNoMajorGlitches() {
+	public function initNoGlitches() {
 		$this->locations["Superbunny Cave - Top"]->setRequirements(function($locations, $items) {
 			return $items->has('MoonPearl');
 		});

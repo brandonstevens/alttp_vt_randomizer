@@ -1,16 +1,16 @@
-<?php namespace NoMajorGlitches;
+<?php namespace NoGlitches;
 
 use ALttP\Item;
 use ALttP\World;
 use TestCase;
 
 /**
- * @group NMG
+ * @group NoGlitches
  */
 class MiseryMireTest extends TestCase {
 	public function setUp() {
 		parent::setUp();
-		$this->world = new World('test_rules', 'NoMajorGlitches');
+		$this->world = new World('test_rules', 'NoGlitches');
 
 		$this->world->getLocation("Misery Mire Medallion")->setItem(Item::get('Ether'));
 	}

@@ -1,22 +1,110 @@
-<?php
+<?php namespace NoGlitches;
 
 use ALttP\Item;
-use ALttP\Region;
 use ALttP\World;
+use TestCase;
 
-class RegionTest extends TestCase {
+/**
+ * @group NoGlitches
+ */
+class EasternPalaceTest extends TestCase {
 	public function setUp() {
 		parent::setUp();
-
-		$this->region = new Region(new World('test_rules', 'NoGlitches'));
+		$this->world = new World('test_rules', 'NoGlitches');
 	}
 
 	public function tearDown() {
 		parent::tearDown();
-		unset($this->region);
+		unset($this->world);
 	}
 
-	 /**
+	// Entry
+	public function testNothingRequiredToEnter() {
+		$this->assertTrue($this->world->getRegion('Eastern Palace')
+			->canEnter($this->world->getLocations(), $this->collected));
+	}
+
+	/**
+	 * @param string $location
+	 * @param bool $access
+	 * @param array $items
+	 * @param array $except
+	 *
+	 * @dataProvider accessPool
+	 */
+	public function testLocation(string $location, bool $access, array $items, array $except = []) {
+		if (count($except)) {
+			$this->collected = $this->allItemsExcept($except);
+		}
+
+		$this->addCollected($items);
+
+		$this->assertEquals($access, $this->world->getLocation($location)
+			->canAccess($this->collected));
+	}
+
+	/**
+	 * @param string $location
+	 * @param bool $access
+	 * @param string $item
+	 * @param array $items
+	 * @param array $except
+	 *
+	 * @dataProvider fillPool
+	 */
+	public function testFillLocation(string $location, bool $access, string $item, array $items = [], array $except = []) {
+		if (count($except)) {
+			$this->collected = $this->allItemsExcept($except);
+		}
+
+		$this->addCollected($items);
+
+		$this->assertEquals($access, $this->world->getLocation($location)
+			->fill(Item::get($item), $this->collected));
+	}
+
+	public function fillPool() {
+		return [
+			["Eastern Palace - Compass Chest", true, 'BigKeyP1', [], ['BigKeyP1']],
+
+			["Eastern Palace - Cannonball Chest", true, 'BigKeyP1', [], ['BigKeyP1']],
+
+			["Eastern Palace - Big Chest", false, 'BigKeyP1', [], ['BigKeyP1']],
+
+			["Eastern Palace - Map Chest", true, 'BigKeyP1', [], ['BigKeyP1']],
+
+			["Eastern Palace - Big Key Chest", true, 'BigKeyP1', [], ['BigKeyP1']],
+
+			["Eastern Palace - Armos Knights", false, 'BigKeyP1', [], ['BigKeyP1']],
+		];
+	}
+
+	public function accessPool() {
+		return [
+			["Eastern Palace - Compass Chest", true, []],
+
+			["Eastern Palace - Cannonball Chest", true, []],
+
+			["Eastern Palace - Big Chest", false, []],
+			["Eastern Palace - Big Chest", false, [], ['BigKeyP1']],
+			["Eastern Palace - Big Chest", true, ['BigKeyP1']],
+
+			["Eastern Palace - Map Chest", true, []],
+
+			["Eastern Palace - Big Key Chest", false, []],
+			["Eastern Palace - Big Key Chest", false, [], ['Lamp']],
+			["Eastern Palace - Big Key Chest", true, ['Lamp']],
+
+
+			["Eastern Palace - Armos Knights", false, []],
+			["Eastern Palace - Armos Knights", false, [], ['Lamp']],
+			["Eastern Palace - Armos Knights", false, [], ['AnyBow']],
+			["Eastern Palace - Armos Knights", false, [], ['BigKeyP1']],
+			["Eastern Palace - Armos Knights", true, ['Lamp', 'Bow', 'BigKeyP1']],
+		];
+	}
+
+	/**
 	 * @dataProvider dungeonItemsPool
 	 */
 	public function testRegionLockedItems(bool $access, string $item_name, bool $free = null, string $config = null) {
@@ -24,15 +112,15 @@ class RegionTest extends TestCase {
 			config(["alttp.test_rules.$config" => $free]);
 		}
 
-		$this->assertEquals($access, $this->region->canFill(Item::get($item_name)));
+		$this->assertEquals($access, $this->world->getRegion('Eastern Palace')->canFill(Item::get($item_name)));
 	}
 
 	public function dungeonItemsPool() {
 		return [
-			[false, 'Key'],
+			[true, 'Key'],
 			[false, 'KeyH2'],
 			[false, 'KeyH1'],
-			[false, 'KeyP1'],
+			[true, 'KeyP1'],
 			[false, 'KeyP2'],
 			[false, 'KeyA1'],
 			[false, 'KeyD2'],
@@ -45,10 +133,10 @@ class RegionTest extends TestCase {
 			[false, 'KeyD7'],
 			[false, 'KeyA2'],
 
-			[false, 'BigKey'],
+			[true, 'BigKey'],
 			[false, 'BigKeyH2'],
 			[false, 'BigKeyH1'],
-			[false, 'BigKeyP1'],
+			[true, 'BigKeyP1'],
 			[false, 'BigKeyP2'],
 			[false, 'BigKeyA1'],
 			[false, 'BigKeyD2'],
@@ -61,13 +149,13 @@ class RegionTest extends TestCase {
 			[false, 'BigKeyD7'],
 			[false, 'BigKeyA2'],
 
-			[false, 'Map', false, 'region.wildMaps'],
+			[true, 'Map', false, 'region.wildMaps'],
 			[true, 'Map', true, 'region.wildMaps'],
 			[false, 'MapH2', false, 'region.wildMaps'],
 			[true, 'MapH2', true, 'region.wildMaps'],
 			[false, 'MapH1', false, 'region.wildMaps'],
 			[true, 'MapH1', true, 'region.wildMaps'],
-			[false, 'MapP1', false, 'region.wildMaps'],
+			[true, 'MapP1', false, 'region.wildMaps'],
 			[true, 'MapP1', true, 'region.wildMaps'],
 			[false, 'MapP2', false, 'region.wildMaps'],
 			[true, 'MapP2', true, 'region.wildMaps'],
@@ -92,13 +180,13 @@ class RegionTest extends TestCase {
 			[false, 'MapA2', false, 'region.wildMaps'],
 			[true, 'MapA2', true, 'region.wildMaps'],
 
-			[false, 'Compass', false, 'region.wildCompasses'],
+			[true, 'Compass', false, 'region.wildCompasses'],
 			[true, 'Compass', true, 'region.wildCompasses'],
 			[false, 'CompassH2', false, 'region.wildCompasses'],
 			[true, 'CompassH2', true, 'region.wildCompasses'],
 			[false, 'CompassH1', false, 'region.wildCompasses'],
 			[true, 'CompassH1', true, 'region.wildCompasses'],
-			[false, 'CompassP1', false, 'region.wildCompasses'],
+			[true, 'CompassP1', false, 'region.wildCompasses'],
 			[true, 'CompassP1', true, 'region.wildCompasses'],
 			[false, 'CompassP2', false, 'region.wildCompasses'],
 			[true, 'CompassP2', true, 'region.wildCompasses'],

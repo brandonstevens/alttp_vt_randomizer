@@ -83,7 +83,7 @@ class MiseryMire extends Region {
 	 *
 	 * @return $this
 	 */
-	public function initNoMajorGlitches() {
+	public function initNoGlitches() {
 		$this->locations["Misery Mire - Big Chest"]->setRequirements(function($locations, $items) {
 			return $items->has('BigKeyD6');
 		});
@@ -160,7 +160,7 @@ class MiseryMire extends Region {
 	 * @return $this
 	 */
 	public function initMajorGlitches() {
-		$this->initNoMajorGlitches();
+		$this->initNoGlitches();
 
 		// @TODO: this function is probably wrong -_-
 		$this->can_complete = function($locations, $items) {

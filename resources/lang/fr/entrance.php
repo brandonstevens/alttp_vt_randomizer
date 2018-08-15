@@ -30,7 +30,7 @@ return [
 	'logic' => [
 		'title' => 'Logique',
 		'options' => [
-			'NoMajorGlitches' => 'Sans Glitches',
+			'NoGlitches' => 'Sans Glitches',
 		],
 	],
 	'mode' => [

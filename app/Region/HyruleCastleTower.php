@@ -61,7 +61,7 @@ class HyruleCastleTower extends Region {
 	 *
 	 * @return $this
 	 */
-	public function initNoMajorGlitches() {
+	public function initNoGlitches() {
 		$this->locations["Castle Tower - Dark Maze"]->setRequirements(function($locations, $items) {
 			return $items->has('Lamp', $this->world->config('item.require.Lamp', 1)) && $items->has('KeyA1');
 		});

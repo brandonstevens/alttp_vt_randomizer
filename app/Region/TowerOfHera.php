@@ -102,7 +102,7 @@ class TowerOfHera extends Region {
 	 *
 	 * @return $this
 	 */
-	public function initNoMajorGlitches() {
+	public function initNoGlitches() {
 		$this->locations["Tower of Hera - Big Key Chest"]->setRequirements(function($locations, $items) {
 			return $items->canLightTorches() && $items->has('KeyP3');
 		})->setAlwaysAllow(function($item, $items) {
@@ -222,7 +222,7 @@ class TowerOfHera extends Region {
 	 * @return $this
 	 */
 	public function initOverworldGlitches() {
-		$this->initNoMajorGlitches();
+		$this->initNoGlitches();
 
 		$this->can_enter = function($locations, $items) {
 			return $items->has('RescueZelda')

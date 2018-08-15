@@ -172,7 +172,7 @@ class Region {
 	 *
 	 * @return $this
 	 */
-	public function init(string $type = 'NoMajorGlitches') {
+	public function init(string $type = 'NoGlitches') {
 		return call_user_func([$this, 'init' . $type]);
 	}
 
@@ -190,7 +190,7 @@ class Region {
 	 *
 	 * @return $this
 	 */
-	public function initNoMajorGlitches() {
+	public function initNoGlitches() {
 		return $this;
 	}
 
@@ -209,7 +209,7 @@ class Region {
 	 * @return $this
 	 */
 	public function initOverworldGlitches() {
-		return $this->initNoMajorGlitches();
+		return $this->initNoGlitches();
 	}
 
 

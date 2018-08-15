@@ -139,7 +139,7 @@ class Rom {
 	 * @return World
 	 */
 	public function writeVanilla() {
-		$world = new World('vanilla', 'NoMajorGlitches', 'ganon');
+		$world = new World('vanilla', 'NoGlitches', 'ganon');
 		$world->setVanilla();
 
 		foreach ($world->getLocations() as $location) {
@@ -1699,7 +1699,7 @@ class Rom {
 			case 'off':
 				$byte = 0xFF;
 				break;
-			case 'NoMajorGlitches':
+			case 'NoGlitches':
 			default:
 				$byte = 0x00;
 		}

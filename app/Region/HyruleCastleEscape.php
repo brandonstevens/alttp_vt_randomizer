@@ -77,7 +77,7 @@ class HyruleCastleEscape extends Region {
 	 *
 	 * @return $this
 	 */
-	public function initNoMajorGlitches() {
+	public function initNoGlitches() {
 		$this->locations["Sanctuary"]->setRequirements(function($locations, $items) {
 			if ($this->world->config('mode.state') == 'open') {
 				return true;

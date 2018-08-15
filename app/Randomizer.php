@@ -50,7 +50,7 @@ class Randomizer {
 	 *
 	 * @return void
 	 */
-	public function __construct($difficulty = 'normal', $logic = 'NoMajorGlitches', $goal = 'ganon', $variation = 'none') {
+	public function __construct($difficulty = 'normal', $logic = 'NoGlitches', $goal = 'ganon', $variation = 'none') {
 		$this->difficulty = $difficulty;
 		$this->variation = $variation;
 		$this->logic = $logic;
@@ -74,7 +74,7 @@ class Randomizer {
 	public function getLogic() {
 		switch ($this->logic) {
 			case 'None': return 'none-' . static::LOGIC;
-			case 'NoMajorGlitches': return 'no-glitches-' . static::LOGIC;
+			case 'NoGlitches': return 'no-glitches-' . static::LOGIC;
 			case 'OverworldGlitches': return 'overworld-glitches-' . static::LOGIC;
 			case 'MajorGlitches': return 'major-glitches-' . static::LOGIC;
 		}
@@ -89,7 +89,7 @@ class Randomizer {
 	public function getLogicNiceName() {
 		switch ($this->logic) {
 			case 'None': return 'None';
-			case 'NoMajorGlitches': return 'No Glitches';
+			case 'NoGlitches': return 'No Glitches';
 			case 'OverworldGlitches': return 'Overworld Glitches';
 			case 'Glitched': return 'Major Glitches';
 		}
@@ -908,7 +908,7 @@ class Randomizer {
 				$rom->setRandomizerSeedType('OverworldGlitches');
 				$rom->setWarningFlags(bindec('01000000'));
 				break;
-			case 'NoMajorGlitches':
+			case 'NoGlitches':
 			default:
 				$type_flag = 'C';
 				$rom->setSaveAndQuitFromBossRoom(true);

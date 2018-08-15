@@ -74,7 +74,7 @@ class South extends Region {
 	 *
 	 * @return $this
 	 */
-	public function initNoMajorGlitches() {
+	public function initNoGlitches() {
 		$this->shops["Bonk Fairy (Dark)"]->setRequirements(function($locations, $items) {
 			return $items->has('PegasusBoots');
 		});

@@ -29,7 +29,7 @@ return [
 	'logic' => [
 		'title' => 'Logic',
 		'options' => [
-			'NoMajorGlitches' => 'No Glitches',
+			'NoGlitches' => 'No Glitches',
 			'OverworldGlitches' => 'Overworld Glitches',
 			'MajorGlitches' => 'Major Glitches',
 			'None' => 'None (I know what I’m doing)',

@@ -83,7 +83,7 @@ class IcePalace extends Region {
 	 *
 	 * @return $this
 	 */
-	public function initNoMajorGlitches() {
+	public function initNoGlitches() {
 		$this->locations["Ice Palace - Big Key Chest"]->setRequirements(function($locations, $items) {
 			return $items->has('Hammer') && $items->canLiftRocks()
 				&& (!$this->world->config('region.cantTakeDamage', false)
@@ -158,7 +158,7 @@ class IcePalace extends Region {
 	 * @return $this
 	 */
 	public function initMajorGlitches() {
-		$this->initNoMajorGlitches();
+		$this->initNoGlitches();
 
 		$this->can_enter = function($locations, $items) {
 			return $items->has('RescueZelda')
@@ -177,7 +177,7 @@ class IcePalace extends Region {
 	 * @return $this
 	 */
 	public function initOverworldGlitches() {
-		$this->initNoMajorGlitches();
+		$this->initNoGlitches();
 
 		$this->can_enter = function($locations, $items) {
 			return $items->has('RescueZelda')

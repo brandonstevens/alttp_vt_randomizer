@@ -75,7 +75,7 @@ class East extends Region {
 	 *
 	 * @return $this
 	 */
-	public function initNoMajorGlitches() {
+	public function initNoGlitches() {
 		$this->shops["Light World Death Mountain Shop"]->setRequirements(function($locations, $items) {
 			return $items->canBombThings();
 		});

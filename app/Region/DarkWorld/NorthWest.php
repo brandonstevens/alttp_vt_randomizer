@@ -80,7 +80,7 @@ class NorthWest extends Region {
 	 *
 	 * @return $this
 	 */
-	public function initNoMajorGlitches() {
+	public function initNoGlitches() {
 		$this->shops["Dark World Outcasts Shop"]->setRequirements(function($locations, $items) {
 			return $items->has('Hammer');
 		});

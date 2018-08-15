@@ -7,7 +7,7 @@ class WorldTest extends TestCase {
 	public function setUp() {
 		parent::setUp();
 
-		$this->world = new World('test_rules', 'NoMajorGlitches');
+		$this->world = new World('test_rules', 'NoGlitches');
 	}
 
 	public function tearDown() {

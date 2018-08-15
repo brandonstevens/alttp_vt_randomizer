@@ -83,7 +83,7 @@ class DesertPalace extends Region {
 	 *
 	 * @return $this
 	 */
-	public function initNoMajorGlitches() {
+	public function initNoGlitches() {
 		$this->locations["Desert Palace - Big Chest"]->setRequirements(function($locations, $items) {
 			return $items->has('BigKeyP2');
 		});
@@ -142,7 +142,7 @@ class DesertPalace extends Region {
 	 * @return $this
 	 */
 	public function initOverworldGlitches() {
-		$this->initNoMajorGlitches();
+		$this->initNoGlitches();
 
 		$this->locations["Desert Palace - Lanmolas'"]->setRequirements(function($locations, $items) {
 			return $this->canEnter($locations, $items) && $items->canLightTorches()

@@ -70,7 +70,7 @@ return [
 			'header' => __('randomizer.logic.title'),
 			'sections' => [
 				[
-					'header' => __('randomizer.logic.options.NoMajorGlitches'),
+					'header' => __('randomizer.logic.options.NoGlitches'),
 					'content' => [
 						'This mode requires no advanced knowledge of the game. It’s designed as if you were playing the original game for the first time.',
 						'Under this mode, you’re prevented from getting stuck anywhere, regardless of how you use small keys within dungeons.',

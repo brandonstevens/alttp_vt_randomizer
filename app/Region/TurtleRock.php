@@ -94,7 +94,7 @@ class TurtleRock extends Region {
 	 *
 	 * @return $this
 	 */
-	public function initNoMajorGlitches() {
+	public function initNoGlitches() {
 		$this->locations["Turtle Rock - Chain Chomps"]->setRequirements(function($locations, $items) {
 			return $items->has('KeyD7');
 		});
@@ -345,7 +345,7 @@ class TurtleRock extends Region {
 	 * @return $this
 	 */
 	public function initOverworldGlitches() {
-		$this->initNoMajorGlitches();
+		$this->initNoGlitches();
 
 		$middle = function($locations, $items) {
 			return ($items->has('MagicMirror') || ($items->has('MoonPearl') && $items->canSpinSpeed()))

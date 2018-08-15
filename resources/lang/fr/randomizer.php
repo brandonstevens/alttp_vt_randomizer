@@ -29,7 +29,7 @@ return [
 	'logic' => [
 		'title' => 'Logique',
 		'options' => [
-			'NoMajorGlitches' => 'Sans Glitches',
+			'NoGlitches' => 'Sans Glitches',
 			'OverworldGlitches' => 'Glitches Monde Extérieur',
 			'MajorGlitches' => 'Glitches Majeurs',
 			'None' => 'Aucun (je sais ce que je fais)',

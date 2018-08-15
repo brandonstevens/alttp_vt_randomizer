@@ -112,7 +112,7 @@ class SkullWoods extends Region {
 	 *
 	 * @return $this
 	 */
-	public function initNoMajorGlitches() {
+	public function initNoGlitches() {
 		$this->locations["Skull Woods - Pinball Room"]->setFillRules(function($item, $locations, $items) {
 			return $item == Item::get('KeyD3');
 		});
@@ -170,7 +170,7 @@ class SkullWoods extends Region {
 	 * @return $this
 	 */
 	public function initOverworldGlitches() {
-		$this->initNoMajorGlitches();
+		$this->initNoGlitches();
 
 		$this->can_enter = function($locations, $items) {
 			return $items->has('RescueZelda')

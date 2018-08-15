@@ -1,16 +1,16 @@
-<?php namespace NoMajorGlitches;
+<?php namespace NoGlitches;
 
 use ALttP\Item;
 use ALttP\World;
 use TestCase;
 
 /**
- * @group NMG
+ * @group NoGlitches
  */
 class TurtleRockTest extends TestCase {
 	public function setUp() {
 		parent::setUp();
-		$this->world = new World('test_rules', 'NoMajorGlitches');
+		$this->world = new World('test_rules', 'NoGlitches');
 
 		$this->world->getLocation("Turtle Rock Medallion")->setItem(Item::get('Quake'));
 	}

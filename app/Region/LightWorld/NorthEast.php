@@ -67,7 +67,7 @@ class NorthEast extends Region {
 	 *
 	 * @return $this
 	 */
-	public function initNoMajorGlitches() {
+	public function initNoGlitches() {
 		$this->locations["Sahasrahla"]->setRequirements(function($locations, $items) {
 			return $items->has('PendantOfCourage');
 		});
@@ -106,7 +106,7 @@ class NorthEast extends Region {
 	 * @return $this
 	 */
 	public function initOverworldGlitches() {
-		$this->initNoMajorGlitches();
+		$this->initNoGlitches();
 
 		$this->locations["King Zora"]->setRequirements(function($locations, $items) {
 			return true;

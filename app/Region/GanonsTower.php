@@ -202,7 +202,7 @@ class GanonsTower extends Region {
 	 *
 	 * @return $this
 	 */
-	public function initNoMajorGlitches() {
+	public function initNoGlitches() {
 		$this->locations["Ganon's Tower - Bob's Torch"]->setRequirements(function($locations, $items) {
 			return $items->has('PegasusBoots');
 		});
@@ -425,7 +425,7 @@ class GanonsTower extends Region {
 	 * @return $this
 	 */
 	public function initMajorGlitches() {
-		$this->initNoMajorGlitches();
+		$this->initNoGlitches();
 
 		$this->can_enter = function($locations, $items) {
 			return $items->has('RescueZelda')
@@ -442,7 +442,7 @@ class GanonsTower extends Region {
 	 * @return $this
 	 */
 	public function initOverworldGlitches() {
-		$this->initNoMajorGlitches();
+		$this->initNoGlitches();
 
 		$this->can_enter = function($locations, $items) {
 			return $items->has('RescueZelda')

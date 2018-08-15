@@ -103,7 +103,7 @@ class South extends Region {
 	 *
 	 * @return $this
 	 */
-	public function initNoMajorGlitches() {
+	public function initNoGlitches() {
 		$this->shops["20 Rupee Cave"]->setRequirements(function($locations, $items) {
 			return $items->canLiftRocks();
 		});
@@ -193,7 +193,7 @@ class South extends Region {
 	 * @return $this
 	 */
 	public function initOverworldGlitches() {
-		$this->initNoMajorGlitches();
+		$this->initNoGlitches();
 
 		$this->locations["Hobo"]->setRequirements(function($locations, $items) {
 			return true;

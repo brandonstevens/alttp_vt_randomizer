@@ -21,6 +21,14 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase {
 
 		$app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
 
+		//$app->singleton('translator', function ($app) {
+		//	return new class {
+		//		public function getFromJson($name) {
+		//			return $name;
+		//		}
+		//	};
+		//});
+
 		return $app;
 	}
 

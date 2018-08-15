@@ -83,7 +83,7 @@ class ThievesTown extends Region {
 	 *
 	 * @return $this
 	 */
-	public function initNoMajorGlitches() {
+	public function initNoGlitches() {
 		$this->locations["Thieves' Town - Attic"]->setRequirements(function($locations, $items) {
 			return $items->has('KeyD4') && $items->has('BigKeyD4');
 		});
@@ -142,7 +142,7 @@ class ThievesTown extends Region {
 	 * @return $this
 	 */
 	public function initMajorGlitches() {
-		$this->initNoMajorGlitches();
+		$this->initNoGlitches();
 
 		$this->can_enter = function($locations, $items) {
 			return $items->has('RescueZelda')

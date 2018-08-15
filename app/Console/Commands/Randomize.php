@@ -21,7 +21,7 @@ class Randomize extends Command {
 		. ' {--spoiler : generate a spoiler file}'
 		. ' {--difficulty=normal : set difficulty}'
 		. ' {--variation=none : set variation}'
-		. ' {--logic=NoMajorGlitches : set logic}'
+		. ' {--logic=NoGlitches : set logic}'
 		. ' {--heartbeep=half : set heart beep speed}'
 		. ' {--skip-md5 : do not validate md5 of base rom}'
 		. ' {--tournament : enable tournament mode}'

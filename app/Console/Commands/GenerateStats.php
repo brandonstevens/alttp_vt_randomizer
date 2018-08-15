@@ -14,7 +14,7 @@ class GenerateStats extends Command {
 	 */
 	protected $signature = 'alttp:generatestats {output_directory : where to place generated files}'
 		. ' {--difficulty=normal : set difficulty}'
-		. ' {--logic=NoMajorGlitches : set logic}'
+		. ' {--logic=NoGlitches : set logic}'
 		. ' {--seed= : generate stats file for specific seed}'
 		. ' {--bulk=100000 : generate stats for multiple seeds}'
 		. ' {--goal=ganon : set game goal}'

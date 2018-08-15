@@ -106,7 +106,7 @@ class NorthWest extends Region {
 	 *
 	 * @return $this
 	 */
-	public function initNoMajorGlitches() {
+	public function initNoGlitches() {
 		$this->shops["Bomb Hut"]->setRequirements(function($locations, $items) {
 			return $items->canBombThings();
 		});
@@ -189,7 +189,7 @@ class NorthWest extends Region {
 	 * @return $this
 	 */
 	public function initOverworldGlitches() {
-		$this->initNoMajorGlitches();
+		$this->initNoGlitches();
 
 		$this->locations["King's Tomb"]->setRequirements(function($locations, $items) {
 			return $items->has('PegasusBoots') && ($items->canLiftDarkRocks()

@@ -70,7 +70,7 @@ return [
 			'header' => __('randomizer.logic.title'),
 			'sections' => [
 				[
-					'header' => __('randomizer.logic.options.NoMajorGlitches'),
+					'header' => __('randomizer.logic.options.NoGlitches'),
 					'content' => [
 						'Cette logique ne nécessite aucune connaissance avancée du jeu. Il est conçu comme si vous jouiez au jeu original pour la première fois.',
 						'Sous ce mode, vous ne pouvez rester bloqué où que vous soyez, quelle que soit la manière dont vous utilisez les petites clés dans les donjons.',

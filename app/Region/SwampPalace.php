@@ -87,7 +87,7 @@ class SwampPalace extends Region {
 	 *
 	 * @return $this
 	 */
-	public function initNoMajorGlitches() {
+	public function initNoGlitches() {
 		$this->locations["Swamp Palace - Entrance"]->setFillRules(function($item, $locations, $items) {
 			return $this->world->config('region.wildKeys', false) || $item == Item::get('KeyD2');
 		});
@@ -179,7 +179,7 @@ class SwampPalace extends Region {
 	 * @return $this
 	 */
 	public function initMajorGlitches() {
-		$this->initNoMajorGlitches();
+		$this->initNoGlitches();
 
 		$main = function($locations, $items) {
 			return $items->has('MoonPearl') && $items->has('MagicMirror') && $items->has('Flippers')

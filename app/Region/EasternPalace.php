@@ -80,7 +80,7 @@ class EasternPalace extends Region {
 	 *
 	 * @return $this
 	 */
-	public function initNoMajorGlitches() {
+	public function initNoGlitches() {
 		$this->locations["Eastern Palace - Big Chest"]->setRequirements(function($locations, $items) {
 			return $items->has('BigKeyP1');
 		});

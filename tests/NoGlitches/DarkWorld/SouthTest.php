@@ -1,16 +1,16 @@
-<?php namespace NoMajorGlitches\DarkWorld;
+<?php namespace NoGlitches\DarkWorld;
 
 use ALttP\Item;
 use ALttP\World;
 use TestCase;
 
 /**
- * @group NMG
+ * @group NoGlitches
  */
 class SouthTest extends TestCase {
 	public function setUp() {
 		parent::setUp();
-		$this->world = new World('test_rules', 'NoMajorGlitches');
+		$this->world = new World('test_rules', 'NoGlitches');
 	}
 
 	public function tearDown() {
@@ -30,7 +30,7 @@ class SouthTest extends TestCase {
 		if (count($except)) {
 			$this->collected = $this->allItemsExcept($except);
 		}
-	
+
 		$this->addCollected($items);
 
 		$this->assertEquals($access, $this->world->getLocation($location)

@@ -50,7 +50,7 @@ class West extends Region {
 	 *
 	 * @return $this
 	 */
-	public function initNoMajorGlitches() {
+	public function initNoGlitches() {
 		$this->locations["Old Man"]->setRequirements(function($locations, $items) {
 			return $items->has('Lamp', $this->world->config('item.require.Lamp', 1));
 		});
@@ -99,7 +99,7 @@ class West extends Region {
 	 * @return $this
 	 */
 	public function initOverworldGlitches() {
-		$this->initNoMajorGlitches();
+		$this->initNoGlitches();
 
 		$this->locations["Ether Tablet"]->setRequirements(function($locations, $items) {
 			return $items->has('BookOfMudora') && ($items->hasSword(2)

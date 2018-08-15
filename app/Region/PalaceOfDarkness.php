@@ -95,7 +95,7 @@ class PalaceOfDarkness extends Region {
 	 *
 	 * @return $this
 	 */
-	public function initNoMajorGlitches() {
+	public function initNoGlitches() {
 		$this->locations["Palace of Darkness - The Arena - Ledge"]->setRequirements(function($locations, $items) {
 			return $items->canShootArrows();
 		});
@@ -200,7 +200,7 @@ class PalaceOfDarkness extends Region {
 	 * @return $this
 	 */
 	public function initMajorGlitches() {
-		$this->initNoMajorGlitches();
+		$this->initNoGlitches();
 
 		$this->can_enter = function($locations, $items) {
 			return $items->has('RescueZelda')

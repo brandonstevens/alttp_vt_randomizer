@@ -83,7 +83,7 @@ class NorthEast extends Region {
 	 *
 	 * @return $this
 	 */
-	public function initNoMajorGlitches() {
+	public function initNoGlitches() {
 		$this->shops["Dark World Potion Shop"]->setRequirements(function($locations, $items) {
 			return $items->has('MoonPearl')
 				&& ($items->canLiftRocks() || $items->has('Hammer'));
@@ -257,7 +257,7 @@ class NorthEast extends Region {
 	 * @return $this
 	 */
 	public function initOverworldGlitches() {
-		$this->initNoMajorGlitches();
+		$this->initNoGlitches();
 
 		$this->locations["Catfish"]->setRequirements(function($locations, $items) {
 			return $items->has('MoonPearl')

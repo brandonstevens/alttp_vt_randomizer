@@ -143,7 +143,7 @@ export default {
 				difficulty: {value: 'normal', name: this.$i18n.t('entrance.difficulty.options.normal')},
 				goal: {value: 'ganon', name: this.$i18n.t('entrance.goal.options.ganon')},
 				shuffle: {value: 'full', name: this.$i18n.t('entrance.shuffle.options.full')},
-				logic: {value: 'NoMajorGlitches', name: this.$i18n.t('entrance.logic.options.NoMajorGlitches')},
+				logic: {value: 'NoGlitches', name: this.$i18n.t('entrance.logic.options.NoGlitches')},
 				variation: {value: 'none', name: this.$i18n.t('entrance.variation.options.none')},
 				tournament: false,
 				spoilers: false,

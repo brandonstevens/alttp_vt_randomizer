@@ -34,7 +34,7 @@ class World {
 	 *
 	 * @return void
 	 */
-	public function __construct($difficulty = 'normal', $logic = 'NoMajorGlitches', $goal = 'ganon', $variation = 'none') {
+	public function __construct($difficulty = 'normal', $logic = 'NoGlitches', $goal = 'ganon', $variation = 'none') {
 		$this->difficulty = $difficulty;
 		$this->variation = $variation;
 		$this->logic = $logic;

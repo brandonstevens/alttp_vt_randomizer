@@ -13,7 +13,7 @@ class Distribution extends Command {
 	 */
 	protected $signature = 'alttp:distribution {type} {thing} {itterations=1}'
 		. ' {--difficulty=normal : set difficulty}'
-		. ' {--logic=NoMajorGlitches : set logic}'
+		. ' {--logic=NoGlitches : set logic}'
 		. ' {--goal=ganon : set game goal}'
 		. ' {--variation=none : set game variation}'
 		. ' {--mode=standard : set game mode}'
