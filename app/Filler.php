@@ -17,7 +17,7 @@ abstract class Filler {
 	 */
 	public static function factory($type = null, World $world = null) : self {
 		if (!$world) {
-			$world = new World;
+			$world = World::factory();
 		}
 
 		switch ($type) {

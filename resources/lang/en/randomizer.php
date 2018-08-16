@@ -41,6 +41,7 @@ return [
 		'options' => [
 			'standard' => 'Standard',
 			'open' => 'Open',
+			'inverted' => 'Inverted',
 		],
 	],
 	'weapons' => [

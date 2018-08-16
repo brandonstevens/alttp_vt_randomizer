@@ -10,7 +10,7 @@ use TestCase;
 class MiseryMireTest extends TestCase {
 	public function setUp() {
 		parent::setUp();
-		$this->world = new World('test_rules', 'NoGlitches');
+		$this->world = World::factory('standard', 'test_rules', 'NoGlitches');
 
 		$this->world->getLocation("Misery Mire Medallion")->setItem(Item::get('Ether'));
 	}

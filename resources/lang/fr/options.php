@@ -22,6 +22,12 @@ return [
 						. '</ul>',
 					],
 				],
+				[
+					'header' => __('randomizer.mode.options.inverted'),
+					'content' => [
+						'en attente de texte en anglais...',
+					],
+				],
 			],
 		],
 		'weapons' => [

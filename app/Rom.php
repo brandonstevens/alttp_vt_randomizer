@@ -139,7 +139,7 @@ class Rom {
 	 * @return World
 	 */
 	public function writeVanilla() {
-		$world = new World('vanilla', 'NoGlitches', 'ganon');
+		$world = World::factory('standard', 'vanilla', 'NoGlitches', 'ganon');
 		$world->setVanilla();
 
 		foreach ($world->getLocations() as $location) {
@@ -692,7 +692,7 @@ class Rom {
 		$this->setMaxArrows($starting_arrow_capacity);
 		$this->setMaxBombs($starting_bomb_capacity);
 
-		if (config('alttp.mode.state') != 'swordless' && $equipment[0x359]) {
+		if (config('alttp.mode.weapons') != 'swordless' && $equipment[0x359]) {
 			$this->write(0x180043, pack('C*', $equipment[0x359])); // write starting sword
 		}
 

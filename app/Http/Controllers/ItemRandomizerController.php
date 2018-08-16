@@ -71,7 +71,7 @@ class ItemRandomizerController extends Controller {
 				$spoiler_meta['notes'] = $purifier->purify($markdowned);
 			}
 			config(array_dot($request->input('data')));
-			$world = new World($difficulty, $logic, $goal, $variation);
+			$world = World::facotry($game_mode, $difficulty, $logic, $goal, $variation);
 			$locations = $world->getLocations();
 			foreach ($request->input('l', []) as $location => $item) {
 				$decoded_location = base64_decode($location);

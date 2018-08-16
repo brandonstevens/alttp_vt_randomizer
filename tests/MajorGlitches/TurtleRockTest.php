@@ -10,7 +10,7 @@ use TestCase;
 class TurtleRockTest extends TestCase {
 	public function setUp() {
 		parent::setUp();
-		$this->world = new World('test_rules', 'MajorGlitches');
+		$this->world = World::factory('standard', 'test_rules', 'MajorGlitches');
 
 		$this->world->getLocation("Turtle Rock Medallion")->setItem(Item::get('Quake'));
 	}

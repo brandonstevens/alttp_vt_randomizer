@@ -186,7 +186,7 @@ class Region {
 	}
 
 	/**
-	 * Initalize the No Major Glitches logic for the Region
+	 * Initalize the No Glitches logic for the Region
 	 *
 	 * @return $this
 	 */

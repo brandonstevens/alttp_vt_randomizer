@@ -389,7 +389,7 @@
 		<ul>
 			<li>Removed auto lamp cone everywhere except Sewers</li>
 		</ul>
-		<h3>No Major Glitches (Casual)</h3>
+		<h3>No Glitches (Casual)</h3>
 		<ul>
 			<li>Pendants and crystals are now fully randomized between the 3 Light World and 7 Dark World dungeons<ul>
 				<li>The map correctly shows where pendants and crystals are located</li>

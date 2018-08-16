@@ -55,7 +55,7 @@ class Randomizer {
 		$this->variation = $variation;
 		$this->logic = $logic;
 		$this->goal = $goal;
-		$this->world = new World($difficulty, $logic, $goal, $variation);
+		$this->world = World::factory(config('alttp.mode.state'), $difficulty, $logic, $goal, $variation);
 		$this->seed = new Seed;
 		$this->starting_equipment = new ItemCollection([
 			Item::get('BombUpgrade10'),

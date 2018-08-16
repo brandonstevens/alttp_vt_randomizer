@@ -10,7 +10,7 @@ use TestCase;
 class HyruleCastleEscapeTest extends TestCase {
 	public function setUp() {
 		parent::setUp();
-		$this->world = new World('test_rules', 'NoGlitches');
+		$this->world = World::factory('standard', 'test_rules', 'NoGlitches');
 	}
 
 	public function tearDown() {

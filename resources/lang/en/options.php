@@ -22,6 +22,12 @@ return [
 						. '</ul>',
 					],
 				],
+				[
+					'header' => __('randomizer.mode.options.inverted'),
+					'content' => [
+						'The whole world is flipped turned upsidedown. More Copy to follow...',
+					],
+				],
 			],
 		],
 		'weapons' => [

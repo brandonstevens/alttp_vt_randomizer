@@ -670,6 +670,7 @@ return [
 			'modes' => [
 				'standard' => 'Standard',
 				'open' => 'Open',
+				'inverted' => 'Inverted',
 			],
 			'weapons' => [
 				'randomized' => 'Randomized',

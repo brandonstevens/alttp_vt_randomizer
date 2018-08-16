@@ -8,7 +8,7 @@ class RegionTest extends TestCase {
 	public function setUp() {
 		parent::setUp();
 
-		$this->region = new Region(new World('test_rules', 'NoGlitches'));
+		$this->region = new Region(World::factory('standard', 'test_rules', 'NoGlitches'));
 	}
 
 	public function tearDown() {

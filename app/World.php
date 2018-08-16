@@ -9,7 +9,7 @@ use Log;
 /**
  * This is the container for all the regions and locations one can find items in the game.
  */
-class World {
+abstract class World {
 	protected $difficulty;
 	protected $variation;
 	protected $logic;
@@ -41,35 +41,6 @@ class World {
 		$this->goal = $goal;
 		$this->pre_collected_items = new ItemCollection([], $this);
 
-		$this->regions = [
-			'North East Light World' => new Region\LightWorld\NorthEast($this),
-			'North West Light World' => new Region\LightWorld\NorthWest($this),
-			'South Light World' => new Region\LightWorld\South($this),
-			'Escape' => new Region\HyruleCastleEscape($this),
-			'Eastern Palace' => new Region\EasternPalace($this),
-			'Desert Palace' => new Region\DesertPalace($this),
-			'West Death Mountain' => new Region\LightWorld\DeathMountain\West($this),
-			'East Death Mountain' => new Region\LightWorld\DeathMountain\East($this),
-			'Tower of Hera' => new Region\TowerOfHera($this),
-			'Hyrule Castle Tower' => new Region\HyruleCastleTower($this),
-			'East Dark World Death Mountain' => new Region\DarkWorld\DeathMountain\East($this),
-			'West Dark World Death Mountain' => new Region\DarkWorld\DeathMountain\West($this),
-			'North East Dark World' => new Region\DarkWorld\NorthEast($this),
-			'North West Dark World' => new Region\DarkWorld\NorthWest($this),
-			'South Dark World' => new Region\DarkWorld\South($this),
-			'Mire' => new Region\DarkWorld\Mire($this),
-			'Palace of Darkness' => new Region\PalaceOfDarkness($this),
-			'Swamp Palace' => new Region\SwampPalace($this),
-			'Skull Woods' => new Region\SkullWoods($this),
-			'Thieves Town' => new Region\ThievesTown($this),
-			'Ice Palace' => new Region\IcePalace($this),
-			'Misery Mire' => new Region\MiseryMire($this),
-			'Turtle Rock' => new Region\TurtleRock($this),
-			'Ganons Tower' => new Region\GanonsTower($this),
-			'Medallions' => new Region\Medallions($this),
-			'Fountains' => new Region\Fountains($this),
-		];
-
 		$this->locations = new LocationCollection;
 		$this->shops = new ShopCollection;
 
@@ -98,6 +69,18 @@ class World {
 			return $collected_items->has('Triforce')
 				|| $collected_items->has('TriforcePiece', $this->config('item.Goal.Required'));
 		};
+	}
+
+	static public function factory(string $type = null, $difficulty = 'normal', $logic = 'NoGlitches', $goal = 'ganon', $variation = 'none') {
+		switch ($type) {
+			case 'open':
+				return new World\Open($difficulty, $logic, $goal, $variation);
+			case 'inverted':
+				return new World\Inverted($difficulty, $logic, $goal, $variation);
+			case 'standard':
+			default:
+				return new World\Standard($difficulty, $logic, $goal, $variation);
+		}
 	}
 
 	/**
