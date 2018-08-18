@@ -6,7 +6,6 @@ return [
 	'OverworldGlitches' => [
 		'canSuperBunny' => true,
 		'canFakeFlipper' => true,
-		'canBecomeDWLink' => true,
 		'canSuperSpeed' => true,
 		'canMirrorClip' => true,
 		'canWaterwalk' => true,
@@ -24,6 +23,7 @@ return [
 		'FakeFlute' => false,
 		'NavigateDarkRooms' => false,
 		'SpinSpeedClip' => false,
+		'canWaterFairyRevive' => false,
 	],
 ];
 /*

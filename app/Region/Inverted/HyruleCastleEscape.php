@@ -20,10 +20,8 @@ class HyruleCastleEscape extends Region\Open\HyruleCastleEscape {
 		parent::initNoGlitches();
 
 		$this->can_enter = function($locations, $items) {
-			// @TODO: implement
-
-			return true;
-
+			return ($this->world->config('canDungeonRevive', false) || $items->has('MoonPearl'))
+				&& $this->world->getRegion('North East Light World')->canEnter($locations, $items);
 		};
 
 		return $this;

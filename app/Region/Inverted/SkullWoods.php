@@ -20,10 +20,23 @@ class SkullWoods extends Region\Standard\SkullWoods {
 	public function initNoGlitches() {
 		parent::initNoGlitches();
 
-		$this->can_enter = function($locations, $items) {
-			// @TODO: implement
+		// @TODO: figure out a better way of the moon pearl requirement in Standard Region file.
+		$this->locations["Skull Woods - Bridge Room"]->setRequirements(function($locations, $items) {
+			return $items->has('FireRod');
+		});
 
-			return true;
+		$this->locations["Skull Woods - Mothula"]->setRequirements(function($locations, $items) {
+			return $this->canEnter($locations, $items)
+				&& $items->has('FireRod')
+				&& ($this->world->config('mode.weapons') == 'swordless' || $items->hasSword())
+				&& $items->has('KeyD3', 3)
+				&& $this->boss->canBeat($items, $locations)
+				&& (!$this->world->config('region.wildCompasses', false) || $items->has('CompassD3'))
+				&& (!$this->world->config('region.wildMaps', false) || $items->has('MapD3'));
+		});
+
+		$this->can_enter = function($locations, $items) {
+			return $this->world->getRegion('North West Dark World')->canEnter($locations, $items);
 		};
 
 		return $this;

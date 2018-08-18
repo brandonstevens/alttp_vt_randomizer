@@ -109,9 +109,9 @@ class Boss {
 	 *
 	 * @return void
 	 */
-	public function __construct(string $name, string $ename, callable $can_beat) {
+	public function __construct(string $name, string $ename = null, callable $can_beat = null) {
 		$this->name = $name;
-		$this->enemizer_name = $ename;
+		$this->enemizer_name = $ename ?? $name;
 		$this->can_beat = $can_beat;
 	}
 

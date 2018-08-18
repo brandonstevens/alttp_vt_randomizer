@@ -21,9 +21,9 @@ class TowerOfHera extends Region\Standard\TowerOfHera {
 		parent::initNoGlitches();
 
 		$this->can_enter = function($locations, $items) {
-			// @TODO: implement
-
-			return true;
+			return $items->has('MoonPearl')
+				&& $items->has('Hammer')
+				&& $this->world->getRegion('East Death Mountain')->canEnter($locations, $items);
 		};
 
 		return $this;

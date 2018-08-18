@@ -21,9 +21,7 @@ class ThievesTown extends Region\Standard\ThievesTown {
 		parent::initNoGlitches();
 
 		$this->can_enter = function($locations, $items) {
-			// @TODO: implement
-
-			return true;
+			return $this->world->getRegion('North West Dark World')->canEnter($locations, $items);
 		};
 
 		return $this;

@@ -2396,6 +2396,18 @@ class Rom {
 		return $this;
 	}
 
+	public function setGameState(string $state = null) {
+		switch ($state) {
+			case 'open':
+				return $this->setOpenMode(true);
+			case 'inverted':
+				return $this->setInvertedMode(true);
+			case 'standard':
+			default:
+				return $this;
+		}
+	}
+
 	/**
 	 * Set Game in Open Mode. (Post rain state with Escape undone)
 	 *
@@ -2408,6 +2420,40 @@ class Rom {
 		$this->setSewersLampCone(!$enable);
 		$this->setLightWorldLampCone(false);
 		$this->setDarkWorldLampCone(false);
+
+		return $this;
+	}
+
+	/**
+	 * Set Game in Inverted Mode. (Post rain state with Escape undone and in the Dark Wold with a whole slew of other crap)
+	 *
+	 * @param bool $enable switch on or off
+	 *
+	 * @return $this
+	 */
+	public function setInvertedMode(bool $enable = true) : self {
+		$this->write(snes_to_pc(0x30804A), pack('C*', 0x01)); // ; main toggle
+		$this->write(snes_to_pc(0x0283E0), pack('C*', 0xF0)); // ; residual portal
+		$this->write(snes_to_pc(0x02B34D), pack('C*', 0xF0)); // ; residual portal
+		$this->write(snes_to_pc(0x06DB78), pack('C*', 0x8B)); // ; residual portal
+		$this->write(snes_to_pc(0x05AF79), pack('C*', 0xF0)); // ; vortex
+		$this->write(snes_to_pc(0x0DB3C5), pack('C*', 0xC6)); // ; vortex
+		$this->write(snes_to_pc(0x07A3F4), pack('C*', 0xF0)); // ; duck
+		$this->write(snes_to_pc(0x07A3F4), pack('C*', 0xF0)); // ; duck
+		$this->write(snes_to_pc(0x02E849), pack('S*', 0x0043, 0x0056, 0x0058, 0x006C, 0x006F, 0x0070, 0x007B, 0x007F)); // ; Dark World Flute Spots
+		$this->write(snes_to_pc(0x02E8D5), pack('S*', 0x07C8)); // ; nudge flute spot 3 out of gargoyle statue
+		$this->write(snes_to_pc(0x02E8F7), pack('S*', 0x01F8)); // ; nudge flute spot 3 out of gargoyle statue
+		$this->write(snes_to_pc(0x07A943), pack('C*', 0xF0)); // ; Dark to light world mirror
+		$this->write(snes_to_pc(0x07A96D), pack('C*', 0xD0)); // ; residual portal?
+		$this->write(snes_to_pc(0x07A9A7), pack('C*', 0xF0)); // ; residual portal?
+		$this->write(snes_to_pc(0x07A9F3), pack('C*', 0xF0)); // ; residual portal?
+		$this->write(snes_to_pc(0x07AA3A), pack('C*', 0xD0)); // ; residual portal?
+		$this->write(snes_to_pc(0x08D40C), pack('C*', 0xD0)); // ; morph poof
+		$this->write(snes_to_pc(0x308174), pack('C*', 0x01)); // ; ER's Fix fake worlds fix. Currently needed for inverted
+
+		$this->write(0x15B8C, pack('C', 0x6C)); // update link's house exit to be dark world (All the other exit table values can be reused)
+		$this->write(0xDBB73 + 0x00, pack('C', 0x53)); // entering links house door leads to bomb shop
+		$this->write(0xDBB73 + 0x52, pack('C', 0x01)); // entering bomb shop leads to links house
 
 		return $this;
 	}
@@ -2657,19 +2703,6 @@ class Rom {
 	 */
 	public function setSeedString(string $seed) : self {
 		$this->write(0x7FC0, substr($seed, 0, 21));
-
-		return $this;
-	}
-
-	/**
-	 * Write a hash of Logic version in ROM.
-	 *
-	 * @param array $byte byte array that relates to logic
-	 *
-	 * @return $this
-	 */
-	public function writeRandomizerLogicHash(array $bytes) : self {
-		$this->write(0x187F00, pack('C*', ...$bytes));
 
 		return $this;
 	}

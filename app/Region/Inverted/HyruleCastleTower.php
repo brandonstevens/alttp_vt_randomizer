@@ -20,9 +20,8 @@ class HyruleCastleTower extends Region\Standard\HyruleCastleTower {
 		parent::initNoGlitches();
 
 		$this->can_enter = function($locations, $items) {
-			// @TODO: implement
-
-			return true;
+			return $items->canKillMostThings(8)
+				&& $this->world->getRegion('West Dark World Death Mountain')->canEnter($locations, $items);
 		};
 
 		return $this;

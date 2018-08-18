@@ -18,7 +18,19 @@ class GanonsTower extends Region\Standard\GanonsTower {
 	 * @return $this
 	 */
 	public function initNoGlitches() {
-		// @TODO: implement
+		parent::initNoGlitches();
+		
+		$this->can_enter = function($locations, $items) {
+			return ($this->world->config('canDungeonRevive', false) || $items->has('MoonPearl'))
+				&& $items->has('Crystal1')
+				&& $items->has('Crystal2')
+				&& $items->has('Crystal3')
+				&& $items->has('Crystal4')
+				&& $items->has('Crystal5')
+				&& $items->has('Crystal6')
+				&& $items->has('Crystal7')
+				&& $this->world->getRegion('North East Light World')->canEnter($locations, $items);
+		};
 
 		return $this;
 	}

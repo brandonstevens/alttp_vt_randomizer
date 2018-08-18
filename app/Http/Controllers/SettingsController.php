@@ -133,7 +133,7 @@ class SettingsController extends Controller {
 
 	public function customizer(Request $request) {
 		//return Cache::rememberForever('customizer_settings', function() {
-			$world = new World;
+			$world = World::factory();
 			$items = Item::all();
 			$sprites = Sprite::all();
 			return [

@@ -19,9 +19,88 @@ class NorthWest extends Region\Standard\LightWorld\NorthWest {
 	 * @return $this
 	 */
 	public function initNoGlitches() {
+		// Bunny can pull pedestal
+		$this->locations["Master Sword Pedestal"]->setRequirements(function($locations, $items) {
+			return $items->has('PendantOfPower')
+				&& $items->has('PendantOfWisdom')
+				&& $items->has('PendantOfCourage');
+		});
+
+		$this->locations["King's Tomb"]->setRequirements(function($locations, $items) {
+			return $items->has('MoonPearl') && $items->canLiftDarkRocks() && $items->has('PegasusBoots');
+		});
+
+		$this->locations["Kakariko Tavern"]->setRequirements(function($locations, $items) {
+			return $items->has('MoonPearl');
+		});
+
+		$this->locations["Chicken House"]->setRequirements(function($locations, $items) {
+			return $items->has('MoonPearl') && $items->canBombThings();
+		});
+
+		$this->locations["Kakariko Well - Top"]->setRequirements(function($locations, $items) {
+			return $items->has('MoonPearl') && $items->canBombThings();
+		});
+
+		$this->locations["Kakariko Well - Left"]->setRequirements(function($locations, $items) {
+			return $items->has('MoonPearl');
+		});
+
+		$this->locations["Kakariko Well - Middle"]->setRequirements(function($locations, $items) {
+			return $items->has('MoonPearl');
+		});
+
+		$this->locations["Kakariko Well - Right"]->setRequirements(function($locations, $items) {
+			return $items->has('MoonPearl');
+		});
+
+		$this->locations["Kakariko Well - Bottom"]->setRequirements(function($locations, $items) {
+			return $items->has('MoonPearl');
+		});
+
+		$this->locations["Blind's Hideout - Top"]->setRequirements(function($locations, $items) {
+			return $items->has('MoonPearl') && $items->canBombThings();
+		});
+
+		$this->locations["Blind's Hideout - Left"]->setRequirements(function($locations, $items) {
+			return $items->has('MoonPearl');
+		});
+
+		$this->locations["Blind's Hideout - Right"]->setRequirements(function($locations, $items) {
+			return $items->has('MoonPearl');
+		});
+
+		$this->locations["Blind's Hideout - Far Left"]->setRequirements(function($locations, $items) {
+			return $items->has('MoonPearl');
+		});
+
+		$this->locations["Blind's Hideout - Far Right"]->setRequirements(function($locations, $items) {
+			return $items->has('MoonPearl');
+		});
+
+		$this->locations["Pegasus Rocks"]->setRequirements(function($locations, $items) {
+			return $items->has('MoonPearl') && $items->has('PegasusBoots');
+		});
+
+		$this->locations["Magic Bat"]->setRequirements(function($locations, $items) {
+			return $items->has('MoonPearl') && $items->has('Hammer') && $items->has('Powder');
+		});
+
+		$this->locations["Sick Kid"]->setRequirements(function($locations, $items) {
+			return $items->hasBottle();
+		});
+
+		$this->locations["Lumberjack Tree"]->setRequirements(function($locations, $items) {
+			return $items->has('MoonPearl') && $items->has('DefeatAgahnim') && $items->has('PegasusBoots');
+		});
+
+		$this->locations["Graveyard Ledge"]->setRequirements(function($locations, $items) {
+			return $items->has('MoonPearl') && $items->canBombThings();
+		});
+
 		$this->can_enter = function($locations, $items) {
-			return ($items->has('Hammer') && $items->canLiftRocks())
-				|| $items->canLiftDarkRocks();
+			return ($items->has('MoonPearl') && (($items->has('Hammer') && $items->canLiftRocks()) || $items->canLiftDarkRocks())) // Portal by Lost woods
+				|| $items->has('DefeatAgahnim');
 		};
 
 		return $this;

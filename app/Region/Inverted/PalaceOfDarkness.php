@@ -21,9 +21,7 @@ class PalaceOfDarkness extends Region\Standard\PalaceOfDarkness {
 		parent::initNoGlitches();
 
 		$this->can_enter = function($locations, $items) {
-			// @TODO: implement
-
-			return true;
+			return $this->world->getRegion('North East Dark World')->canEnter($locations, $items);
 		};
 
 		return $this;

@@ -23,10 +23,8 @@ class DesertPalace extends Region\Standard\DesertPalace {
 		// Bunny can use Book!
 		$this->can_enter = function($locations, $items) {
 			return ($this->world->config('canDungeonRevive', false) || $items->has('MoonPearl'))
-				&& (($items->has('BookOfMudora')
-						&& $this->world->getRegion('South Light World')->canEnter($locations, $items))
-					|| ($items->has('Mirror')
-						&& $this->world->getRegion('Mire')->canEnter($locations, $items)));
+				&& ($items->has('BookOfMudora')
+					&& $this->world->getRegion('South Light World')->canEnter($locations, $items));
 		};
 
 		return $this;
