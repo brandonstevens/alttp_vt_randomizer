@@ -19,7 +19,10 @@ class NorthWest extends Region\Standard\LightWorld\NorthWest {
 	 * @return $this
 	 */
 	public function initNoGlitches() {
-		// @TODO: implement
+		$this->can_enter = function($locations, $items) {
+			return ($items->has('Hammer') && $items->canLiftRocks())
+				|| $items->canLiftDarkRocks();
+		};
 
 		return $this;
 	}

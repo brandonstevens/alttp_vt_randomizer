@@ -369,6 +369,10 @@ class ItemCollection extends Collection {
 	 * @return bool
 	 */
 	public function canFly() {
+		if ($this->world instanceof World\Inverted
+			&& !($this->has('MoonPearl') && $this->world->getRegion('North West Light World')->canEnter([], $this))) {
+			return false;
+		}
 		return $this->has('OcarinaActive') || $this->has('OcarinaInactive');
 	}
 

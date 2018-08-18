@@ -19,7 +19,9 @@ class Mire extends Region\Standard\DarkWorld\Mire {
 	 * @return $this
 	 */
 	public function initNoGlitches() {
-		// @TODO: implement
+		$this->can_enter = function($locations, $items) {
+			return $items->canFly();
+		};
 
 		return $this;
 	}

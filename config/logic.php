@@ -4,7 +4,16 @@ return [
 	'NoGlitches' => [
 	],
 	'OverworldGlitches' => [
-		'SpinSpeedClip' => true,
+		'canSuperBunny' => true,
+		'canFakeFlipper' => true,
+		'canBecomeDWLink' => true,
+		'canSuperSpeed' => true,
+		'canMirrorClip' => true,
+		'canWaterwalk' => true,
+		'canBunnySurf' => true,
+		'canBunnyRevive' => true,
+		'canMirrorWrap' => true,
+		'canDungeonRevive' => true,
 	],
 	'MajorGlitches' => [
 		'FakeFlute' => true,
@@ -17,3 +26,31 @@ return [
 		'SpinSpeedClip' => false,
 	],
 ];
+/*
+canSuperBunny
+canBecomeDWLink
+canSuperSpeed
+canMirrorClip
+canWaterwalk
+canBunnySurf
+canBunnyRevive
+canOWYBA
+canMirrorWrap
+canFakeFlute
+canOneFrameClipOW
+canDungeonRevive
+canBombJump
+canBombClip
+canOneFrameClipUW
+
+canYBA
+canSpinYBA
+canMirrorDoor
+canSpinMirrorDoor
+canDoorJuke
+canSomariaGlitch
+canAutoSomaria
+canQuadrantGlitch
+canSpinSomaria
+canAutoYBA
+*/

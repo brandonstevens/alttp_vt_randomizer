@@ -20,10 +20,13 @@ class DesertPalace extends Region\Standard\DesertPalace {
 	public function initNoGlitches() {
 		parent::initNoGlitches();
 
+		// Bunny can use Book!
 		$this->can_enter = function($locations, $items) {
-			// @TODO: implement
-
-			return true;
+			return ($this->world->config('canDungeonRevive', false) || $items->has('MoonPearl'))
+				&& (($items->has('BookOfMudora')
+						&& $this->world->getRegion('South Light World')->canEnter($locations, $items))
+					|| ($items->has('Mirror')
+						&& $this->world->getRegion('Mire')->canEnter($locations, $items)));
 		};
 
 		return $this;

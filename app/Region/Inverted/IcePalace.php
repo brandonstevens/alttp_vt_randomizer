@@ -21,9 +21,9 @@ class IcePalace extends Region\Standard\IcePalace {
 		parent::initNoGlitches();
 
 		$this->can_enter = function($locations, $items) {
-			// @TODO: implement
-
-			return true;
+			return ($this->world->config('canFakeFlipper', false) || $items->has('Flippers'))
+				&& $items->canMeltThings()
+				&& $this->world->getRegion('South Dark World')->canEnter($locations, $items);
 		};
 
 		return $this;
