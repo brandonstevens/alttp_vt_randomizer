@@ -57,6 +57,16 @@ return [
 			'root'   => resource_path('sprites'),
 		],
 
+		'images' => [
+			'driver' => 's3',
+			'key' => env('AWS_ACCESS_KEY_ID'),
+			'secret' => env('AWS_SECRET_ACCESS_KEY'),
+			'region' => env('AWS_DEFAULT_REGION'),
+			'bucket' => env('AWS_IMAGE_BUCKET'),
+			'url' => env('AWS_IMAGE_URL'),
+			'visibility' => 'public',
+		],
+
 		'rackspace' => [
 			'driver'    => 'rackspace',
 			'username'  => env('RACKSPACE_USER', ''),

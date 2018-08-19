@@ -226,12 +226,12 @@ Artisan::command('alttp:sprpub', function() {
 		if (preg_match('/\.gitignore$/', $file)) {
 			continue;
 		}
-		if (Storage::disk('rackspace')->has($file)) {
+		if (Storage::disk('images')->has($file)) {
 			continue;
 		}
 
 		$this->info($file);
-		Storage::disk('rackspace')->put($file, Storage::disk('sprites')->get($file), [
+		Storage::disk('images')->put($file, Storage::disk('sprites')->get($file), [
 			'headers' => [
 				'Access-Control-Expose-Headers' => 'Access-Control-Allow-Origin',
 				'Access-Control-Allow-Origin' => '*',

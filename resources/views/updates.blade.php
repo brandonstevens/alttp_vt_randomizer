@@ -6,6 +6,9 @@
 	<ul>
 		<li>Front end rewrite into Vue framework... you have no idea how much went into this.</li>
 		<li>Site translations! De rien!</li>
+		<li>Added new player options<br />
+			<img src="https://s3.us-east-2.amazonaws.com/alttpr/sprites.30.lg.png"
+				alt="Link sprite options" style="width:50%" /></li>
 	</ul>
 </div>
 
@@ -53,7 +56,7 @@
 		<li>Added quick swap functionality</li>
 		<li>If you use a headered rom, the site will try to strip that header out before use (thanks Myramong)</li>
 		<li>Added new player options<br />
-			<img src="https://08b3693090b88cc23068-781cc7889ba8761758717cf14b1800b4.ssl.cf2.rackcdn.com/sprites.29.lg.png"
+			<img src="https://s3.us-east-2.amazonaws.com/alttpr/sprites.29.lg.png"
 				alt="Link sprite options" style="width:50%" /></li>
 	</ul>
 	<div class="card border-info mt-4">
