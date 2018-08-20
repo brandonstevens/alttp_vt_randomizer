@@ -14,6 +14,7 @@ class EntranceRandomizer extends Randomizer {
 	const VERSION = '0.6.1';
 	private $spoiler;
 	private $patch;
+	protected $config = [];
 	protected $shuffle;
 	protected $timer_mode;
 	protected $keysanity;

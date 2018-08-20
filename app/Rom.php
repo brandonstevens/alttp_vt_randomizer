@@ -9,8 +9,8 @@ use Log;
  * Wrapper for ROM file
  */
 class Rom {
-	const BUILD = '2018-08-05';
-	const HASH = 'f45c97c2c396fc57577129f938248fe6';
+	const BUILD = '2018-08-18';
+	const HASH = 'a0dd02ac028279dea66600402e5aaa7a';
 	const SIZE = 2097152;
 	static private $digit_gfx = [
 		0 => 0x30,
@@ -2397,6 +2397,7 @@ class Rom {
 	}
 
 	public function setGameState(string $state = null) {
+		$this->setOpenMode(false);
 		switch ($state) {
 			case 'open':
 				return $this->setOpenMode(true);
@@ -2432,6 +2433,9 @@ class Rom {
 	 * @return $this
 	 */
 	public function setInvertedMode(bool $enable = true) : self {
+		// this mode is based on open mode ;)
+		$this->setOpenMode($enable);
+
 		$this->write(snes_to_pc(0x30804A), pack('C*', 0x01)); // ; main toggle
 		$this->write(snes_to_pc(0x0283E0), pack('C*', 0xF0)); // ; residual portal
 		$this->write(snes_to_pc(0x02B34D), pack('C*', 0xF0)); // ; residual portal
@@ -2449,11 +2453,116 @@ class Rom {
 		$this->write(snes_to_pc(0x07A9F3), pack('C*', 0xF0)); // ; residual portal?
 		$this->write(snes_to_pc(0x07AA3A), pack('C*', 0xD0)); // ; residual portal?
 		$this->write(snes_to_pc(0x08D40C), pack('C*', 0xD0)); // ; morph poof
-		$this->write(snes_to_pc(0x308174), pack('C*', 0x01)); // ; ER's Fix fake worlds fix. Currently needed for inverted
+		$this->setFixFakeWorld($enable); // ; ER's Fix fake worlds fix. Currently needed for inverted
 
 		$this->write(0x15B8C, pack('C', 0x6C)); // update link's house exit to be dark world (All the other exit table values can be reused)
 		$this->write(0xDBB73 + 0x00, pack('C', 0x53)); // entering links house door leads to bomb shop
 		$this->write(0xDBB73 + 0x52, pack('C', 0x01)); // entering bomb shop leads to links house
+
+		// swap GT and AT entrances
+		$this->write(0xDBB73 + 0x23, pack('C', 0x37)); // entering AT Door Leads to GT
+		$this->write(0xDBB73 + 0x36, pack('C', 0x24)); // entering GT Door Leads to AT
+		$this->write(0x15AEE + 2*0x38, pack('S*', 0x00e0)); // exiting AT leads to GT
+		$this->write(0x15AEE + 2*0x25, pack('S*', 0x000c)); // exiting GT leads to AT
+
+		// Bumper Cave (Bottom) => Old Man Cave (West)
+		$this->write(0xDBB73 + 0x15, pack('C', 0x06));
+		$this->write(0x15AEE + 2*0x17, pack('S*', 0x00F0));
+
+		// Old Man Cave (West) => Bumper Cave (Bottom)
+		$this->write(0xDBB73 + 0x05, pack('C', 0x16));
+		$this->write(0x15AEE + 2*0x07, pack('S*', 0x00FB));
+
+		// Death Mountain Return Cave (West) => Bumper Cave (Top)
+		$this->write(0xDBB73 + 0x2D, pack('C', 0x17));
+		$this->write(0x15AEE + 2*0x2F, pack('S*', 0x00EB));
+
+		// Old Man Cave (East) => Death Mountain Return Cave (West)
+		$this->write(0xDBB73 + 0x06, pack('C', 0x2E));
+		$this->write(0x15AEE + 2*0x08, pack('S*', 0x00e6));
+
+		// Bumper Cave (Top) => Dark Death Mountain Fairy
+		$this->write(0xDBB73 + 0x16, pack('C', 0x5E));
+
+		// Dark Death Mountain Healer Fairy => Old Man Cave (East)
+		$this->write(0xDBB73 + 0x6F, pack('C', 0x07));
+		$this->write(0x15AEE + 2*0x18, pack('S*', 0x00f1));
+		$this->write(0x15B8C + 0x18, pack('C', 0x43));
+		$this->write(0x15BDB + 2 * 0x18, pack('S*', 0x1400));
+		$this->write(0x15C79 + 2 * 0x18, pack('S*', 0x0294));
+		$this->write(0x15D17 + 2 * 0x18, pack('S*', 0x0600));
+		$this->write(0x15DB5 + 2 * 0x18, pack('S*', 0x02e8));
+		$this->write(0x15E53 + 2 * 0x18, pack('S*', 0x0678));
+		$this->write(0x15EF1 + 2 * 0x18, pack('S*', 0x0303));
+		$this->write(0x15F8F + 2 * 0x18, pack('S*', 0x0685));
+		$this->write(0x1602D + 0x18, pack('C', 0x0a));
+		$this->write(0x1607C + 0x18, pack('C', 0xf6));
+		$this->write(0x160CB + 2 * 0x18, pack('S*', 0x0000));
+		$this->write(0x16169 + 2 * 0x18, pack('S*', 0x0000));
+
+		// Pyramid Exit <= Houlihan
+		$this->write(0x15AEE + 2*0x3D, pack('S*', 0x0003));
+		$this->write(0x15B8C + 0x3D, pack('C', 0x5b));
+		$this->write(0x15BDB + 2 * 0x3D, pack('S*', 0x0b0e));
+		$this->write(0x15C79 + 2 * 0x3D, pack('S*', 0x075a));
+		$this->write(0x15D17 + 2 * 0x3D, pack('S*', 0x0674));
+		$this->write(0x15DB5 + 2 * 0x3D, pack('S*', 0x07a8));
+		$this->write(0x15E53 + 2 * 0x3D, pack('S*', 0x06e8));
+		$this->write(0x15EF1 + 2 * 0x3D, pack('S*', 0x07c7));
+		$this->write(0x15F8F + 2 * 0x3D, pack('S*', 0x06f3));
+		$this->write(0x1602D + 0x3D, pack('C', 0x06));
+		$this->write(0x1607C + 0x3D, pack('C', 0xfa));
+		$this->write(0x160CB + 2 * 0x3D, pack('S*', 0x0000));
+		$this->write(0x16169 + 2 * 0x3D, pack('S*', 0x0000));
+
+		// Change sanc spawn point to dark sanc
+		$this->write(snes_to_pc(0x02D8D4), pack('S*', 0x112));
+		$this->write(snes_to_pc(0x02D8E8), pack('C*', 0x22, 0x22, 0x22, 0x23, 0x04, 0x04, 0x04, 0x05));
+		$this->write(snes_to_pc(0x02D91A), pack('S*', 0x0400));
+		$this->write(snes_to_pc(0x02D928), pack('S*', 0x222e));
+		$this->write(snes_to_pc(0x02D936), pack('S*', 0x229a));
+		$this->write(snes_to_pc(0x02D944), pack('S*', 0x0480));
+		$this->write(snes_to_pc(0x02D952), pack('S*', 0x00a5));
+		$this->write(snes_to_pc(0x02D960), pack('S*', 0x007F));
+		$this->write(snes_to_pc(0x02D96D), pack('C', 0x14));
+		$this->write(snes_to_pc(0x02D974), pack('C', 0x00));
+		$this->write(snes_to_pc(0x02D97B), pack('C', 0xFF));
+		$this->write(snes_to_pc(0x02D982), pack('C', 0x00));
+		$this->write(snes_to_pc(0x02D989), pack('C', 0x02));
+		$this->write(snes_to_pc(0x02D990), pack('C', 0x00));
+		$this->write(snes_to_pc(0x02D998), pack('S*', 0x0000));
+		$this->write(snes_to_pc(0x02D9A6), pack('S*', 0x005A));
+		$this->write(snes_to_pc(0x02D9B3), pack('C', 0x12));
+
+		// Write dark sanc exit data to StartingAreaExitTable table
+		$this->write(0x180250, pack('S*', 0x0112) . pack('C', 0x53)
+			. pack('S*', 0x001e, 0x0400, 0x06e2, 0x0446, 0x0758, 0x046d, 0x075f)
+			. pack('C*', 0x00, 0x00, 0x00));
+
+		// Write to StartingAreaExitOffset table to indicate that dark sanc spawn uses first row in table
+		$this->write(0x180240, pack('C*', 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00));
+
+		// Change old man spawn point to End of old man cave
+		$this->write(snes_to_pc(0x02D8DE), pack('S*', 0x00F1));
+		$this->write(snes_to_pc(0x02D910), pack('C*', 0x1F, 0x1E, 0x1F, 0x1F, 0x03, 0x02, 0x03, 0x03));
+		$this->write(snes_to_pc(0x02D924), pack('S*', 0x0300));
+		$this->write(snes_to_pc(0x02D932), pack('S*', 0x1F10));
+		$this->write(snes_to_pc(0x02D940), pack('S*', 0x1FC0));
+		$this->write(snes_to_pc(0x02D94E), pack('S*', 0x0378));
+		$this->write(snes_to_pc(0x02D95C), pack('S*', 0x0187));
+		$this->write(snes_to_pc(0x02D96A), pack('S*', 0x017F));
+		$this->write(snes_to_pc(0x02D972), pack('C', 0x06));
+		$this->write(snes_to_pc(0x02D979), pack('C', 0x00));
+		$this->write(snes_to_pc(0x02D980), pack('C', 0xFF));
+		$this->write(snes_to_pc(0x02D987), pack('C', 0x00));
+		$this->write(snes_to_pc(0x02D98E), pack('C', 0x22));
+		$this->write(snes_to_pc(0x02D995), pack('C', 0x12));
+		$this->write(snes_to_pc(0x02D9A2), pack('S*', 0x0000));
+		$this->write(snes_to_pc(0x02D9B0), pack('S*', 0x0007));
+		$this->write(snes_to_pc(0x02D9B8), pack('C', 0x12));
+
+		$this->text->setString('menu_start_2', "{MENU}\n{SPEED0}\n≥@'s house\n Dark Chapel\n{CHOICE3}", false);
+		$this->text->setString('menu_start_3', "{MENU}\n{SPEED0}\n≥@'s house\n Dark Chapel\n Dark Mountain\n{CHOICE2}", false);
 
 		return $this;
 	}

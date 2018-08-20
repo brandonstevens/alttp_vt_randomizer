@@ -28,8 +28,8 @@ class Text {
 	 *
 	 * @return void
 	 */
-    public function setString(string $id, string $value) {
-		$this->text_array[$id] = $this->converter->convertDialogCompressed($value);
+    public function setString(string $id, string $value, ...$flags) {
+		$this->text_array[$id] = $this->converter->convertDialogCompressed($value, ...$flags);
     }
 
 	/**
