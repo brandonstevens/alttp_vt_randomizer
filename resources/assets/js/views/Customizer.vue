@@ -46,13 +46,9 @@
 					<div class="card-header bg-success card-heading-btn">
 						<h3 class="card-title text-white float-left">Customizer (v4): Just because you can, doesn't mean you should</h3>
 						<div class="btn-toolbar float-right">
-							<button class="btn btn-light border-secondary" data-toggle="collapse" href="#rom-settings">
-								ROM Options <img class="icon pulse" src="/i/svg/cog.svg" alt="ROM Options">
-							</button>
 						</div>
 					</div>
 					<div class="card-body">
-						<vt-rom-settings :rom="rom"></vt-rom-settings>
 						<div class="row">
 							<div class="col-md mb-3">
 								<vt-select v-model="choice.state" id="mode-state" :options="settings.mode.states"storage-key="vt.custom.state"
@@ -120,12 +116,19 @@
 							</div>
 							<div class="col-md mb-3">
 								<div class="row">
-									<div class="col-md mb-3">
-										<button class="btn btn-light border-secondary" @click="saveSpoiler">Save Spoiler</button>
+									<div class="col-md-6 mb-3">
+										<div class="btn-group btn-flex" role="group">
+											<button class="btn btn-light border-secondary text-center" @click="saveSpoiler">{{ $t('randomizer.details.save_spoiler') }}</button>
+										</div>
 									</div>
-									<div v-if="this.endpoint == '/seed'" class="col-md mb-3">
-										<button class="btn btn-success" @click="saveRom">Save Rom</button>
+									<div class="col-md-6 mb-3">
+										<div v-if="this.endpoint == '/seed'" class="btn-group btn-flex" role="group">
+											<button class="btn btn-success text-center" @click="saveRom">{{ $t('randomizer.details.save_rom') }}</button>
+										</div>
 									</div>
+								</div>
+								<div v-if="this.endpoint == '/seed'" class="row">
+									<vt-rom-settings class="col-12" :rom="rom"></vt-rom-settings>
 								</div>
 							</div>
 						</div>

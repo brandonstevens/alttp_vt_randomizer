@@ -3,7 +3,7 @@
 		<div class="input-group-prepend">
 			<span class="input-group-text">{{ title }}</span>
 		</div>
-		<multiselect class="form-control" v-model="value" :options="options"
+		<multiselect class="form-control" v-model="value" :options="sprites"
 			selectLabel="" :show-labels="false" :allow-empty="false"
 			:custom-label="customLabel" @select="onSelect">
 			<template slot="singleLabel" slot-scope="props">
@@ -23,8 +23,6 @@
 </template>
 
 <script>
-import EventBus from '../core/event-bus';
-
 export default {
 	components: {
 		Multiselect: Multiselect.default
@@ -38,44 +36,21 @@ export default {
 	data() {
 		return {
 			value: this.selected,
-			sprites: [],
 		};
 	},
 	created () {
-		axios.get(`/sprites`).then(response => {
-			this.sprites = response.data;
-			this.value = this.sprites[0];
-			this.sprites.push({
-				author: "none",
-				file: null,
-				name: "Random",
-			});
-			localforage.getItem('rom.sprite-gfx').then(function(value) {
-				if (value === null) return;
-				for (var sprite in this.sprites) {
-					if (path.basename(this.sprites[sprite].file) == value) {
-						this.value = this.sprites[sprite];
-						break;
-					}
+		localforage.getItem('rom.sprite-gfx').then(value => {
+			if (value === null) return;
+			for (var sprite in this.sprites) {
+				if (path.basename(this.sprites[sprite].file) == value) {
+					this.value = this.sprites[sprite];
+					break;
 				}
-			}.bind(this));
+			}
+			this.applyRomFunctions(this, this.rom);
 		});
 	},
-	mounted () {
-		EventBus.$on('gameLoaded', this.gameLoadedListener);
-	},
-	beforeDestroy () {
-		EventBus.$off('gameLoaded', this.gameLoadedListener);
-	},
-	computed: {
-		options: function() {
-			return this.sprites;
-		}
-	},
 	methods: {
-		gameLoadedListener (rom) {
-			this.applyRomFunctions(this, rom);
-		},
 		customLabel (option) {
 			return `${option.name}`;
 		},
@@ -113,7 +88,12 @@ export default {
 				});
 			}).then(rom.parseSprGfx);
 		},
-	}
+	},
+	computed: {
+		sprites () {
+			return this.$store.state.sprites;
+		},
+	},
 }
 </script>
 

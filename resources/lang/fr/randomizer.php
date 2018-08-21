@@ -4,9 +4,6 @@ return [
 	'switch' => [
 		'entrance' => 'Passer au Randomizer d’entrée',
 	],
-	'rom' => [
-		'options' => 'Options de ROM',
-	],
 	'difficulty' => [
 		'title' => 'Difficulté',
 		'options' => [

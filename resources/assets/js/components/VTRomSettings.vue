@@ -1,46 +1,46 @@
 <template>
-	<div class="collapse mb-3" id="rom-settings">
-		<div class="card border-info">
-			<div class="card-header bg-info text-white">{{ $t('rom.settings.title') }}</div>
-			<div class="card-body">
-				<div class="row mb-3">
-					<div class="col">
-						<vt-select id="heart-speed" :options="settings.heartSpeeds" storage-key="rom.heart-speed"
-							:rom="rom" :selected="defaults.heartSpeeds" rom-function="setHeartSpeed">{{ $t('rom.settings.heart_speed') }}</vt-select>
-					</div>
-					<div class="col">
-						<vt-sprite-select id="sprite-gfx" :rom="rom" storage-key="rom.sprite-gfx" :title="$t('rom.settings.play_as')"></vt-sprite-select>
-					</div>
-				</div>
-				<div class="row mb-3">
-					<div class="col">
-						<vt-select id="menu-speed" no-race="true" :options="settings.menuSpeeds" storage-key="rom.menu-speed"
-							:rom="rom" :selected="defaults.menuSpeeds" rom-function="setMenuSpeed">{{ $t('rom.settings.menu_speed') }}</vt-select>
-					</div>
-					<div class="col">
-						<vt-select id="heart-color" :options="settings.heartColors" storage-key="rom.heart-color"
-							:rom="rom" :selected="defaults.heartColors" rom-function="setHeartColor">{{ $t('rom.settings.heart_color') }}</vt-select>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col">
-						<vt-toggle id="music-on" :selected="defaults.music" storage-key="rom.music-on"
-							:rom="rom" rom-function="setMusicVolume">{{ $t('rom.settings.music') }}</vt-toggle>
-					</div>
-					<div class="col">
-						<vt-toggle id="quickswap" :selected="defaults.quickswap" storage-key="rom.quickswap" :no-race="true"
-							:rom="rom" rom-function="setQuickswap">{{ $t('rom.settings.quickswap') }}</vt-toggle>
-					</div>
-				</div>
+	<div>
+		<div class="row mb-3">
+			<div class="col-md-12">
+				<vt-select id="heart-speed" :options="settings.heartSpeeds" storage-key="rom.heart-speed"
+					:rom="rom" :selected="defaults.heartSpeeds" rom-function="setHeartSpeed">{{ $t('rom.settings.heart_speed') }}</vt-select>
 			</div>
-			<div class="card-footer">
-				<div><strong>*</strong> {{ $t('rom.settings.race_warning') }}</div>
+		</div>
+		<div class="row mb-3">
+			<div class="col-md-12">
+				<vt-sprite-select id="sprite-gfx" :rom="rom" storage-key="rom.sprite-gfx" :title="$t('rom.settings.play_as')"></vt-sprite-select>
+			</div>
+		</div>
+		<div v-if="!rom.tournament" class="row mb-3">
+			<div class="col-md-12">
+				<vt-select id="menu-speed" :options="settings.menuSpeeds" storage-key="rom.menu-speed"
+					:rom="rom" :selected="defaults.menuSpeeds" rom-function="setMenuSpeed">{{ $t('rom.settings.menu_speed') }}</vt-select>
+			</div>
+		</div>
+		<div class="row mb-3">
+			<div class="col-md-12">
+				<vt-select id="heart-color" :options="settings.heartColors" storage-key="rom.heart-color"
+					:rom="rom" :selected="defaults.heartColors" rom-function="setHeartColor">{{ $t('rom.settings.heart_color') }}</vt-select>
+			</div>
+		</div>
+		<div v-if="!rom.music" class="row mb-3">
+			<div class="col-md-12">
+				<vt-toggle id="music-on" :selected="defaults.music" storage-key="rom.music-on"
+					:rom="rom" rom-function="setMusicVolume">{{ $t('rom.settings.music') }}</vt-toggle>
+			</div>
+		</div>
+		<div v-if="!rom.tournament" class="row mb-3">
+			<div class="col-md-12">
+				<vt-toggle id="quickswap" :selected="defaults.quickswap" storage-key="rom.quickswap"
+					:rom="rom" rom-function="setQuickswap">{{ $t('rom.settings.quickswap') }}</vt-toggle>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
+import EventBus from '../core/event-bus';
+
 export default {
 	props: ['rom'],
 	data() {
@@ -74,6 +74,9 @@ export default {
 				music: true,
 			}
 		};
+	},
+	mounted() {
+		EventBus.$emit('settingsLoaded', this.rom);
 	},
 };
 </script>

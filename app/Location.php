@@ -85,12 +85,14 @@ class Location {
 	 * @return bool
 	 */
 	public function canAccess($items, $locations = null) {
-		if (!$this->region->canEnter($locations ?? $this->region->getWorld()->getLocations(), $items)) {
+		$locations = $locations ?? $this->region->getWorld()->getLocations();
+
+		// @TODO: optimize this call, perhaps cache?
+		if (!$this->region->canEnter($locations, $items)) {
 			return false;
 		}
 
-		if (!$this->requirement_callback
-			|| call_user_func($this->requirement_callback, $locations ?? $this->region->getWorld()->getLocations(), $items)) {
+		if (!$this->requirement_callback || call_user_func($this->requirement_callback, $locations, $items)) {
 			return true;
 		}
 

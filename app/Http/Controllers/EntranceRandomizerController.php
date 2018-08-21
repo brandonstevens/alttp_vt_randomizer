@@ -75,6 +75,7 @@ class EntranceRandomizerController extends Controller {
 			} else {
 				$spoiler = array_except(array_only($spoiler, ['meta']), ['meta.seed']);
 			}
+			$spoiler['meta']['tournament'] = true;
 		}
 
 		if ($save) {

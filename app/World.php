@@ -186,25 +186,6 @@ abstract class World {
 	}
 
 	/**
-	 * Create world based on ROM file we read. Might only function with newer v7+ ROMs.
-	 * TODO: is this better here or on the Rom object?
-	 *
-	 * @param Rom $rom Rom object to read from.
-	 *
-	 * @return $this
-	 */
-	public function modelFromRom(Rom $rom) {
-		foreach ($this->locations as $location) {
-			try {
-				$location->readItem($rom);
-			} catch (\Exception $e) {
-				continue;
-			}
-		}
-		return $this;
-	}
-
-	/**
 	 * Return an array of Locations to collect all Advancement Items in the game in order. This works by cloning the
 	 * current world (new Locations and all). Then it groups the locations into collection spheres (all reachable
 	 * locations based on the items in the previous sphere). It then attempts to remove each item (starting from the
@@ -239,7 +220,8 @@ abstract class World {
 			Item::get('ArrowUpgrade5'),
 			Item::get('ArrowUpgrade10'),
 			Item::get('ArrowUpgrade70'),
-			Item::get('Arrow'),
+			Item::get('RedPotion'),
+			Item::get('Bee'),
 			Item::get('TenArrows'),
 			Item::get('Bomb'),
 			Item::get('ThreeBombs'),
@@ -253,6 +235,14 @@ abstract class World {
 			Item::get('Rupoor'),
 		];
 
+		// remove junk locations for filtering later
+		$shadow_world->getLocations()->each(function($location) use ($junk_items) {
+			$location_item = $location->getItem();
+			if ($location_item && in_array($location_item, $junk_items)) {
+				$location->setItem();
+			}
+		});
+
 		$location_sphere = $shadow_world->getLocationSpheres();
 		$collectable_locations = new LocationCollection(array_flatten(array_map(function($collection) {
 			return $collection->values();
@@ -260,6 +250,7 @@ abstract class World {
 		$required_locations = new LocationCollection;
 		$required_locations_sphere = [];
 		$reverse_location_sphere = array_reverse($location_sphere, true);
+
 		foreach ($reverse_location_sphere as $sphere_level => $sphere) {
 			if ($sphere_level == 0) {
 				continue;
@@ -574,22 +565,10 @@ abstract class World {
 	}
 
 	/**
-	 * Determine if an item is collectable.
-	 *
-	 * @param mixed $key
-	 * @param int $at_least mininum number of item in collection
-	 *
-	 * @return bool
-	 */
-	public function canCollect($key, $at_least = 1) {
-		switch ($key) {
-			case 'anyBow': return $this->collectItems()->canShootArrows();
-			default: return $this->collectItems()->has($key, $at_least);
-		}
-	}
-
-	/**
 	 * Determine the spheres that locations are in based on the items in the world
+	 *
+	 * @TODO: consider a re-factor to match the collectItems method of reducing the available_locations instead of
+	 * using found_locations.
 	 *
 	 * @return array
 	 */
@@ -607,7 +586,8 @@ abstract class World {
 		do {
 			$sphere++;
 			$available_locations = $this->getCollectableLocations()->filter(function($location) use ($my_items, $found_locations) {
-				return !$found_locations->contains($location)
+				return $location->hasItem()
+					&& !$found_locations->contains($location)
 					&& $location->canAccess($my_items);
 			});
 			$location_sphere[$sphere] = $available_locations;

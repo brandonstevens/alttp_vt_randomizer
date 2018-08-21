@@ -13,26 +13,27 @@
 		<div id="seed-details" class="card border-success" v-if="gameLoaded && romLoaded">
 			<div class="card-header bg-success card-heading-btn" :class="{'bg-info': rom.tournament}">
 				<h3 class="card-title text-white float-left">{{ rom.name || $t('randomizer.details.title') }}</h3>
-				<div class="btn-toolbar float-right">
-					<button class="btn btn-light border-secondary" data-toggle="collapse" href="#rom-settings">
-						{{ $t('randomizer.rom.options') }} <img class="icon pulse" src="/i/svg/cog.svg" alt="ROM Options">
-					</button>
-				</div>
 			</div>
 			<div class="card-body">
-				<vt-rom-settings :rom="rom"></vt-rom-settings>
 				<div class="row">
 					<div class="col-md mb-3">
 						<vt-rom-info :no-link="noLink" :rom="rom"></vt-rom-info>
 					</div>
 					<div class="col-md mb-3">
 						<div class="row">
-							<div class="col-md mb-3">
-								<button class="btn btn-light border-secondary" @click="saveSpoiler">{{ $t('randomizer.details.save_spoiler') }}</button>
+							<div class="col-md-6 mb-3">
+								<div class="btn-group btn-flex" role="group">
+									<button class="btn btn-light border-secondary text-center" @click="saveSpoiler">{{ $t('randomizer.details.save_spoiler') }}</button>
+								</div>
 							</div>
-							<div class="col-md mb-3">
-								<button class="btn btn-success" @click="saveRom">{{ $t('randomizer.details.save_rom') }}</button>
+							<div class="col-md-6 mb-3">
+								<div class="btn-group btn-flex" role="group">
+									<button class="btn btn-success text-center" @click="saveRom">{{ $t('randomizer.details.save_rom') }}</button>
+								</div>
 							</div>
+						</div>
+						<div class="row">
+							<vt-rom-settings class="col-12" :rom="rom"></vt-rom-settings>
 						</div>
 					</div>
 				</div>

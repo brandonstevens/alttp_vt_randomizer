@@ -12,6 +12,7 @@ export default new Vuex.Store({
 			items: [],
 			prizes: [],
 		},
+		sprites: [],
 		loading: false,
 	},
 	modules: {
@@ -65,6 +66,18 @@ export default new Vuex.Store({
 				commit('setLoading', false);
 			});
 		},
+		getSprites({commit, dispatch}) {
+			console.log('init sprites');
+			return axios.get(`/sprites`).then(response => {
+				var sprites = response.data;
+				sprites.push({
+					author: "none",
+					file: null,
+					name: "Random",
+				});
+				commit('updateSprites', sprites);
+			});
+		},
 		getSettings({commit, dispatch}) {
 			console.log('init customizer store');
 			commit('setLoading', true);
@@ -77,6 +90,9 @@ export default new Vuex.Store({
 	mutations: {
 		updateSettings(state, settings) {
 			state.settings = settings;
+		},
+		updateSprites(state, sprites) {
+			state.sprites = sprites;
 		},
 		setLoading(state, loading) {
 			state.loading = loading;

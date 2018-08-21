@@ -16,6 +16,7 @@ new Vue({
 	i18n,
 	store: cStore,
 	created() {
+		this.$store.dispatch('getSprites');
 		this.$store.dispatch('getSettings');
 	},
 });

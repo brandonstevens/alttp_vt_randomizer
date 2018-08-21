@@ -16,13 +16,9 @@
 					<a class="btn btn-light border-secondary" role="button"  :href="'/' + $i18n.locale + '/randomizer'">
 						{{ $t('entrance.switch.item') }} <img class="icon" src="/i/svg/share.svg" alt="Switch to Item Randomizer">
 					</a>
-					<button class="btn btn-light border-secondary" data-toggle="collapse" href="#rom-settings">
-						{{ $t('entrance.rom.options') }} <img class="icon pulse" src="/i/svg/cog.svg" alt="ROM Options">
-					</button>
 				</div>
 			</div>
 			<div class="card-body">
-				<vt-rom-settings :rom="rom"></vt-rom-settings>
 				<div class="row">
 					<div class="col-md mb-3">
 						<vt-select v-model="choice.state" id="mode-state" :options="settings.mode.states"storage-key="er.mode.state"
@@ -103,12 +99,19 @@
 					</div>
 					<div class="col-md mb-3">
 						<div class="row">
-							<div class="col-md mb-3">
-								<button class="btn btn-light border-secondary" @click="saveSpoiler">{{ $t('entrance.details.save_spoiler') }}</button>
+							<div class="col-md-6 mb-3">
+								<div class="btn-group btn-flex" role="group">
+									<button class="btn btn-light border-secondary text-center" @click="saveSpoiler">{{ $t('randomizer.details.save_spoiler') }}</button>
+								</div>
 							</div>
-							<div class="col-md mb-3">
-								<button class="btn btn-success" @click="saveRom">{{ $t('entrance.details.save_rom') }}</button>
+							<div class="col-md-6 mb-3">
+								<div class="btn-group btn-flex" role="group">
+									<button class="btn btn-success text-center" @click="saveRom">{{ $t('randomizer.details.save_rom') }}</button>
+								</div>
 							</div>
+						</div>
+						<div class="row">
+							<vt-rom-settings class="col-12" :rom="rom"></vt-rom-settings>
 						</div>
 					</div>
 				</div>

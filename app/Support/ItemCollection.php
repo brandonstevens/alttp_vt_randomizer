@@ -10,6 +10,7 @@ use ArrayIterator;
 class ItemCollection extends Collection {
 	protected $item_counts = [];
 	protected $world;
+	private $string_rep = null;
 
 	/**
 	 * Create a new collection.
@@ -37,12 +38,14 @@ class ItemCollection extends Collection {
 	 * @return $this
 	 */
 	public function addItem(Item $item) {
-		$this->offsetSet($item->getName(), $item);
-		if (!isset($this->item_counts[$item->getName()])) {
-			$this->item_counts[$item->getName()] = 0;
+		$item_name = $item->getName();
+		$this->offsetSet($item_name, $item);
+		if (!isset($this->item_counts[$item_name])) {
+			$this->item_counts[$item_name] = 0;
 		}
 
-		$this->item_counts[$item->getName()]++;
+		$this->item_counts[$item_name]++;
+		$this->string_rep = null;
 
 		return $this;
 	}
@@ -197,6 +200,18 @@ class ItemCollection extends Collection {
 	}
 
 	/**
+	 * Reduce the collection to a single value.
+	 *
+	 * @param callable $callback
+	 * @param mixed $initial
+	 *
+	 * @return mixed
+	 */
+	public function reduce(callable $callback, $initial = null) {
+		return array_reduce($this->values(), $callback, $initial);
+	}
+
+	/**
 	 * Run a map over each of the items.
 	 *
 	 * @param callable $callback
@@ -216,10 +231,16 @@ class ItemCollection extends Collection {
 	 * @return bool
 	 */
 	public function has($key, $at_least = 1) {
-		if ($key != 'KeyH2' && strpos($key, 'Key') === 0 && $this->world->config('rom.genericKeys', false)) {
+		if ($at_least === null) {
+			return false;
+		}
+
+		// @TODO: this check is expensive, as this function is called A LOT, can we reduce it somehow?
+		if ($key !== 'KeyH2' && $this->world->config('rom.genericKeys', false) && strpos($key, 'Key') === 0) {
 			return true;
 		}
-		return $this->offsetExists($key) && $this->item_counts[$key] >= $at_least;
+
+		return ($this->item_counts[$key] ?? 0) >= $at_least;
 	}
 
 	/**
@@ -551,5 +572,15 @@ class ItemCollection extends Collection {
 			|| $this->has('BottleWithBluePotion')
 			|| $this->has('Bottle')
 			|| $this->has('BottleWithGoldBee');
+	}
+
+	public function __toString() {
+		if ($this->string_rep === null) {
+			$this->string_rep = $this->reduce(function($carry, $item) {
+				return $carry . $item->getName();
+			}, '');
+		}
+
+		return $this->string_rep;
 	}
 }

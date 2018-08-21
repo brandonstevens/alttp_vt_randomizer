@@ -25,7 +25,6 @@ return [
 		'generated' => 'Created',
 	],
 	'settings' => [
-		'title' => 'Additional ROM Options',
 		'heart_speed' => 'Heart Speed',
 		'heart_speeds' => [
 			'off' => 'Off',

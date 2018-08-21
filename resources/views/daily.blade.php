@@ -27,6 +27,9 @@ new Vue({
 	el: '#root',
 	i18n,
 	store: cStore,
+	created() {
+		this.$store.dispatch('getSprites');
+	},
 });
 </script>
 @overwrite
