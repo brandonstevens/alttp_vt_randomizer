@@ -25,6 +25,7 @@
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="{{ preg_replace('/^\/?'.app()->getLocale().'/', '/en', request()->path()) }}"><span class="flag-icon flag-icon-us"></span> English</a>
 						<a class="dropdown-item" href="{{ preg_replace('/^\/?'.app()->getLocale().'/', '/fr', request()->path()) }}"><span class="flag-icon flag-icon-fr"></span> Français</a>
+						<a class="dropdown-item" href="{{ preg_replace('/^\/?'.app()->getLocale().'/', '/de', request()->path()) }}"><span class="flag-icon flag-icon-de"></span> Deutsche</a>
 					</div>
 				</li>
 				<li class="nav-item dropdown">
