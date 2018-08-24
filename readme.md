@@ -13,7 +13,7 @@ $ composer install
 ```
 
 ## Running from the command line
-To generate a seed one simply runs the command:
+To generate a game one simply runs the command:
 
 ```
 $ php artisan alttp:randomize {input_file.sfc} {output_directory}

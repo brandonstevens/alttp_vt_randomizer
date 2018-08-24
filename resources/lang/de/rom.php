@@ -13,7 +13,7 @@ return [
 	'info' => [
 		'logic' => __('randomizer.logic.title'),
 		'build' => 'ROM build',
-		'difficulty' => _('randomizer.difficulty.title'),
+		'difficulty' => __('randomizer.difficulty.title'),
 		'variation' => __('randomizer.variation.title'),
 		'shuffle' => __('entrance.shuffle.title'),
 		'mode' => __('randomizer.mode.title'),

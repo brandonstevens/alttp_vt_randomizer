@@ -9,8 +9,8 @@ use Log;
  * Wrapper for ROM file
  */
 class Rom {
-	const BUILD = '2018-08-18';
-	const HASH = 'a0dd02ac028279dea66600402e5aaa7a';
+	const BUILD = '2018-08-23';
+	const HASH = '46f43c4a5bd069b57995e254da286e2b';
 	const SIZE = 2097152;
 	static private $digit_gfx = [
 		0 => 0x30,
@@ -2257,6 +2257,19 @@ class Rom {
 	}
 
 	/**
+	 * Enable Hammer breaks Aghanim's barrier no matter what
+	 *
+	 * @param bool $enable switch on or off
+	 *
+	 * @return $this
+	 */
+	public function setHammerBarrier(bool $enable = false) : self {
+		$this->write(0x18005D, pack('C*', $enable ? 0x01 : 0x00));
+
+		return $this;
+	}
+
+	/**
 	 * Enable/Disable ability to bug net catch Fairy
 	 *
 	 * @param bool $enable switch on or off
@@ -2645,6 +2658,7 @@ class Rom {
 		$this->write(0x180043, pack('C*', $enable ? 0xFF : 0x00)); // set Link's starting sword 0xFF is taken sword
 
 		$this->setHammerTablet($enable);
+		$this->setHammerBarrier(false);
 
 		return $this;
 	}

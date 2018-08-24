@@ -7,7 +7,7 @@ return [
 			'header' => '1. Trete unsere Discord Community bei',
 			'content' => [
 				'<div class="center"><a class="btn btn-primary btn-lg btn-xl" href="https://discord.gg/alttprandomizer" rel="noopener noreferrer"role="button" target="_blank">' . __('navigation.discord') . '</a></div>',
-				'Join our Discord community! We’ve got friendly and helpful people, community event news, ALttP: Randomizer updates, helpful guides, tips and tricks, and more! Come say hello!',
+				'Trete unserer Discord Community bei! Wir haben freundliches hilfreiche Leute, News über Community Events, ALttP:Randomizer Updates, hilfreiches Guides, Tipps und Tricks, und vieles mehr! Komm sag Hallo!',
 			]
 		],
 		'rom' => [

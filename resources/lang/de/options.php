@@ -76,7 +76,7 @@ return [
 			'header' => __('randomizer.logic.title'),
 			'sections' => [
 				[
-					'header' => __('randomizer.logic.options.NoMajorGlitches'),
+					'header' => __('randomizer.logic.options.NoGlitches'),
 					'content' => [
 						'Dieser Modus setzt kein fortschrittliches Wissen über das Spiel vorraus. Es wurde so entworfen als würdest du das Spiel zum ersten Mal spielen.',
 						'In diesem Modus wurde vorgebeugt das du nirgends feststecken kannst, egal wie du deine kleine Schlüsseln in Dungeons verwendest.',

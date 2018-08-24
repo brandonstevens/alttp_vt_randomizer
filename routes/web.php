@@ -36,22 +36,9 @@ Route::any('hash/{hash}', function(Request $request, $hash) {
 	return $payload;
 });
 
+// @TODO: perhaps a front end page that checks their localStorage for prefered locale?
 Route::get('h/{hash}', function(Request $request, $hash) {
-	$seed = ALttP\Seed::where('hash', $hash)->first();
-	if ($seed) {
-		$build = ALttP\Build::where('build', $seed->build)->first();
-		if (!$build) {
-			abort(404);
-		}
-		return view('patch_from_hash', [
-			'hash' => $hash,
-			'md5' => $build->hash,
-			'patch' => $build->patch,
-			'seed' => $seed,
-			'spoiler' => json_decode($seed->spoiler),
-		]);
-	}
-	abort(404);
+	return redirect(config('app.locale') . '/h/' . $hash);
 });
 
 Route::prefix('{lang?}')->middleware('locale')->group(function() {
@@ -114,6 +101,24 @@ Route::prefix('{lang?}')->middleware('locale')->group(function() {
 				'md5' => $build->hash,
 				'patch' => $build->patch,
 				'daily' => $featured->day,
+			]);
+		}
+		abort(404);
+	});
+
+	Route::get('h/{hash}', function(Request $request, $lang, $hash) {
+		$seed = ALttP\Seed::where('hash', $hash)->first();
+		if ($seed) {
+			$build = ALttP\Build::where('build', $seed->build)->first();
+			if (!$build) {
+				abort(404);
+			}
+			return view('patch_from_hash', [
+				'hash' => $hash,
+				'md5' => $build->hash,
+				'patch' => $build->patch,
+				'seed' => $seed,
+				'spoiler' => json_decode($seed->spoiler),
 			]);
 		}
 		abort(404);

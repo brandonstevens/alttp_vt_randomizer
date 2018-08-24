@@ -26,7 +26,7 @@ export default {
 	],
 	computed: {
 		permalink: (vm) => {
-			return window.location.origin + '/h/' + vm.rom.hash;
+			return window.location.origin + '/' + (document.documentElement.lang || 'en') + '/h/' + vm.rom.hash;
 		},
 	},
 }
