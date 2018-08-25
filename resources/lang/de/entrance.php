@@ -63,7 +63,7 @@ return [
 		],
 	],
 	'generate' => [
-		'race' => 'Generiere ROM für Rennen (keine Spoilers)',
+		'race' => 'Generiere ROM für Rennen (Spoilerfrei)',
 		'spoiler_race' => 'ROM für Spoiler Rennen',
 		'casual' => 'Generiere ROM',
 	],

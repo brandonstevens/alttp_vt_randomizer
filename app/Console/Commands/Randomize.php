@@ -17,7 +17,6 @@ class Randomize extends Command {
 		. ' {output_directory : where to place randomized rom}'
 		. ' {--unrandomized : do not apply randomization to the rom}'
 		. ' {--vanilla : set game to vanilla item locations}'
-		. ' {--debug : enable BAGE mode}'
 		. ' {--spoiler : generate a spoiler file}'
 		. ' {--difficulty=normal : set difficulty}'
 		. ' {--variation=none : set variation}'
@@ -78,8 +77,6 @@ class Randomize extends Command {
 			if (!$this->option('skip-md5') && !$rom->checkMD5()) {
 				return $this->error('MD5 check failed :(');
 			}
-
-			$rom->setDebugMode($this->option('debug'));
 
 			$rom->setHeartBeepSpeed($this->option('heartbeep'));
 

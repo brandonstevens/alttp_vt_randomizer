@@ -99,8 +99,7 @@ class NorthWest extends Region\Standard\LightWorld\NorthWest {
 		});
 
 		$this->can_enter = function($locations, $items) {
-			return ($items->has('MoonPearl') && (($items->has('Hammer') && $items->canLiftRocks()) || $items->canLiftDarkRocks())) // Portal by Lost woods
-				|| $items->has('DefeatAgahnim');
+			return $this->world->getRegion('North East Light World')->canEnter($locations, $items);
 		};
 
 		return $this;

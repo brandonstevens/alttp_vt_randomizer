@@ -19,7 +19,33 @@ class East extends Region\Standard\DarkWorld\DeathMountain\East {
 	 * @return $this
 	 */
 	public function initNoGlitches() {
-		// @TODO: implement
+		$this->locations["Hookshot Cave - Top Right"]->setRequirements(function($locations, $items) {
+			return $items->has('Hookshot')
+				&& ($items->canLiftRocks()
+					|| ($items->has('Mirror') && $items->canBombThings() && $this->world->getRegion('East Death Mountain')->canEnter($locations, $items)));
+		});
+
+		$this->locations["Hookshot Cave - Top Left"]->setRequirements(function($locations, $items) {
+			return $items->has('Hookshot')
+				&& ($items->canLiftRocks()
+					|| ($items->has('Mirror') && $items->canBombThings() && $this->world->getRegion('East Death Mountain')->canEnter($locations, $items)));
+		});
+
+		$this->locations["Hookshot Cave - Bottom Left"]->setRequirements(function($locations, $items) {
+			return $items->has('Hookshot')
+				&& ($items->canLiftRocks()
+					|| ($items->has('Mirror') && $items->canBombThings() && $this->world->getRegion('East Death Mountain')->canEnter($locations, $items)));
+		});
+
+		$this->locations["Hookshot Cave - Bottom Right"]->setRequirements(function($locations, $items) {
+			return ($items->has('Hookshot') || $items->has('PegasusBoots'))
+				&& ($items->canLiftRocks()
+					|| ($items->has('Mirror') && $items->canBombThings() && $this->world->getRegion('East Death Mountain')->canEnter($locations, $items)));
+		});
+
+		$this->can_enter = function($locations, $items) {
+			return $this->world->getRegion('West Dark World Death Mountain')->canEnter($locations, $items);
+		};
 
 		return $this;
 	}

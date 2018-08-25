@@ -42,9 +42,6 @@ class EntranceRandomizerController extends Controller {
 		if ($request->filled('menu_speed')) {
 			$rom->setMenuSpeed($request->input('menu_speed', 'normal'));
 		}
-		if ($request->filled('debug')) {
-			$rom->setDebugMode($request->input('debug') == 'true');
-		}
 
 		$seed_id = is_numeric($seed_id) ? $seed_id : abs(crc32($seed_id));
 

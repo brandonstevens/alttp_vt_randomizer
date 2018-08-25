@@ -9,21 +9,9 @@ use Log;
  * Wrapper for ROM file
  */
 class Rom {
-	const BUILD = '2018-08-23';
-	const HASH = '46f43c4a5bd069b57995e254da286e2b';
+	const BUILD = '2018-08-24';
+	const HASH = 'd30259556c18c032f78a07c8301c5ef6';
 	const SIZE = 2097152;
-	static private $digit_gfx = [
-		0 => 0x30,
-		1 => 0x31,
-		2 => 0x02,
-		3 => 0x03,
-		4 => 0x12,
-		5 => 0x13,
-		6 => 0x22,
-		7 => 0x23,
-		8 => 0x32,
-		9 => 0x33,
-	];
 
 	private $tmp_file;
 	private $credits;
@@ -1564,18 +1552,6 @@ class Rom {
 
 		$this->write(0x181500, pack('C*', ...$data['data']));
 		$this->write(0x76CC0, pack('S*', ...$data['pointers']));
-
-		return $this;
-	}
-
-	/**
-	 * Enable/Disable the predefined ROM debug mode: Starts after Zelda is saved with all items. No chests are open.
-	 *
-	 * @return $this
-	 */
-	public function setDebugMode($enable = true) : self {
-		$this->write(0x65B88, pack('S*', $enable ? 0xEAEA : 0x21F0));
-		$this->write(0x65B91, pack('S*', $enable ? 0xEAEA : 0x18D0));
 
 		return $this;
 	}

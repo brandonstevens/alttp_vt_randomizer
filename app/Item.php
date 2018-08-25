@@ -275,6 +275,7 @@ class Item {
 			new Item\Crystal('Crystal7', __('item.Crystal7'), [null, 0x08, 0x34, 0x64, 0x40, 0x7C, 0x06]),
 			new Item\Event('RescueZelda', __('item.RescueZelda'), [null]),
 			new Item\Event('DefeatAgahnim', __('item.DefeatAgahnim'), [null]),
+			new Item\Event('BigRedBomb', __('item.BigRedBomb'), [null]),
 			new Item\Event('DefeatAgahnim2', __('item.DefeatAgahnim2'), [null]),
 			new Item\Event('DefeatGanon', __('item.DefeatGanon'), [null]),
 		]);

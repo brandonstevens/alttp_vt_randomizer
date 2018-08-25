@@ -31,7 +31,6 @@ class West extends Region {
 		$this->shops = new ShopCollection([
 			new Shop\TakeAny("Dark Death Mountain Fairy", 0x83, 0xC1, 0x0112, 0x70, $this, [0xDBBE2 => [0x58]]),
 		]);
-
 	}
 
 	/**

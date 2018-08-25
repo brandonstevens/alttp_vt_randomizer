@@ -37,7 +37,8 @@ class NorthEast extends Region {
 		]);
 
 		$this->shops = new ShopCollection([
-			new Shop\TakeAny("Long Fairy Cave", 0x83, 0xA0, 0x0112, 0x55, $this, [0xDBBC7 => [0x58]]),
+			new Shop\TakeAny("Long Fairy Cave",  0x83, 0xA0, 0x0112, 0x55, $this, [0xDBBC7 => [0x58]]),
+			new Shop\TakeAny("Lake Hylia Fairy", 0x83, 0xA0, 0x0112, 0x5E, $this, [0xDBBD0 => [0x58]]),
 		]);
 	}
 

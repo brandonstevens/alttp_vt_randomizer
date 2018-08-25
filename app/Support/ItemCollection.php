@@ -235,6 +235,10 @@ class ItemCollection extends Collection {
 			return false;
 		}
 
+		if ($at_least === 0) {
+			return true;
+		}
+
 		// @TODO: this check is expensive, as this function is called A LOT, can we reduce it somehow?
 		if ($key !== 'KeyH2' && $this->world->config('rom.genericKeys', false) && strpos($key, 'Key') === 0) {
 			return true;

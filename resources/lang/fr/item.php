@@ -170,6 +170,7 @@ return [
 	'Crystal7' => 'Cristal 7',
 	'RescueZelda' => 'Sauver Zelda',
 	'DefeatAgahnim' => 'Vaincre Agahnim',
+	'BigRedBomb' => 'Grosse bombe rouge',
 	'DefeatAgahnim2' => 'Vaincre Agahnim 2',
 	'DefeatGanon' => 'Vaincre ganon',
 ];

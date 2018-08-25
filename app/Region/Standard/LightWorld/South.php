@@ -56,7 +56,6 @@ class South extends Region {
 			new Shop\TakeAny("Desert Fairy",                     0x83, 0xA0, 0x0112, 0x72, $this, [0xDBBE4 => [0x58]]),
 			new Shop\TakeAny("Good Bee Cave",                    0x83, 0xA0, 0x0112, 0x6B, $this, [0xDBBDD => [0x58]]),
 			new Shop\TakeAny("Lake Hylia Fortune Teller",        0x83, 0xA0, 0x011F, 0x73, $this, [0xDBBE5 => [0x46]]),
-			new Shop\TakeAny("Lake Hylia Fairy",                 0x83, 0xA0, 0x0112, 0x5E, $this, [0xDBBD0 => [0x58]]),
 			new Shop\TakeAny("Light Hype Fairy",                 0x83, 0xA0, 0x0112, 0x6C, $this, [0xDBBDE => [0x58]]),
 			new Shop\TakeAny("Kakariko Gamble Game",             0x83, 0xA0, 0x011F, 0x67, $this, [0xDBBD9 => [0x46]]),
 		]);

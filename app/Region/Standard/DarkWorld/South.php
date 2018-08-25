@@ -79,17 +79,16 @@ class South extends Region {
 			return $items->has('PegasusBoots');
 		});
 
-		// @TODO: these 2 might be reveresed, check that!
 		$this->shops["Dark Lake Hylia Ledge Fairy"]->setRequirements(function($locations, $items) {
 			return $items->has('Flippers') && $items->canBombThings();
 		});
 
 		$this->shops["Dark Lake Hylia Ledge Hint"]->setRequirements(function($locations, $items) {
-			return $items->has('Flippers') && $items->canLiftRocks();
+			return $items->has('Flippers');
 		});
 
 		$this->shops["Dark Lake Hylia Ledge Spike Cave"]->setRequirements(function($locations, $items) {
-			return $items->has('Flippers');
+			return $items->has('Flippers') && $items->canLiftRocks();
 		});
 
 		$this->can_enter = function($locations, $items) {

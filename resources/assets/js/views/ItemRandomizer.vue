@@ -71,10 +71,10 @@
 				<div class="row">
 					<div class="col-md">
 						<div class="btn-group btn-flex" role="group">
-							<button class="btn btn-primary w-50" name="generate-tournament-rom" @click="applyTournamentSeed">
+							<button class="btn btn-primary w-50 text-center" name="generate-tournament-rom" @click="applyTournamentSeed">
 								{{ $t('randomizer.generate.race') }}
 							</button>
-							<button class="btn btn-info w-50" name="generate-tournament-rom" @click="applyTournamentSpoilerSeed">
+							<button class="btn btn-info w-50 text-center" name="generate-tournament-rom" @click="applyTournamentSpoilerSeed">
 								{{ $t('randomizer.generate.spoiler_race') }}
 							</button>
 						</div>

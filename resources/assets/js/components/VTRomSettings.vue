@@ -29,7 +29,7 @@
 					:rom="rom" rom-function="setMusicVolume">{{ $t('rom.settings.music') }}</vt-toggle>
 			</div>
 		</div>
-		<div v-if="!rom.tournament" class="row mb-3">
+		<div v-if="!rom.tournament || rom.allowQuickSwap" class="row mb-3">
 			<div class="col-md-12">
 				<vt-toggle id="quickswap" :selected="defaults.quickswap" storage-key="rom.quickswap"
 					:rom="rom" rom-function="setQuickswap">{{ $t('rom.settings.quickswap') }}</vt-toggle>

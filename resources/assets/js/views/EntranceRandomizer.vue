@@ -71,17 +71,17 @@
 				<div class="row">
 					<div class="col-md">
 						<div class="btn-group btn-flex" role="group">
-							<button class="btn btn-primary w-50" name="generate-tournament-rom" @click="applyTournamentSeed">
+							<button class="btn btn-primary w-50 text-center" name="generate-tournament-rom" @click="applyTournamentSeed">
 								{{ $t('entrance.generate.race') }}
 							</button>
-							<button class="btn btn-info w-50" name="generate-tournament-rom" @click="applyTournamentSpoilerSeed">
+							<button class="btn btn-info w-50 text-center" name="generate-tournament-rom" @click="applyTournamentSpoilerSeed">
 								{{ $t('entrance.generate.spoiler_race') }}
 							</button>
 						</div>
 					</div>
 					<div class="col-md">
 						<div class="btn-group btn-flex" role="group">
-							<button name="generate" class="btn btn-success" @click="applySpoilerSeed">{{ $t('entrance.generate.casual') }}</button>
+							<button name="generate" class="btn btn-success text-center" @click="applySpoilerSeed">{{ $t('entrance.generate.casual') }}</button>
 						</div>
 					</div>
 				</div>
@@ -232,6 +232,7 @@ export default {
 						if (response.data.patch.current_rom_hash && response.data.patch.current_rom_hash != this.current_rom_hash) {
 							// The base rom has been updated.
 						}
+						this.rom.allowQuickSwap = true;
 						this.gameLoaded = true;
 						EventBus.$emit('gameLoaded', this.rom);
 						resolve({rom: this.rom, patch: response.data.patch});

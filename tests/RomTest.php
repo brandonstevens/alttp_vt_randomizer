@@ -164,18 +164,6 @@ class RomTest extends TestCase {
 		$this->assertEquals([1, 2], $this->rom->read(0x180084, 2));
 	}
 
-	public function testSetDebugModeOn() {
-		$this->rom->setDebugMode(true);
-
-		$this->assertEquals([[0xEA, 0xEA],[0xEA, 0xEA]], [$this->rom->read(0x65B88, 2), $this->rom->read(0x65B91, 2)]);
-	}
-
-	public function testSetDebugModeOff() {
-		$this->rom->setDebugMode(false);
-
-		$this->assertEquals([[0xF0, 0x21],[0xD0, 0x18]], [$this->rom->read(0x65B88, 2), $this->rom->read(0x65B91, 2)]);
-	}
-
 	public function testSetSingleRNGTable() {
 		$items = new ItemCollection([
 			Item::get('ProgressiveSword'),
