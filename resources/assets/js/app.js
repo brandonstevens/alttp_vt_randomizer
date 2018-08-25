@@ -28,7 +28,13 @@ Vue.use(VueInternationalization);
 
 Vue.use(VTooltip);
 Vue.use(ToggleButton);
-Vue.use(VueTimeago);
+Vue.use(VueTimeago, {
+  locale: 'en', // Default locale
+  locales: {
+    'fr': require('date-fns/locale/fr'),
+    'de': require('date-fns/locale/de'),
+  }
+});
 Vue.component('vt-rom-info', require('./components/VTRomInfo.vue'));
 Vue.component('vt-rom-loader', require('./components/VTRomLoader.vue'));
 Vue.component('vt-rom-settings', require('./components/VTRomSettings.vue'));

@@ -14,7 +14,7 @@
 		<div v-if="!noLink && rom.hash">{{ $t('rom.info.permalink') }}: <a :href="permalink">{{ permalink }}</a></div>
 		<div v-if="rom.special">{{ $t('rom.info.special') }}: {{ rom.special }}</div>
 		<div v-if="rom.notes">{{ $t('rom.info.notes') }}: <span v-html="rom.notes"></span></div>
-		<div v-if="rom.generated">{{ $t('rom.info.generated') }}: <timeago :since="rom.generated" :auto-update="60"></timeago></div>
+		<div v-if="rom.generated">{{ $t('rom.info.generated') }}: <timeago :since="rom.generated" :auto-update="60" :locale="$i18n.locale"></timeago></div>
 	</div>
 </template>
 
