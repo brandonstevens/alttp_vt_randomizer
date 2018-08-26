@@ -403,15 +403,15 @@ class Randomizer {
 	 */
 	public function fillPrizes(World $world, $attempts = 5) : self {
 		$prize_locations = $world->getLocations()->filter(function($location) {
-			return is_a($location, Location\Prize::class);
+			return $location instanceof Location\Prize;
 		})->randomCollection(15);
 
 		$crystal_locations = $prize_locations->filter(function($location) {
-			return is_a($location, Location\Prize\Crystal::class);
+			return $location instanceof Location\Prize\Crystal;
 		});
 
 		$pendant_locations = $prize_locations->filter(function($location) {
-			return is_a($location, Location\Prize\Pendant::class);
+			return $location instanceof Location\Prize\Pendant;
 		});
 
 		if (!$this->config('prize.shuffleCrystals', true)) {
@@ -497,7 +497,7 @@ class Randomizer {
 		$place_prizes = ($this->config('prize.crossWorld', true))
 			? $place_prizes
 			: array_filter($remaining_prizes, function($item) {
-				return is_a($item, Item\Pendant::class);
+				return $item instanceof Item\Pendant;
 			});
 
 		$empty_pendant_locations = $pendant_locations->getEmptyLocations();

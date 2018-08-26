@@ -30,22 +30,22 @@ class NorthWest extends Region\Standard\DarkWorld\NorthWest {
 		$this->locations["Hammer Pegs"]->setRequirements(function($locations, $items) {
 			return $items->has('Hammer')
 				&& ($items->canLiftDarkRocks()
-					|| ($items->has('Mirror') && $this->world->getRegion('North West Light World')->canEnter($locations, $items)));
+					|| ($items->has('MagicMirror') && $this->world->getRegion('North West Light World')->canEnter($locations, $items)));
 		});
 
 		$this->locations["Bumper Cave"]->setRequirements(function($locations, $items) {
 			return $items->canLiftRocks() && $items->has('Cape')
-				&& $items->has('MoonPearl') && $items->has('Mirror')
+				&& $items->has('MoonPearl') && $items->has('MagicMirror')
 				&& $this->world->getRegion('North West Light World')->canEnter($locations, $items);
 		});
 
 		$this->locations["Blacksmith"]->setRequirements(function($locations, $items) {
-			return ($items->canLiftDarkRocks() || $items->has('Mirror'))
+			return ($items->canLiftDarkRocks() || $items->has('MagicMirror'))
 				&& $this->world->getRegion('North West Light World')->canEnter($locations, $items);
 		});
 
 		$this->locations["Purple Chest"]->setRequirements(function($locations, $items) {
-			return ($items->canLiftDarkRocks() || $items->has('Mirror'))
+			return ($items->canLiftDarkRocks() || $items->has('MagicMirror'))
 				&& $this->world->getRegion('North West Light World')->canEnter($locations, $items)
 				&& $this->world->getRegion('South Light World')->canEnter($locations, $items);
 		});

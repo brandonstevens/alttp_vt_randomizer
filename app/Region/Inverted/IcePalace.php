@@ -28,7 +28,7 @@ class IcePalace extends Region\Standard\IcePalace {
 					|| ((($this->world->config('canFakeFlipper', false) && ($items->has('Hammer') || $items->canLiftRocks()))
 						|| ($this->world->config('canBombJump', false) && $items->canBombThings()))
 						&& $this->world->getRegion('North East Dark World')->canEnter($locations, $items))
-					|| ($this->world->config('canFakeFlipper', false) && $items->has('Mirror') && $items->has('MoonPearl')
+					|| ($this->world->config('canFakeFlipper', false) && $items->has('MagicMirror') && $items->has('MoonPearl')
 						&& $this->world->getRegion('South Light World')->canEnter($locations, $items))
 					|| ($this->world->config('canWaterWalk', false) && $items->has('PegasusBoots')
 						&& $this->world->getRegion('North West Dark World')->canEnter($locations, $items)));

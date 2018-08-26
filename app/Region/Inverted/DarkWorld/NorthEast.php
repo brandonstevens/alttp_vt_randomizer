@@ -41,28 +41,28 @@ class NorthEast extends Region\Standard\DarkWorld\NorthEast {
 		});
 
 		$this->locations["Pyramid Fairy - Sword"]->setRequirements(function($locations, $items) {
-			return $items->hasSword() && $items->has('BigRedBomb') && $items->has('Mirror');
+			return $items->hasSword() && $items->has('BigRedBomb') && $items->has('MagicMirror');
 		});
 
 		$this->locations["Pyramid Fairy - Bow"]->setRequirements(function($locations, $items) {
-			return $items->canShootArrows() && $items->has('BigRedBomb') && $items->has('Mirror');
+			return $items->canShootArrows() && $items->has('BigRedBomb') && $items->has('MagicMirror');
 		});
 
 
 		if ($this->world->config('region.swordsInPool', true)) {
 			$this->locations["Pyramid Fairy - Left"]->setRequirements(function($locations, $items) {
-				return $items->has('BigRedBomb') && $items->has('Mirror');
+				return $items->has('BigRedBomb') && $items->has('MagicMirror');
 			});
 
 			$this->locations["Pyramid Fairy - Right"]->setRequirements(function($locations, $items) {
-				return $items->has('BigRedBomb') && $items->has('Mirror');
+				return $items->has('BigRedBomb') && $items->has('MagicMirror');
 			});
 		}
 
 		$this->can_enter = function($locations, $items) {
 			return $items->has('Hammer')
 				|| $items->has('Flippers')
-				|| ($items->has('Mirror') && $this->world->getRegion('North East Light World')->canEnter($locations, $items));
+				|| ($items->has('MagicMirror') && $this->world->getRegion('North East Light World')->canEnter($locations, $items));
 		};
 
 		return $this;

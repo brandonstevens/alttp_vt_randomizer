@@ -21,12 +21,12 @@ class TurtleRock extends Region\Standard\TurtleRock {
 	}
 
 	protected function enterMiddle($locations, $items) {
-		return $items->has('Mirror')
+		return $items->has('MagicMirror')
 			&& $this->world->getRegion('East Death Mountain')->canEnter($locations, $items);
 	}
 
 	protected function enterBottom($locations, $items) {
-		return $items->has('Mirror')
+		return $items->has('MagicMirror')
 			&& $this->world->getRegion('East Death Mountain')->canEnter($locations, $items);
 	}
 

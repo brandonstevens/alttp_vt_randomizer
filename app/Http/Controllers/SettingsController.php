@@ -16,7 +16,8 @@ class SettingsController extends Controller {
 
 	public function __construct() {
 		$this->drops = config('item.drop');
-		$this->items = array_merge(...array_values(array_only(config('item'), ['required', 'nice', 'junk', 'dungeon'])));
+		$this->items = array_merge(...array_values(array_only(config('item'), ['advancement', 'nice', 'junk', 'dungeon'])));
+		$this->items['KeyD3']++;
 	}
 
 	public function item(Request $request) {

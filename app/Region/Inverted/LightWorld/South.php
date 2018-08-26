@@ -23,6 +23,9 @@ class South extends Region\Standard\LightWorld\South {
 		parent::__construct($world);
 
 		$this->locations->removeItem("Link's House");
+		$this->locations->addItem(new Location\Prize\Event("Bomb Merchant", null, null, $this));
+
+		$this->locations["Bomb Merchant"]->setItem(Item::get('BigRedBomb'));
 	}
 
 	/**
@@ -54,6 +57,11 @@ class South extends Region\Standard\LightWorld\South {
 
 		$this->locations["Floodgate Chest"]->setRequirements(function($locations, $items) {
 			return $items->has('MoonPearl');
+		});
+
+		$this->locations["Bomb Merchant"]->setRequirements(function($locations, $items) {
+			return $items->has('MoonPearl') && $items->has('Crystal5')
+				&& $items->has('Crystal6');
 		});
 
 		$this->locations["Aginah's Cave"]->setRequirements(function($locations, $items) {

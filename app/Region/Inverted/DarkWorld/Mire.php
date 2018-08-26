@@ -21,7 +21,7 @@ class Mire extends Region\Standard\DarkWorld\Mire {
 	public function initNoGlitches() {
 		$this->can_enter = function($locations, $items) {
 			return $items->canFly()
-				|| ($items->has('Mirror') && $this->world->getRegion('South Light World')->canEnter($locations, $items));
+				|| ($items->has('MagicMirror') && $this->world->getRegion('South Light World')->canEnter($locations, $items));
 		};
 
 		return $this;
